@@ -15,6 +15,6 @@ const VideoProvider = ({ children }) => {
   );
 };
 
-const initialVideoState = { videos: [] };
+const initialVideoState = { videos: [], category:[], };
 
 export { useVideos, VideoProvider };
