@@ -1,5 +1,5 @@
 const History = () => {
-  return <>histor</>;
+  return <>history</>;
 };
 
 export { History };

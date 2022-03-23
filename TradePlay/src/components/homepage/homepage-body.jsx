@@ -3,6 +3,9 @@ import { VideoCard } from "../card/video-card";
 
 const HomepageBody = () => {
   const { videoState, videoDispatch } = useVideos();
+  const clickHandler = (name) => {
+    videoDispatch({ type: "CATEGORY_CHANGE", value: name });
+  };
   const mostViewVideos = videoState.videos
     .sort((a, b) => b.likes - a.likes)
     .slice(0, 4);
@@ -12,19 +15,35 @@ const HomepageBody = () => {
         <div className="title is-4 m-up-5 m-dw-3 m-l-6 is-5 width-100">
           Categories
         </div>
-        <div className="m-y-1 is-6 light categories-card flex-row br-3 p-x-2 align-center">
+        <div
+          name="stock"
+          onClick={(e) => clickHandler("stock")}
+          className="m-y-1 is-6 light categories-card flex-row br-3 p-x-2 align-center"
+        >
           <i className="fas fa-chart-line"></i>
           <p className="categories-card-text m-l-2 is-4">Stocks</p>
         </div>
-        <div className="m-y-1 is-6 light categories-card flex-row br-3 p-x-2 align-center">
+        <div
+          name="stock"
+          onClick={(e) => clickHandler("crypto")}
+          className="m-y-1 is-6 light categories-card flex-row br-3 p-x-2 align-center"
+        >
           <i className="fab fa-bitcoin"></i>
           <p className="categories-card-text m-l-2 is-4">Crypto</p>
         </div>
-        <div className="m-y-1 is-6 light categories-card flex-row br-3 p-x-2 align-center">
+        <div
+          name="stock"
+          onClick={(e) => clickHandler("charting")}
+          className="m-y-1 is-6 light categories-card flex-row br-3 p-x-2 align-center"
+        >
           <i className="fas fa-chart-area"></i>
           <p className="categories-card-text m-l-2 is-4">Charting</p>
         </div>
-        <div className="m-y-1 is-6 light categories-card flex-row br-3 p-x-2 align-center">
+        <div
+          name="stock"
+          onClick={(e) => clickHandler("trading_mindset")}
+          className="m-y-1 is-6 light categories-card flex-row br-3 p-x-2 align-center"
+        >
           <i className="fas fa-brain"></i>
           <p className="categories-card-text m-l-2 is-4">Trading mindset</p>
         </div>

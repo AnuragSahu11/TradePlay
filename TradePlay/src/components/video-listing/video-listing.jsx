@@ -1,11 +1,9 @@
 import { useVideos } from "../../context/videos-context";
-import { Explore } from "./pages/explore-page";
 import { Sidebar } from "./sidebar";
-import { Outlet, Routes } from "react-router-dom";
+import { Outlet } from "react-router-dom";
+import "./video-listing.css";
 
 const VideoListing = () => {
-  const { videoState } = useVideos();
-
   return (
     <div className="flex-row width-100">
       <Sidebar />
