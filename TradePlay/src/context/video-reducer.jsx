@@ -1,9 +1,8 @@
-import { useVideos } from "./videos-context";
 import {
   changeCategory,
   saveApiDataToContext,
-  addToWatchLater,
   addToWatchLaterUtil,
+  removeFromWatchLater,
 } from "./context-utils";
 
 const videoReducer = (state, action) => {
@@ -14,6 +13,8 @@ const videoReducer = (state, action) => {
       return changeCategory(state, action.value);
     case "ADD_TO_WATCHLATER":
       return addToWatchLaterUtil(state, action.value);
+    case "REMOVE_FROM_WATCHLATER":
+      return removeFromWatchLater(state, action.value);
   }
 };
 

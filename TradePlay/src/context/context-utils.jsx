@@ -14,9 +14,17 @@ const addToWatchLaterUtil = (state, value) => {
   return { ...state, watchlater: [...state.watchlater, value] };
 };
 
+const removeFromWatchLater = (state, value) => {
+  return {
+    ...state,
+    watchlater: state.watchlater.filter((item) => item != value),
+  };
+};
+
 export {
   saveApiDataToContext,
   changeCategory,
   addToPlaylist,
   addToWatchLaterUtil,
+  removeFromWatchLater,
 };
