@@ -12,7 +12,7 @@ const WatchLater = () => {
   ));
   return (
     <div className="flex-r-w space-evenly">
-      <div className="watchlater-heading is-5 text-center m-up-4 m-dw-3 width-100">
+      <div className="watchlater-heading is-5 bold text-center m-up-4 m-dw-3 width-100">
         Watch Later
       </div>{" "}
       {watchlaterVideos}
