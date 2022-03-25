@@ -7,7 +7,6 @@ const History = () => {
   const historyVideosList = history.map((id) => {
     return videos.filter((videoData) => id === videoData._id)[0];
   });
-  console.log(historyVideosList, "list");
   const historyVideos = historyVideosList.map((item, i) => (
     <VideoCard key={i} videoData={item} />
   ));
