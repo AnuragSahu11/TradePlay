@@ -21,10 +21,28 @@ const removeFromWatchLater = (state, value) => {
   };
 };
 
+const addToHistoryUtil = (state, value) => {
+  return {
+    ...state,
+    history: [...state.history, value],
+  };
+};
+
+const likeVideo = (state, value) => {
+  return { ...state, like: [...state.like, value] };
+};
+
+const unLikeVideo = (state, value) => {
+  return { ...state, like: [...state.like].filter((id) => !(id === value)) };
+};
+
 export {
   saveApiDataToContext,
   changeCategory,
   addToPlaylist,
   addToWatchLaterUtil,
   removeFromWatchLater,
+  addToHistoryUtil,
+  likeVideo,
+  unLikeVideo,
 };
