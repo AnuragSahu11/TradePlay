@@ -1,3 +1,4 @@
+import { AddToWatchLater } from "./add-to-watchlater";
 import { CardLikes } from "./card-likes";
 
 const VideoCard = ({ videoData }) => {
@@ -23,9 +24,7 @@ const VideoCard = ({ videoData }) => {
           </div>
           <CardLikes likes={likes} />
           <div className="btn-vertical">
-            <button className="btn-secondary m-dw-1 btn-small">
-              <i className="fas fa-clock is-3 m-r-1"></i>Add to wishlist
-            </button>
+            <AddToWatchLater videoData={videoData} />
           </div>
         </div>
       </div>
