@@ -7,7 +7,7 @@ const HomepageBody = () => {
     videoDispatch({ type: "CATEGORY_CHANGE", value: name });
   };
   const mostViewVideos = videoState.videos
-    .sort((a, b) => b.likes - a.likes)
+    .sort((a, b) => b.views - a.views)
     .slice(0, 4);
   return (
     <>

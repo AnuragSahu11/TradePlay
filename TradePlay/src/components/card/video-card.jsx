@@ -1,10 +1,10 @@
 import { addToHistoryUtil } from "../../context/context-utils";
 import { useVideos } from "../../context/videos-context";
+import { PlaylistCardIcon } from "./add-to-playlist";
 import { AddToWatchLater } from "./add-to-watchlater";
 import { CardLikes } from "./card-likes";
 
 const VideoCard = ({ videoData }) => {
-  const { likes } = videoData;
   const { videoDispatch } = useVideos();
   const addToHistory = () => {
     videoDispatch({ type: "ADD_TO_HISTORY", value: videoData._id });
@@ -28,7 +28,11 @@ const VideoCard = ({ videoData }) => {
               <span>creator</span> <span>category</span>{" "}
             </div>
           </div>
-          <CardLikes videoData={videoData} />
+          <div className="textbox flex-r-w space-evenly m-dw-1 align-center">
+            <CardLikes videoData={videoData} />
+            <PlaylistCardIcon />
+          </div>
+
           <div className="btn-vertical">
             <AddToWatchLater videoData={videoData} />
           </div>
