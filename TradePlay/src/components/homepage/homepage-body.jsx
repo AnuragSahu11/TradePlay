@@ -1,10 +1,13 @@
+import { useNavigate } from "react-router-dom";
 import { useVideos } from "../../context/videos-context";
 import { VideoCard } from "../card/video-card";
 
 const HomepageBody = () => {
+  const navigate = useNavigate();
   const { videoState, videoDispatch } = useVideos();
   const clickHandler = (name) => {
     videoDispatch({ type: "CATEGORY_CHANGE", value: name });
+    navigate("/videoListing");
   };
   const mostViewVideos = videoState.videos
     .sort((a, b) => b.views - a.views)

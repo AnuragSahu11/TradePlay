@@ -1,7 +1,9 @@
 import { HomepageBody } from "./homepage-body";
+import { useNavigate } from "react-router-dom";
 import "./homepage.css";
 
 const Homepage = () => {
+  const navigate = useNavigate();
   return (
     <section className="homepage-section">
       <div className="homepage-hero width-100 flex-r-w align-center center-text">
@@ -16,7 +18,10 @@ const Homepage = () => {
               Curated videos to learn trading the fast way
             </div>
           </div>
-          <button className="btn-primary m-up-3 btn-medium br-1">
+          <button
+            onClick={() => navigate("/videoListing")}
+            className="btn-primary m-up-3 btn-medium br-1"
+          >
             Start Learning
           </button>
         </div>
