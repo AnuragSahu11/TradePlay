@@ -17,7 +17,7 @@ const PlaylistProvider = ({ children }) => {
 const initialState = {
   playlists: [
     {
-      title: "favourites",
+      name: "favourites",
       description: "my favourite videos across all categories",
       videos: [],
     },
@@ -25,5 +25,3 @@ const initialState = {
 };
 
 export { usePlaylist, PlaylistProvider };
-
-

@@ -32,12 +32,11 @@ const unLikeVideo = (state, value) => {
   return { ...state, like: [...state.like].filter((id) => !(id === value)) };
 };
 
-const addToPlaylist = (state, value) => {
+const createNewPlaylist = (state, name, desc) => {
   return {
-    ...state,
     playlists: [
       ...state.playlists,
-      { title: value.name, discription: value.desc, videos: [] },
+      { name: name, discription: desc, videos: [] },
     ],
   };
 };
@@ -45,7 +44,7 @@ const addToPlaylist = (state, value) => {
 export {
   saveApiDataToContext,
   changeCategory,
-  addToPlaylist,
+  createNewPlaylist,
   addToWatchLaterUtil,
   removeFromWatchLater,
   addToHistoryUtil,

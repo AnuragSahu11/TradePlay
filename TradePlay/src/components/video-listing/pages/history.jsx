@@ -11,7 +11,7 @@ const History = () => {
     <VideoCard key={i} videoData={item} />
   ));
   return (
-    <div className="flex-r-w space-evenly">
+    <div className="flex-r-w space-evenly history-page">
       <div className="history-heading width-100 is-5 bold m-up-5 m-dw-3 text-center">
         History
       </div>

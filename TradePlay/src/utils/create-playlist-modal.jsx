@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { usePlaylist } from "../context/playlist-context";
 
-const AddNewPlaylistModal = ({ isModalOpen, switchModal }) => {
+const CreateNewPlaylistModal = ({ isModalOpen, switchModal }) => {
   const { playlistDispatch } = usePlaylist();
   const [playlistName, setPlaylistName] = useState("");
   const [playlistDesc, setPlaylistDesc] = useState("");
@@ -11,11 +11,13 @@ const AddNewPlaylistModal = ({ isModalOpen, switchModal }) => {
   const insideModalClickHandler = (e) => {
     e.stopPropagation();
   };
-  const closeModal = () => {};
+  const closeModal = () => {
+    switchModal((prevState) => !prevState);
+  };
   const submitClickHandler = () => {
     if (playlistName && playlistDesc) {
       playlistDispatch({
-        title: "CREATE_PLAYLIST",
+        type: "CREATE_PLAYLIST",
         value: { name: playlistName, desc: playlistDesc },
       });
     }
@@ -66,4 +68,4 @@ const AddNewPlaylistModal = ({ isModalOpen, switchModal }) => {
   );
 };
 
-export { AddNewPlaylistModal };
+export { CreateNewPlaylistModal };

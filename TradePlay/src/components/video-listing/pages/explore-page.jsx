@@ -16,9 +16,9 @@ const Explore = () => {
     videoState.category
   ).map((item) => <VideoCard key={item.id} videoData={item} />);
   return (
-    <div>
+    <div className="explore-page">
       <CategorySelection />
-      <div className="video-listing-videos flex-r-w m-up-3 space-evenly">
+      <div className="video-listing-videos video-card-container flex-r-w m-up-3 space-evenly">
         {explorePageVideos}
       </div>
     </div>

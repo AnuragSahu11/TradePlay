@@ -1,7 +1,10 @@
 import { useState } from "react";
-import { AddNewPlaylistModal } from "../../../utils/add-new-playlist-modal";
+import { usePlaylist } from "../../../context/playlist-context";
+import { CreateNewPlaylistModal } from "../../../utils/create-playlist-modal";
+import { Playlists } from "./playlists";
 
 const Playlist = () => {
+  const { playlistState } = usePlaylist();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const createNewPlaylistclickHandler = () => {
     setIsModalOpen((prevState) => !prevState);
@@ -10,7 +13,7 @@ const Playlist = () => {
   return (
     <div className="playlist-page width-100">
       {isModalOpen && (
-        <AddNewPlaylistModal
+        <CreateNewPlaylistModal
           isModalOpen={isModalOpen}
           switchModal={setIsModalOpen}
         />
@@ -23,11 +26,9 @@ const Playlist = () => {
           <i className="bx is-primary bx-plus is-5 m-r-1"></i>
           <p className="m-y-1 semibold">Create new Playlist</p>
         </div>
-
-        <div className="addToPlaylist m-up-4 center-x  text-center p-x-2 br-3 create-playlist flex-row align-center is-4">
-          <i className="bx bx-play-circle is-primary is-5 m-r-1"></i>
-          <p className="m-y-1 regular text-center"></p>
-        </div>
+        {playlistState.playlists.map((item) => (
+          <Playlists playlistData={item} name={item.name} />
+        ))}
       </div>
     </div>
   );
