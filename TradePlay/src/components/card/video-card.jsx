@@ -11,7 +11,6 @@ const VideoCard = ({ videoData }) => {
   const { videoDispatch } = useVideos();
   const switchShowModal = () => {
     setShowModal((prevState) => !prevState);
-    console.log("switched");
   };
   const addToHistory = () => {
     videoDispatch({ type: "ADD_TO_HISTORY", value: videoData._id });

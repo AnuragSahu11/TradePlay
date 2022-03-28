@@ -3,9 +3,8 @@ import { usePlaylist } from "../../../context/playlist-context";
 const Playlists = ({ name, videoId }) => {
   const { playlistDispatch } = usePlaylist();
   const clickHandler = () => {
-    console.log(name, videoId);
     playlistDispatch({
-      title: "ADD_TO_PLAYLIST",
+      type: "ADD_TO_PLAYLIST",
       value: { name: name, id: videoId },
     });
   };

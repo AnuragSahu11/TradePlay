@@ -41,6 +41,29 @@ const createNewPlaylist = (state, name, desc) => {
   };
 };
 
+const addToPlaylist = (state, playlistName, id) => {
+  if (
+    state.playlists.reduce((acc, curr) => {
+      if (curr.name === playlistName) {
+        return curr.videos.includes(id);
+      }
+      return acc;
+    }, false)
+  ) {
+    return { ...state };
+  } else {
+    return {
+      playlists: [
+        ...state.playlists.map((item) =>
+          item.name === playlistName
+            ? { ...item, videos: [...item.videos, id] }
+            : item
+        ),
+      ],
+    };
+  }
+};
+
 export {
   saveApiDataToContext,
   changeCategory,
@@ -50,4 +73,5 @@ export {
   addToHistoryUtil,
   likeVideo,
   unLikeVideo,
+  addToPlaylist,
 };

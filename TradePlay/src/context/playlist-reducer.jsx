@@ -1,4 +1,4 @@
-import { AddToPlaylistModal } from "../utils/add-to-playlist-modal";
+import { addToPlaylist } from "./context-utils";
 import { createNewPlaylist } from "./context-utils";
 
 const playlistReducer = (state, action) => {
@@ -8,7 +8,7 @@ const playlistReducer = (state, action) => {
     case "REMOVE_PLAYLIST":
       return;
     case "ADD_TO_PLAYLIST":
-      return AddToPlaylistModal(state);
+      return addToPlaylist(state, action.value.name, action.value.id);
     case "REMOVE_FROM_PLAYLIST":
       return;
   }

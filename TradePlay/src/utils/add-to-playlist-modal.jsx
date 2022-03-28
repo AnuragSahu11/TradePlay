@@ -4,6 +4,7 @@ import { Playlists } from "../components/video-listing/pages/playlists";
 
 const AddToPlaylistModal = ({ isModalOpen, switchModal, videoId }) => {
   const { playlistState, playlistDispatch } = usePlaylist();
+
   const outsideModalClickHandler = () => {
     switchModal((prevState) => !prevState);
   };
