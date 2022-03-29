@@ -1,7 +1,6 @@
-import { useVideos } from "../../context/videos-context";
 import { Sidebar } from "./sidebar";
 import { Outlet } from "react-router-dom";
-import "./video-listing.css";
+import "./main.css";
 
 const VideoListing = () => {
   return (
