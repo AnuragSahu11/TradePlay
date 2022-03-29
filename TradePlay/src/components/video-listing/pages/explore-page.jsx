@@ -1,7 +1,6 @@
 import { useVideos } from "../../../context/videos-context";
 import { CategorySelection } from "../category-selection";
 import { VideoCard } from "../../card/video-card";
-import { videos } from "../../../backend/db/videos";
 
 const Explore = () => {
   const { videoState } = useVideos();

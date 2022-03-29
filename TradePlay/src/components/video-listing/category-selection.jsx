@@ -2,8 +2,10 @@ import { useVideos } from "../../context/videos-context";
 
 const CategorySelection = () => {
   const { videoDispatch } = useVideos();
-  const clickHandler = (name) => {
-    videoDispatch({ type: "CATEGORY_CHANGE", value: name });
+  const clickHandler = (category) => {
+    if (category === "clear_filter") {
+      videoDispatch({ type: "CLEAR_FILTER" });
+    } else videoDispatch({ type: "CATEGORY_CHANGE", value: category });
   };
   return (
     <div className="homepage-categories m-up-2 width-100 flex-r-w space-evenly">
@@ -34,6 +36,13 @@ const CategorySelection = () => {
       >
         <i className="fas fa-brain"></i>
         <p className="categories-card-text m-l-2 is-2">Trading mindset</p>
+      </div>
+      <div
+        onClick={(e) => clickHandler("clear_filter")}
+        className="m-up-3 is-4 light categories-card flex-row br-2 p-x-1 align-center"
+      >
+        <i className="bx bx-filter"></i>
+        <p className="categories-card-text m-l-2 is-2">Clear Filter</p>
       </div>
     </div>
   );

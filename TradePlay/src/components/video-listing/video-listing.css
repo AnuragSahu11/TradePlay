@@ -68,6 +68,14 @@ nav {
 .video-card-container {
   position: relative;
 }
+.delete-playlist-modal {
+  width: 50vw;
+  position: absolute;
+  z-index: 1;
+}
+.card-horizontal {
+  height: 200px;
+}
 @media only screen and (max-width: 1050px) {
   .modal {
     width: 50vw;

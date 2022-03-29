@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { usePlaylist } from "../context/playlist-context";
+import { usePlaylist } from "../../context/playlist-context";
 
 const CreateNewPlaylistModal = ({ isModalOpen, switchModal }) => {
   const { playlistDispatch } = usePlaylist();

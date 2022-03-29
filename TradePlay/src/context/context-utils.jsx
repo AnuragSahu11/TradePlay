@@ -63,6 +63,17 @@ const addToPlaylist = (state, playlistName, id) => {
     };
   }
 };
+const removePlaylist = (state, playlistName) => {
+  console.log(state, playlistName);
+  return {
+    playlists: [
+      ...state.playlists.filter((item) => !(item.name === playlistName)),
+    ],
+  };
+};
+const clearHistory = (state) => {
+  return { ...state, history: [] };
+};
 
 export {
   saveApiDataToContext,
@@ -74,4 +85,6 @@ export {
   likeVideo,
   unLikeVideo,
   addToPlaylist,
+  removePlaylist,
+  clearHistory,
 };

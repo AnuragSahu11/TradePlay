@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { addToHistoryUtil } from "../../context/context-utils";
 import { useVideos } from "../../context/videos-context";
-import { AddToPlaylistModal } from "../../utils/add-to-playlist-modal";
+import { AddToPlaylistModal } from "../modals/add-to-playlist-modal";
 import { AddToPlaylistCardButton } from "./add-to-playlist";
 import { AddToWatchLater } from "./add-to-watchlater";
 import { CardLikes } from "./card-likes";

@@ -1,11 +1,16 @@
 import { useState } from "react";
 import { usePlaylist } from "../../../context/playlist-context";
-import { CreateNewPlaylistModal } from "../../../utils/create-playlist-modal";
+import { CreateNewPlaylistModal } from "../../modals/create-playlist-modal";
+import { DeletePlaylistModal } from "../../modals/delete-playlist-modal";
 import { Playlists } from "./playlists";
 
 const Playlist = () => {
   const { playlistState } = usePlaylist();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showDeletePlaylistModal, setShowDeletePlaylistModal] = useState(false);
+  const switchShowDeletePlaylistModal = () => {
+    setShowDeletePlaylistModal((prevState) => !prevState);
+  };
   const createNewPlaylistclickHandler = () => {
     setIsModalOpen((prevState) => !prevState);
   };
@@ -18,6 +23,9 @@ const Playlist = () => {
           switchModal={setIsModalOpen}
         />
       )}
+      {showDeletePlaylistModal && (
+        <DeletePlaylistModal switchModal={switchShowDeletePlaylistModal} />
+      )}
       <div className="flex-c-w m-up-6 playlist-body ">
         <div
           onClick={createNewPlaylistclickHandler}
@@ -29,6 +37,15 @@ const Playlist = () => {
         {playlistState.playlists.map((item) => (
           <Playlists playlistData={item} name={item.name} />
         ))}
+        <div className="width-100 m-up-6 center-text">
+          <button
+            onClick={switchShowDeletePlaylistModal}
+            className="btn-medium btn-w-icon btn-secondary"
+          >
+            <i className="bx is-3 bxs-trash"></i>
+            Delete Playlist
+          </button>
+        </div>
       </div>
     </div>
   );

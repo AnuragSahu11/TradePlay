@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { usePlaylist } from "../context/playlist-context";
-import { Playlists } from "../components/video-listing/pages/playlists";
+import { usePlaylist } from "../../context/playlist-context";
+import { Playlists } from "../video-listing/pages/playlists";
 
 const AddToPlaylistModal = ({ isModalOpen, switchModal, videoId }) => {
   const { playlistState, playlistDispatch } = usePlaylist();
