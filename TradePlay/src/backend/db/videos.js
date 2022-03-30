@@ -10,7 +10,7 @@ export const videos = [
     description:
       "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
     creator: "Soham Shah",
-    likes: 200,
+    views: 200,
     category: "stock",
   },
   {
@@ -19,7 +19,7 @@ export const videos = [
     creator: "Sentdex",
     description:
       "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
-    likes: 150,
+    views: 150,
     category: "crypto",
   },
   {
@@ -28,7 +28,7 @@ export const videos = [
     description:
       "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
     creator: "Soham Shah",
-    likes: 120,
+    views: 120,
     category: "charting",
   },
   {
@@ -37,7 +37,7 @@ export const videos = [
     creator: "Sentdex",
     description:
       "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
-    likes: 300,
+    views: 300,
     category: "trading_mindset",
   },
 ];

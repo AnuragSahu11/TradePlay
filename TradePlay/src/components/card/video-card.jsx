@@ -1,12 +1,18 @@
+import { addToHistoryUtil } from "../../context/context-utils";
+import { useVideos } from "../../context/videos-context";
+import { PlaylistCardIcon } from "./add-to-playlist";
 import { AddToWatchLater } from "./add-to-watchlater";
 import { CardLikes } from "./card-likes";
 
 const VideoCard = ({ videoData }) => {
-  const { likes } = videoData;
+  const { videoDispatch } = useVideos();
+  const addToHistory = () => {
+    videoDispatch({ type: "ADD_TO_HISTORY", value: videoData._id });
+  };
   return (
     <div className="homepage-videos-cards m-y-2 m-x-2">
       <div className="card shadow">
-        <div className="card-head">
+        <div onClick={addToHistory} className="card-head">
           <div className="card-image">
             <img
               src="https://picsum.photos/310/250"
@@ -22,7 +28,11 @@ const VideoCard = ({ videoData }) => {
               <span>creator</span> <span>category</span>{" "}
             </div>
           </div>
-          <CardLikes likes={likes} />
+          <div className="textbox flex-r-w space-evenly m-dw-1 align-center">
+            <CardLikes videoData={videoData} />
+            <PlaylistCardIcon />
+          </div>
+
           <div className="btn-vertical">
             <AddToWatchLater videoData={videoData} />
           </div>
