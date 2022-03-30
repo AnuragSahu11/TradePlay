@@ -1,5 +1,5 @@
-const PlaylistCardIcon = () => {
-  return <i className="is-4 bx bxs-playlist"></i>;
+const AddToPlaylistCardButton = ({ switchModal }) => {
+  return <i onClick={switchModal} className="is-4 bx bxs-playlist"></i>;
 };
 
-export { PlaylistCardIcon };
+export { AddToPlaylistCardButton };

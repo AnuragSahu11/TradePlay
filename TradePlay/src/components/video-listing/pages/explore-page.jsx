@@ -1,7 +1,6 @@
 import { useVideos } from "../../../context/videos-context";
 import { CategorySelection } from "../category-selection";
 import { VideoCard } from "../../card/video-card";
-import { videos } from "../../../backend/db/videos";
 
 const Explore = () => {
   const { videoState } = useVideos();
@@ -16,9 +15,9 @@ const Explore = () => {
     videoState.category
   ).map((item) => <VideoCard key={item.id} videoData={item} />);
   return (
-    <div>
+    <div className="explore-page">
       <CategorySelection />
-      <div className="video-listing-videos flex-r-w m-up-3 space-evenly">
+      <div className="video-listing-videos video-card-container flex-r-w m-up-3 space-evenly">
         {explorePageVideos}
       </div>
     </div>

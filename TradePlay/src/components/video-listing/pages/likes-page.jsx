@@ -9,7 +9,7 @@ const LikesPage = () => {
     <VideoCard key={item._id} videoData={item} />
   ));
   return (
-    <div className="flex-r-w space-evenly">
+    <div className="flex-r-w space-evenly likes-page">
       <div className="watchlater-heading is-5 bold text-center m-up-5 m-dw-3 width-100">
         Liked Videos
       </div>

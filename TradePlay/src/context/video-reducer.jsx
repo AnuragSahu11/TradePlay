@@ -6,6 +6,7 @@ import {
   addToHistoryUtil,
   likeVideo,
   unLikeVideo,
+  clearHistory,
 } from "./context-utils";
 
 const videoReducer = (state, action) => {
@@ -20,10 +21,14 @@ const videoReducer = (state, action) => {
       return removeFromWatchLater(state, action.value);
     case "ADD_TO_HISTORY":
       return addToHistoryUtil(state, action.value);
+    case "CLEAR_HISTORY":
+      return clearHistory(state);
     case "LIKE_VIDEO":
       return likeVideo(state, action.value);
     case "UNLIKE_VIDEO":
       return unLikeVideo(state, action.value);
+    case "CLEAR_FILTER":
+      return changeCategory(state, "");
   }
 };
 

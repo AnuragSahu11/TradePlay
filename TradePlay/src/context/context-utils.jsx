@@ -6,10 +6,6 @@ const changeCategory = (state, value) => {
   return { ...state, category: value };
 };
 
-const addToPlaylist = (state, value) => {
-  return [...state, { [value]: [] }];
-};
-
 const addToWatchLaterUtil = (state, value) => {
   return { ...state, watchlater: [...state.watchlater, value] };
 };
@@ -36,13 +32,59 @@ const unLikeVideo = (state, value) => {
   return { ...state, like: [...state.like].filter((id) => !(id === value)) };
 };
 
+const createNewPlaylist = (state, name, desc) => {
+  return {
+    playlists: [
+      ...state.playlists,
+      { name: name, discription: desc, videos: [] },
+    ],
+  };
+};
+
+const addToPlaylist = (state, playlistName, id) => {
+  if (
+    state.playlists.reduce((acc, curr) => {
+      if (curr.name === playlistName) {
+        return curr.videos.includes(id);
+      }
+      return acc;
+    }, false)
+  ) {
+    return { ...state };
+  } else {
+    return {
+      playlists: [
+        ...state.playlists.map((item) =>
+          item.name === playlistName
+            ? { ...item, videos: [...item.videos, id] }
+            : item
+        ),
+      ],
+    };
+  }
+};
+const removePlaylist = (state, playlistName) => {
+  console.log(state, playlistName);
+  return {
+    playlists: [
+      ...state.playlists.filter((item) => !(item.name === playlistName)),
+    ],
+  };
+};
+const clearHistory = (state) => {
+  return { ...state, history: [] };
+};
+
 export {
   saveApiDataToContext,
   changeCategory,
-  addToPlaylist,
+  createNewPlaylist,
   addToWatchLaterUtil,
   removeFromWatchLater,
   addToHistoryUtil,
   likeVideo,
   unLikeVideo,
+  addToPlaylist,
+  removePlaylist,
+  clearHistory,
 };
