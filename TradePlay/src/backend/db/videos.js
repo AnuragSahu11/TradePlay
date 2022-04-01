@@ -63,24 +63,24 @@ export const videos = [
     views: 300,
     category: "crypto",
   },
-  {
-    _id: "mindset_1",
-    title: "Neural Networks from Scratch - P.1 Intro and Neuron Code",
-    creator: "Sentdex",
-    videoLink: "",
-    description:
-      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
-    views: 300,
-    category: "trading_mindset",
-  },
-  {
-    _id: "mindset_1",
-    title: "Neural Networks from Scratch - P.1 Intro and Neuron Code",
-    creator: "Sentdex",
-    videoLink: "",
-    description:
-      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
-    views: 300,
-    category: "trading_mindset",
-  },
+  // {
+  //   _id: "mindset_1",
+  //   title: "Neural Networks from Scratch - P.1 Intro and Neuron Code",
+  //   creator: "Sentdex",
+  //   videoLink: "",
+  //   description:
+  //     "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
+  //   views: 300,
+  //   category: "stock",
+  // },
+  // {
+  //   _id: "mindset_1",
+  //   title: "Neural Networks from Scratch - P.1 Intro and Neuron Code",
+  //   creator: "Sentdex",
+  //   videoLink: "",
+  //   description:
+  //     "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
+  //   views: 300,
+  //   category: "stock",
+  // },
 ];

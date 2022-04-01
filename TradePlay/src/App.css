@@ -60,3 +60,7 @@ body {
 .is-primary {
   color: var(--primary);
 }
+
+.btn-secondary:hover {
+  filter: brightness(90%) !important;
+}

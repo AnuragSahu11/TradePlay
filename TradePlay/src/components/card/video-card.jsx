@@ -35,7 +35,7 @@ const VideoCard = ({ videoData }) => {
           <div onClick={cardClickHandler} className="card-head">
             <div className="card-image">
               <img
-                src="https://picsum.photos/310/250"
+                src={`https://img.youtube.com/vi/${_id}/0.jpg`}
                 alt="card image"
                 className="card-image-img"
               />
