@@ -1,9 +1,12 @@
-const SmallVideoCard = () => {
+import { RemoveFromPlaylist } from "./add-to-playlist";
+
+const SmallVideoCard = ({ videoData, playlistName }) => {
+  const { _id, title } = videoData;
   return (
     <div className="notification-list">
       <ul className="list child-m-s">
         <li className="list-items list-none">
-          <a href="" className="notification-list-link">
+          <div className="notification-list-link">
             <div className="card card-horizontal">
               <div className="card-head">
                 <div className="card-image">
@@ -17,17 +20,16 @@ const SmallVideoCard = () => {
               </div>
               <div className="card-body">
                 <div className="textbox">
-                  <div className="title semibold">
-                    Lorem ipsum dolor sit amet consectetur.
-                  </div>
+                  <div className="title semibold">{title}</div>
                   <div className="subtitle">Subtitle</div>
                 </div>
                 <div className="textbox">
                   <p className="text">Lorem ipsum</p>
                 </div>
+                <RemoveFromPlaylist playlistName={playlistName} id={_id} />
               </div>
             </div>
-          </a>
+          </div>
         </li>
       </ul>
     </div>

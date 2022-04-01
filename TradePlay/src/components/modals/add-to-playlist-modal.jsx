@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { usePlaylist } from "../../context/playlist-context";
-import { Playlists } from "../video-listing/pages/playlists";
+import { SinglePlaylistComponent } from "../video-listing/pages/playlists";
 
 const AddToPlaylistModal = ({ isModalOpen, switchModal, videoId }) => {
   const { playlistState, playlistDispatch } = usePlaylist();
@@ -21,7 +21,11 @@ const AddToPlaylistModal = ({ isModalOpen, switchModal, videoId }) => {
         <i className="fas fa-times" />
       </button>
       {playlistState.playlists.map((item) => (
-        <Playlists videoId={videoId} name={item.name} />
+        <SinglePlaylistComponent
+          action={"add"}
+          videoId={videoId}
+          name={item.name}
+        />
       ))}
     </div>
   );

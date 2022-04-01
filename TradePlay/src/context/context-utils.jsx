@@ -20,7 +20,7 @@ const removeFromWatchLater = (state, value) => {
 const addToHistoryUtil = (state, value) => {
   return {
     ...state,
-    history: [...state.history, value],
+    history: [...state.history.filter((item) => !(item === value)), value],
   };
 };
 
@@ -63,8 +63,22 @@ const addToPlaylist = (state, playlistName, id) => {
     };
   }
 };
+
+const removeFromPlaylist = (state, id, playlistName) => {
+  return {
+    playlists: state.playlists.map((item) => {
+      if (item.name === playlistName) {
+        return {
+          ...item,
+          videos: item.videos.filter((item) => !(item === id)),
+        };
+      }
+      return item;
+    }),
+  };
+};
+
 const removePlaylist = (state, playlistName) => {
-  console.log(state, playlistName);
   return {
     playlists: [
       ...state.playlists.filter((item) => !(item.name === playlistName)),
@@ -86,5 +100,6 @@ export {
   unLikeVideo,
   addToPlaylist,
   removePlaylist,
+  removeFromPlaylist,
   clearHistory,
 };
