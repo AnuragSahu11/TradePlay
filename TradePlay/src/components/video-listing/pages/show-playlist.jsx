@@ -27,7 +27,9 @@ const ShowPlaylist = () => {
           </div>
         </div>
       </div>
-      <div className="playlist-videos flex-c-w">{finalVideoList}</div>
+      <div className="playlist-videos br-3  p-x-2 p-y-2 flex-c-w">
+        {finalVideoList}
+      </div>
     </div>
   );
 };

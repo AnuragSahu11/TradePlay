@@ -1,7 +1,9 @@
 import { usePlaylist } from "../../context/playlist-context";
 
-const AddToPlaylistCardButton = ({ switchModal }) => {
-  return <i onClick={switchModal} className="is-4 bx bxs-playlist"></i>;
+const AddToPlaylistCardButton = ({ size, switchModal }) => {
+  return (
+    <i onClick={switchModal} className={`is-4 bx bxs-playlist ${size}`}></i>
+  );
 };
 
 const RemoveFromPlaylist = ({ id, playlistName }) => {

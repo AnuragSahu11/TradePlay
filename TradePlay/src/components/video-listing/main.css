@@ -12,8 +12,8 @@ nav {
 .sidebar {
   width: 7vw;
   position: sticky;
-  top: 5rem;
-  height: min-content;
+  top: 9vh;
+  height: 91vh;
 }
 .create-playlist {
   border: 3px solid black;
@@ -105,15 +105,42 @@ nav {
   max-height: 7rem;
   overflow-y: scroll;
 }
-.add-to-playlist-small {
+.small-video-card-title {
+  font-size: 16px;
+}
+.list-items .notification-list-link .border-none {
+  border: none;
+}
+.btn-vertical .btn-custom:hover {
+  border: solid 2px var(--primary);
+  color: var(--primary);
+  filter: contrast(65%);
+}
+.fit-content {
+  width: fit-content;
+}
+.history-videos-container {
+  width: 60vw;
 }
 @media only screen and (max-width: 1050px) {
   .modal {
     width: 50vw;
   }
+  .small-video-card-title {
+    font-size: 14px;
+  }
+  .history-videos-container {
+    width: 75vw;
+  }
 }
 @media only screen and (max-width: 768px) {
   .modal {
     width: 80vw;
+  }
+  .small-video-card-title {
+    font-size: 12px;
+  }
+  .history-videos-container {
+    width: 90vw;
   }
 }

@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
-import { useVideos } from "../../context/videos-context";
-import { inList } from "../../utils/in-list";
+import { useVideos } from "../context/videos-context";
+import { useState, useEffect } from "react";
+import { inList } from "./in-list";
 
-const AddToWatchLater = ({ videoData }) => {
+const AddToWatchLaterSmall = ({ videoData }) => {
   const { videoState, videoDispatch } = useVideos();
   const [inWatchlater, setWatchLater] = useState(
     inList(videoState.watchlater, videoData._id)
@@ -11,11 +11,6 @@ const AddToWatchLater = ({ videoData }) => {
   useEffect(() => {
     setWatchLater(inList(videoState.watchlater, videoData._id));
   });
-
-  let buttonText = inWatchlater
-    ? "Remove from Watch Later"
-    : "Add to Watch Later";
-
   const clickHandler = () => {
     if (inWatchlater) {
       videoDispatch({
@@ -27,14 +22,11 @@ const AddToWatchLater = ({ videoData }) => {
     }
   };
   return (
-    <button
+    <i
       onClick={clickHandler}
-      className="btn-secondary btn-custom m-dw-1 btn-small"
-    >
-      <i className="bx bx-bookmark-plus m-r-1"></i>
-      {buttonText}
-    </button>
+      className={`${inWatchlater && "is-primary"} is-5 bx bxs-bookmarks`}
+    ></i>
   );
 };
 
-export { AddToWatchLater };
+export { AddToWatchLaterSmall };

@@ -1,10 +1,10 @@
 import { useParams } from "react-router-dom";
 import { useVideos } from "../../../context/videos-context";
 import { CardLikes } from "../../card/card-likes";
-import { AddToWatchLater } from "../../card/add-to-watchlater";
 import { useState } from "react";
 import { AddToPlaylistCardButton } from "../../card/add-to-playlist";
 import { AddToPlaylistSmallModal } from "../../modals/add-to-playlist-small-modal";
+import { AddToWatchLaterSmall } from "../../../utils/add-to-watchlater-small";
 
 const SingleVideoPage = () => {
   const [showModal, setShowModal] = useState(false);
@@ -24,7 +24,7 @@ const SingleVideoPage = () => {
               // src={`${videoLink}?modestbranding=1&showinfo=0&autoplay=1`}
               src={`${videoLink}`}
               title="YouTube video player"
-              frameborder="0"
+              frameBorder="0"
               controls="0"
               autohide="1"
               allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
@@ -33,11 +33,11 @@ const SingleVideoPage = () => {
         </div>
         <div className="video-page-content width-100">
           <div className="video-page-buttons width-100 align-center is-5 space-evenly m-up-2 flex-r-w width-100">
-            <CardLikes videoData={videoData} />
+            <CardLikes size={"is-5"} videoData={videoData} />
             <div className="btn-vertical">
-              <AddToWatchLater videoData={videoData} />
+              <AddToWatchLaterSmall videoData={videoData} />
             </div>
-            <AddToPlaylistCardButton switchModal={switchModal} />
+            <AddToPlaylistCardButton size={"is-5"} switchModal={switchModal} />
             {showModal && (
               <AddToPlaylistSmallModal videoId={id} switchModal={switchModal} />
             )}

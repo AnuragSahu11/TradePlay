@@ -21,7 +21,7 @@ const initialState = {
       id: uuid(),
       name: "favourites",
       description: "my favourite videos across all categories",
-      videos: [],
+      videos: ["zSGCtoO4VJU", "K6DhhP3szJs"],
     },
   ],
 };
