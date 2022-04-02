@@ -4,7 +4,7 @@ import { CardLikes } from "../../card/card-likes";
 import { AddToWatchLater } from "../../card/add-to-watchlater";
 import { useState } from "react";
 import { AddToPlaylistCardButton } from "../../card/add-to-playlist";
-import { usePlaylist } from "../../../context/playlist-context";
+import { AddToPlaylistSmallModal } from "../../modals/add-to-playlist-small-modal";
 
 const SingleVideoPage = () => {
   const [showModal, setShowModal] = useState(false);
@@ -38,25 +38,17 @@ const SingleVideoPage = () => {
               <AddToWatchLater videoData={videoData} />
             </div>
             <AddToPlaylistCardButton switchModal={switchModal} />
-            {showModal && <AddToPlaylistSmallModal switchModal={switchModal} />}
+            {showModal && (
+              <AddToPlaylistSmallModal videoId={id} switchModal={switchModal} />
+            )}
           </div>
           <div className="textbox">
-            <p className="m-l-4 p-x-3 is-2">{description}</p>
+            <p className="m-l-4 p-x-4 is-2">{description}</p>
           </div>
         </div>
       </div>
       <div className="single-video-page-note"></div>
     </div>
-  );
-};
-
-const AddToPlaylistSmallModal = () => {
-  const { playlistState, playlistDispatch } = usePlaylist();
-  const playlists = playlistState.playlists.map((item) => (
-    <div className="add-to-playlist-small is-3">{item.name}</div>
-  ));
-  return (
-    <div className="single-video-playlist-list p-y-1 p-x-1">{playlists}</div>
   );
 };
 

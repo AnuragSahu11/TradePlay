@@ -36,16 +36,16 @@ const createNewPlaylist = (state, name, desc) => {
   return {
     playlists: [
       ...state.playlists,
-      { name: name, discription: desc, videos: [] },
+      { name: name, description: desc, videos: [] },
     ],
   };
 };
 
-const addToPlaylist = (state, playlistName, id) => {
+const addToPlaylist = (state, playlistName, videoId) => {
   if (
     state.playlists.reduce((acc, curr) => {
       if (curr.name === playlistName) {
-        return curr.videos.includes(id);
+        return curr.videos.includes(videoId);
       }
       return acc;
     }, false)
@@ -56,7 +56,7 @@ const addToPlaylist = (state, playlistName, id) => {
       playlists: [
         ...state.playlists.map((item) =>
           item.name === playlistName
-            ? { ...item, videos: [...item.videos, id] }
+            ? { ...item, videos: [...item.videos, videoId] }
             : item
         ),
       ],
