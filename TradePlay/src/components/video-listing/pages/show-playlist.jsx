@@ -22,7 +22,7 @@ const ShowPlaylist = () => {
     />
   ));
   return (
-    <div className="show-playlist grid-30-70 m-up-6 p-up-6 p-x-3">
+    <div className="show-playlist grid-30-70 m-up-6 p-x-3">
       <div className="playlist-name-disc center-x m-r-6 m-dw-4">
         <div className="textbox">
           <div className="title is-5 m-dw-1">{playlistData.name}</div>

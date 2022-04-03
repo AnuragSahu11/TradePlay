@@ -7,7 +7,7 @@ import { useVideos } from "../../context/videos-context";
 const SmallVideoCard = ({ videoData, playlistName, remove }) => {
   const navigate = useNavigate();
   const { videoDispatch } = useVideos();
-  const { _id, title } = videoData;
+  const { _id, title, creator } = videoData;
   const goToVideoPage = () => {
     addToHistory(_id, videoDispatch);
     navigate(`/videoListing/${_id}`);
@@ -18,7 +18,7 @@ const SmallVideoCard = ({ videoData, playlistName, remove }) => {
       <ul className="list child-m-s m-x-0">
         <li className="list-items list-none">
           <div className="notification-list-link">
-            <div className="card has-accent border-none card-horizontal">
+            <div className="card has-accent  border-none card-horizontal">
               <div className="card-head">
                 <div onClick={goToVideoPage} className="card-image">
                   <img
@@ -37,7 +37,7 @@ const SmallVideoCard = ({ videoData, playlistName, remove }) => {
                   >
                     {title}
                   </div>
-                  <div className="subtitle">Subtitle</div>
+                  <div className="is-2 semibold subtitle">{creator}</div>
                 </div>
                 <div className="textbox">
                   <p className="text">Lorem ipsum</p>
