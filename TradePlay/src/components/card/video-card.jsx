@@ -6,6 +6,7 @@ import { AddToPlaylistModal } from "../modals/add-to-playlist-modal";
 import { AddToPlaylistCardButton } from "./add-to-playlist";
 import { AddToWatchLater } from "./add-to-watchlater";
 import { CardLikes } from "./card-likes";
+import { addToHistory } from "../../utils/add-to-history";
 
 const VideoCard = ({ videoData }) => {
   const [showModal, setShowModal] = useState(false);
@@ -16,11 +17,8 @@ const VideoCard = ({ videoData }) => {
     setShowModal((prevState) => !prevState);
   };
   const cardClickHandler = () => {
-    addToHistory();
+    addToHistory(_id, videoDispatch);
     navigate(`/videoListing/${_id}`);
-  };
-  const addToHistory = () => {
-    videoDispatch({ type: "ADD_TO_HISTORY", value: videoData._id });
   };
   return (
     <div className="video-card-container">

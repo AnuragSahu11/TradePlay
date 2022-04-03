@@ -23,7 +23,12 @@ const addToHistoryUtil = (state, value) => {
     history: [...state.history.filter((item) => !(item === value)), value],
   };
 };
-
+const removeFromHistory = (state, value) => {
+  return {
+    ...state,
+    history: [...state.history.filter((item) => !(item === value))],
+  };
+};
 const likeVideo = (state, value) => {
   return { ...state, like: [...state.like, value] };
 };
@@ -102,4 +107,5 @@ export {
   removePlaylist,
   removeFromPlaylist,
   clearHistory,
+  removeFromHistory,
 };
