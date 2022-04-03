@@ -4,7 +4,7 @@ const Search = () => {
   let [searchedProducts, setSearchedProducts] = useState();
   const searchInputHandler = (searchText) => {};
   return (
-    <div className="form-div nav-search m-x-3">
+    <div className="form-div nav-search">
       <i className="fas fa-search is-primary" />
       <input
         onChange={(e) => searchInputHandler(e.target.value)}

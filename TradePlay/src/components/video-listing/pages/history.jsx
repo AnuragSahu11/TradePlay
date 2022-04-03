@@ -18,7 +18,7 @@ const History = () => {
       <div className="history-heading width-100 is-5 bold m-up-5 m-dw-3 text-center">
         History
       </div>
-      <div className="width-60 history-videos-container">{historyVideos}</div>
+      <div className="center-x history-videos-container">{historyVideos}</div>
 
       <div className="center-x btn-vertical m-up-4 center-text">
         <button
