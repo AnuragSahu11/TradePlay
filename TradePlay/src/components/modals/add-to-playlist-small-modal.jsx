@@ -2,7 +2,7 @@ import { usePlaylist } from "../../context/playlist-context";
 
 const AddToPlaylistSmallModal = ({ videoId, switchModal }) => {
   const { playlistState, playlistDispatch } = usePlaylist();
-  const clickHandler = ({ name }) => {
+  const addToPlaylistClickHandler = ({ name }) => {
     playlistDispatch({
       type: "ADD_TO_PLAYLIST",
       value: { name: name, id: videoId },
@@ -11,7 +11,7 @@ const AddToPlaylistSmallModal = ({ videoId, switchModal }) => {
   };
   const playlists = playlistState.playlists.map((item) => (
     <div
-      onClick={() => clickHandler(item)}
+      onClick={() => addToPlaylistClickHandler(item)}
       className="add-to-playlist-small is-3"
     >
       {item.name}

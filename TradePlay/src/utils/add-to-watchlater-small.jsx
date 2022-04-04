@@ -11,7 +11,7 @@ const AddToWatchLaterSmall = ({ videoData }) => {
   useEffect(() => {
     setWatchLater(inList(videoState.watchlater, videoData._id));
   });
-  const clickHandler = () => {
+  const addToWatchlaterClickHandler = () => {
     if (inWatchlater) {
       videoDispatch({
         type: "REMOVE_FROM_WATCHLATER",
@@ -23,7 +23,7 @@ const AddToWatchLaterSmall = ({ videoData }) => {
   };
   return (
     <i
-      onClick={clickHandler}
+      onClick={addToWatchlaterClickHandler}
       className={`${inWatchlater && "is-primary"} is-5 bx bxs-bookmarks`}
     ></i>
   );

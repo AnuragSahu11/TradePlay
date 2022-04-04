@@ -16,7 +16,7 @@ const AddToWatchLater = ({ videoData }) => {
     ? "Remove from Watch Later"
     : "Add to Watch Later";
 
-  const clickHandler = () => {
+  const watchlaterClickHandler = () => {
     if (inWatchlater) {
       videoDispatch({
         type: "REMOVE_FROM_WATCHLATER",
@@ -28,7 +28,7 @@ const AddToWatchLater = ({ videoData }) => {
   };
   return (
     <button
-      onClick={clickHandler}
+      onClick={watchlaterClickHandler}
       className="btn-secondary btn-custom m-dw-1 btn-small"
     >
       <i className="bx bx-bookmark-plus m-r-1"></i>
