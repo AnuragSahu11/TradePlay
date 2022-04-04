@@ -1,12 +1,19 @@
+import { useNavigate } from "react-router-dom";
 import { usePlaylist } from "../../../context/playlist-context";
 
-const Playlists = ({ name, videoId }) => {
+const SinglePlaylistComponent = ({ name, videoId, action }) => {
   const { playlistDispatch } = usePlaylist();
+  const navigate = useNavigate();
   const clickHandler = () => {
-    playlistDispatch({
-      type: "ADD_TO_PLAYLIST",
-      value: { name: name, id: videoId },
-    });
+    switch (action) {
+      case "view":
+        navigate(`/videoListing/playlist/${name}`);
+      case "add":
+        playlistDispatch({
+          type: "ADD_TO_PLAYLIST",
+          value: { name: name, id: videoId },
+        });
+    }
   };
   return (
     <div
@@ -19,4 +26,4 @@ const Playlists = ({ name, videoId }) => {
   );
 };
 
-export { Playlists };
+export { SinglePlaylistComponent };

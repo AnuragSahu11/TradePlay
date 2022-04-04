@@ -1,4 +1,8 @@
-import { addToPlaylist, removePlaylist } from "./context-utils";
+import {
+  addToPlaylist,
+  removeFromPlaylist,
+  removePlaylist,
+} from "./context-utils";
 import { createNewPlaylist } from "./context-utils";
 
 const playlistReducer = (state, action) => {
@@ -10,7 +14,11 @@ const playlistReducer = (state, action) => {
     case "ADD_TO_PLAYLIST":
       return addToPlaylist(state, action.value.name, action.value.id);
     case "REMOVE_FROM_PLAYLIST":
-      return;
+      return removeFromPlaylist(
+        state,
+        action.value.id,
+        action.value.playlistName
+      );
   }
 };
 export { playlistReducer };

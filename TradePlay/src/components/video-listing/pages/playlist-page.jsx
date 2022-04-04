@@ -2,9 +2,9 @@ import { useState } from "react";
 import { usePlaylist } from "../../../context/playlist-context";
 import { CreateNewPlaylistModal } from "../../modals/create-playlist-modal";
 import { DeletePlaylistModal } from "../../modals/delete-playlist-modal";
-import { Playlists } from "./playlists";
+import { SinglePlaylistComponent } from "./playlists";
 
-const Playlist = () => {
+const PlaylistPage = () => {
   const { playlistState } = usePlaylist();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showDeletePlaylistModal, setShowDeletePlaylistModal] = useState(false);
@@ -35,7 +35,7 @@ const Playlist = () => {
           <p className="m-y-1 semibold">Create new Playlist</p>
         </div>
         {playlistState.playlists.map((item) => (
-          <Playlists playlistData={item} name={item.name} />
+          <SinglePlaylistComponent name={item.name} action={"view"} />
         ))}
         <div className="width-100 m-up-6 center-text">
           <button
@@ -50,4 +50,4 @@ const Playlist = () => {
     </div>
   );
 };
-export { Playlist };
+export { PlaylistPage };

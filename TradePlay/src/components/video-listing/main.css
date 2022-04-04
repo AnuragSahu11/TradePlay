@@ -3,7 +3,7 @@ nav {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 2;
+  z-index: 5;
   background-color: var(--white);
 }
 .pointer {
@@ -75,6 +75,37 @@ nav {
 }
 .card-horizontal {
   height: 20rem;
+}
+
+.videowrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+}
+.videowrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.video-page-buttons {
+  position: relative;
+}
+.single-video-playlist-list {
+  height: min-content;
+  top: 4rem;
+  right: 10vw;
+  position: absolute;
+  z-index: 2;
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid var(--primary);
+  margin-left: auto;
+  max-height: 7rem;
+  overflow-y: scroll;
+}
+.add-to-playlist-small {
 }
 @media only screen and (max-width: 1050px) {
   .modal {

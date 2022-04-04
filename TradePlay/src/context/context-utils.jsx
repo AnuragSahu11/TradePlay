@@ -20,7 +20,7 @@ const removeFromWatchLater = (state, value) => {
 const addToHistoryUtil = (state, value) => {
   return {
     ...state,
-    history: [...state.history, value],
+    history: [...state.history.filter((item) => !(item === value)), value],
   };
 };
 
@@ -36,16 +36,16 @@ const createNewPlaylist = (state, name, desc) => {
   return {
     playlists: [
       ...state.playlists,
-      { name: name, discription: desc, videos: [] },
+      { name: name, description: desc, videos: [] },
     ],
   };
 };
 
-const addToPlaylist = (state, playlistName, id) => {
+const addToPlaylist = (state, playlistName, videoId) => {
   if (
     state.playlists.reduce((acc, curr) => {
       if (curr.name === playlistName) {
-        return curr.videos.includes(id);
+        return curr.videos.includes(videoId);
       }
       return acc;
     }, false)
@@ -56,15 +56,29 @@ const addToPlaylist = (state, playlistName, id) => {
       playlists: [
         ...state.playlists.map((item) =>
           item.name === playlistName
-            ? { ...item, videos: [...item.videos, id] }
+            ? { ...item, videos: [...item.videos, videoId] }
             : item
         ),
       ],
     };
   }
 };
+
+const removeFromPlaylist = (state, id, playlistName) => {
+  return {
+    playlists: state.playlists.map((item) => {
+      if (item.name === playlistName) {
+        return {
+          ...item,
+          videos: item.videos.filter((item) => !(item === id)),
+        };
+      }
+      return item;
+    }),
+  };
+};
+
 const removePlaylist = (state, playlistName) => {
-  console.log(state, playlistName);
   return {
     playlists: [
       ...state.playlists.filter((item) => !(item.name === playlistName)),
@@ -86,5 +100,6 @@ export {
   unLikeVideo,
   addToPlaylist,
   removePlaylist,
+  removeFromPlaylist,
   clearHistory,
 };
