@@ -32,7 +32,7 @@ const Navbar = () => {
             </a>
           </div>
           <div className="nav-end">
-            <Search />
+            <Search version="desktop" />
             <button className="btn-icon nav-icons m-x-1">
               <i className="bx bxs-playlist is-4"></i>
             </button>
@@ -43,13 +43,7 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
-      <div className="nav-mobile-search p-dw-1 shadow">
-        <input
-          placeholder="Search videos..."
-          className="width-100 mobile-search-input"
-          type="text"
-        />
-      </div>
+      <Search version={"mobile"} />
       <div className={`mobile-navbar ${showNav} text-center flex-c-w`}>
         <div className="text-center m-up-3 center-x">
           <i className="fas is-primary is-6 fa-play"></i>
