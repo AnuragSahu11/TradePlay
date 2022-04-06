@@ -16,7 +16,7 @@ const Search = ({ version }) => {
           title.toLowerCase().includes(searchText.toLowerCase())
         )
         .map(({ title }) => (
-          <p className="search-para is-2 p-x-1 pointer p-y-1">{title}</p>
+          <p className="search-para is-2 p-x-1 p-y-1 pointer">{title}</p>
         ));
       setSearchedProducts(filteredProducts);
     } else {
@@ -57,10 +57,7 @@ const Search = ({ version }) => {
             className="width-100 mobile-search-input"
             type="text"
           />
-          <div
-            onClick={goToSearchResultPage}
-            className="pointer search-results"
-          >
+          <div onClick={goToSearchResultPage} className="search-results">
             {searchedProducts}
           </div>
         </div>
