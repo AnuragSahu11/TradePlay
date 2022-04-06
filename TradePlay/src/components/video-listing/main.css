@@ -111,6 +111,11 @@
   color: var(--primary);
   filter: contrast(65%);
 }
+.notes-width .btn-custom:hover {
+  border: solid 2px var(--primary);
+  color: var(--primary);
+  filter: contrast(65%);
+}
 .fit-content {
   width: fit-content;
 }
@@ -134,6 +139,7 @@
 .small-note-comp {
   height: fit-content;
   width: 15rem;
+  min-width: min-content;
   justify-content: center;
   background-color: var(--accent);
   display: flex;

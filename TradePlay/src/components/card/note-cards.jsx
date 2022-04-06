@@ -58,7 +58,7 @@ const AddNote = ({ currentVideoId }) => {
             </div>
             <button
               onClick={saveClickHandler}
-              className="center-x btn-secondary btn-small"
+              className="center-x btn-custom btn-secondary btn-small"
             >
               Save
             </button>
@@ -119,7 +119,7 @@ const EditNote = ({ currentVideoId, currentNoteData, toggleShowEditNotes }) => {
           </div>
           <button
             onClick={saveClickHandler}
-            className="center-x btn-secondary btn-small"
+            className="center-x btn-custom btn-secondary btn-small"
           >
             Save
           </button>
