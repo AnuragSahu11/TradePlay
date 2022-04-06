@@ -5,6 +5,7 @@ import { useState } from "react";
 import { AddToPlaylistCardButton } from "../../card/add-to-playlist";
 import { AddToPlaylistSmallModal } from "../../modals/add-to-playlist-small-modal";
 import { AddToWatchLaterSmall } from "../../../utils/add-to-watchlater-small";
+import { NoteCard } from "../../card/note-card";
 
 const SingleVideoPage = () => {
   const [showModal, setShowModal] = useState(false);
@@ -18,10 +19,9 @@ const SingleVideoPage = () => {
   return (
     <div className="single-video-page grid-70-30">
       <div className="">
-        <div className="single-videopage-video p-up-4 p-l-4">
+        <div className="single-videopage-video p-up-4 ">
           <div className="videowrapper">
             <iframe
-              // src={`${videoLink}?modestbranding=1&showinfo=0&autoplay=1`}
               src={`${videoLink}`}
               title="YouTube video player"
               frameBorder="0"
@@ -43,11 +43,13 @@ const SingleVideoPage = () => {
             )}
           </div>
           <div className="textbox">
-            <p className="m-l-4 p-x-4 is-2">{description}</p>
+            <p className="p-x-4 is-2">{description}</p>
           </div>
         </div>
       </div>
-      <div className="single-video-page-note"></div>
+      <div className="single-video-page-note">
+        {<NoteCard currentVideoId={id} />}
+      </div>
     </div>
   );
 };
