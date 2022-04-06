@@ -1,12 +1,12 @@
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
   let navigate = useNavigate();
   return (
-    <div className="sidebar flex-c-w align-center">
+    <div className="m-l-3 m-up- sidebar br-3 dk-shadow align-center">
       <div
         onClick={() => navigate("/")}
-        className="sidebar-subdiv flex-col text-center m-up-6"
+        className="sidebar-subdiv flex-col text-center m-up-5"
       >
         <i className="bx is-5 bx-home"></i>
         Home

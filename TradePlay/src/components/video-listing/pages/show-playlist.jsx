@@ -15,10 +15,14 @@ const ShowPlaylist = () => {
     playlistData.videos.includes(_id)
   );
   const finalVideoList = playlistVideoData.map((item) => (
-    <SmallVideoCard playlistName={playlistData.name} videoData={item} />
+    <SmallVideoCard
+      remove={"playlist"}
+      playlistName={playlistData.name}
+      videoData={item}
+    />
   ));
   return (
-    <div className="show-playlist grid-30-70 m-up-6 p-up-6 p-x-3">
+    <div className="show-playlist grid-30-70 m-up-6 p-x-3">
       <div className="playlist-name-disc center-x m-r-6 m-dw-4">
         <div className="textbox">
           <div className="title is-5 m-dw-1">{playlistData.name}</div>
@@ -27,7 +31,9 @@ const ShowPlaylist = () => {
           </div>
         </div>
       </div>
-      <div className="playlist-videos flex-c-w">{finalVideoList}</div>
+      <div className="playlist-videos br-3  p-x-2 p-y-2 flex-c-w">
+        {finalVideoList}
+      </div>
     </div>
   );
 };

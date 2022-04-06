@@ -1,5 +1,20 @@
-.navbar {
-  z-index: 1;
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 5;
+  background-color: var(--white);
+}
+.mobile-navbar {
+  z-index: 6;
+  position: fixed;
+  background-color: white;
+  width: 45vw;
+  height: 100vh;
+  transform: translateX(-45vw);
+}
+.mobile-navbar-view {
+  transform: translateX(0);
 }
 .nav-search {
   position: relative;
@@ -9,44 +24,46 @@
   background-color: white;
   position: absolute;
   width: 100%;
-  z-index: 2;
 }
-.search-result {
+.search-para {
   background-color: white;
   width: 100%;
 }
 .nav-menu {
   margin-left: auto;
 }
-.custom-nav {
-  flex-direction: column;
+.video-listing {
+  margin-top: 100px;
 }
-.custom-nav .nav-head {
-  display: flex;
-  flex-direction: row;
+.nav-mobile-search {
+  background-color: white;
   width: 100%;
-  justify-content: space-between;
-  align-items: center;
-}
-.custom-nav .nav-menu {
-  flex-direction: column;
-  display: block;
-}
-
-.custom-nav .nav-start {
+  z-index: 1;
+  position: fixed;
   display: none;
+  padding-top: 13px;
+  top: 60px;
 }
-.custom-nav .nav-search {
-  margin: 10px 0px;
+.mobile-search-input {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  border: 2px solid var(--grey);
+  padding-left: 10vw;
+  padding-right: 10vw;
+  border-radius: 20px;
+  height: 30px;
 }
-.custom-nav .nav-end {
-  flex-direction: column;
-  margin-right: auto;
+.mobile-search-input:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  border: var(--border) solid var(--primary);
 }
-
 @media only screen and (max-width: 1024px) {
-  .navbar .nav-search {
-    display: block;
+  .nav-mobile-search {
+    display: block !important;
+  }
+  .video-listing {
+    margin-top: 120px;
   }
 }
 @media only screen and (max-width: 640px) {
@@ -58,14 +75,8 @@
     align-items: center;
   }
   @media only screen and (max-width: 768px) {
-    .custom-nav .nav-btn {
-      display: block;
-      margin-top: 10px;
-    }
   }
-  .nav-menu {
-    display: none;
-  }
+
   .nav-hamburger {
     font-size: var(--is-4);
     cursor: pointer;

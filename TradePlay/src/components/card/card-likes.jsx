@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useVideos } from "../../context/videos-context";
 
-const CardLikes = ({ videoData }) => {
+const CardLikes = ({ videoData, size }) => {
   const { videoState, videoDispatch } = useVideos();
   const [isLiked, setIsLiked] = useState();
 
@@ -13,15 +13,19 @@ const CardLikes = ({ videoData }) => {
     } else videoDispatch({ type: "LIKE_VIDEO", value: videoData._id });
   };
   return (
-    
-      <div className="like-button flex-r-w space-evenly align-center">
-        {isLiked ? (
-          <i onClick={likeClickHandler} className="bx is-4  bx-dislike"></i>
-        ) : (
-          <i onClick={likeClickHandler} className="bx is-4  bx-like"></i>
-        )}
-      </div>
-      
+    <div className="like-button flex-r-w space-evenly align-center">
+      {isLiked ? (
+        <i
+          onClick={likeClickHandler}
+          className={`bx is-4  bx-dislike ${size}`}
+        ></i>
+      ) : (
+        <i
+          onClick={likeClickHandler}
+          className={`bx is-4  bx-like ${size}`}
+        ></i>
+      )}
+    </div>
   );
 };
 

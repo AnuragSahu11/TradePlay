@@ -2,7 +2,7 @@ import { usePlaylist } from "../../context/playlist-context";
 
 const DeletePlaylistModal = ({ switchModal }) => {
   const { playlistState, playlistDispatch } = usePlaylist();
-  const clickHandler = (name) => {
+  const deletePlaylistClickHandler = (name) => {
     playlistDispatch({ type: "REMOVE_PLAYLIST", value: name });
   };
   const outsideModalClickHandler = () => {
@@ -30,7 +30,7 @@ const DeletePlaylistModal = ({ switchModal }) => {
         <div className="playlist-list flex-c-w width-100">
           {playlistState.playlists.map((item) => (
             <div
-              onClick={() => clickHandler(item.name)}
+              onClick={() => deletePlaylistClickHandler(item.name)}
               className="addToPlaylist playlist-list m-up-4 center-x  text-center p-x-2 br-3 create-playlist flex-row align-center is-4"
             >
               <i className="bx bx-play-circle is-primary is-5 m-r-1"></i>

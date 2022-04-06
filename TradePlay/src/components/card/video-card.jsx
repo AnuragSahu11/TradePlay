@@ -6,21 +6,19 @@ import { AddToPlaylistModal } from "../modals/add-to-playlist-modal";
 import { AddToPlaylistCardButton } from "./add-to-playlist";
 import { AddToWatchLater } from "./add-to-watchlater";
 import { CardLikes } from "./card-likes";
+import { addToHistory } from "../../utils/add-to-history";
 
 const VideoCard = ({ videoData }) => {
   const [showModal, setShowModal] = useState(false);
   let navigate = useNavigate();
   const { videoDispatch } = useVideos();
-  const { _id, title, creator } = videoData;
+  const { _id, title, creator, category } = videoData;
   const switchShowModal = () => {
     setShowModal((prevState) => !prevState);
   };
   const cardClickHandler = () => {
-    addToHistory();
+    addToHistory(_id, videoDispatch);
     navigate(`/videoListing/${_id}`);
-  };
-  const addToHistory = () => {
-    videoDispatch({ type: "ADD_TO_HISTORY", value: videoData._id });
   };
   return (
     <div className="video-card-container">
@@ -43,9 +41,11 @@ const VideoCard = ({ videoData }) => {
           </div>
           <div className="card-body width-100">
             <div className="textbox">
-              <div className="title">{title}</div>
-              <div className="subtitle flex-r-w space-between">
-                <span>{creator}</span> <span>category</span>{" "}
+              <div onClick={cardClickHandler} className="title is-2 semibold">
+                {title.slice(0, 60)}...
+              </div>
+              <div className="subtitle m-up-1 regular is-2 flex-r-w space-between">
+                <span>{creator}</span> <span>{category}</span>{" "}
               </div>
             </div>
             <div className="textbox flex-r-w space-evenly m-dw-1 align-center">

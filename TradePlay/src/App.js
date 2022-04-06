@@ -9,6 +9,7 @@ import {
   ShowPlaylist,
   Videopage,
   SingleVideoPage,
+  SearchResult,
 } from "./components/video-listing/pages";
 import "./App.css";
 
@@ -34,6 +35,10 @@ function App() {
             element={<ShowPlaylist />}
           />
           <Route path="/videoListing/videopage" element={<Videopage />} />
+          <Route
+            path="/videoListing/search/:searchTerm"
+            element={<SearchResult />}
+          />
         </Route>
       </Routes>
       <Footer />

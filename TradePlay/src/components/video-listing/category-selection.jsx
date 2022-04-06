@@ -8,7 +8,7 @@ const CategorySelection = () => {
     } else videoDispatch({ type: "CATEGORY_CHANGE", value: category });
   };
   return (
-    <div className="homepage-categories m-up-2 width-100 flex-r-w space-evenly">
+    <div className="homepage-categories width-100 flex-r-w space-evenly">
       <div
         onClick={(e) => clickHandler("stock")}
         className="m-up-3 is-4 light categories-card flex-row br-2 p-x-1 align-center"

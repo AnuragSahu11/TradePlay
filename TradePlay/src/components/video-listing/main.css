@@ -1,5 +1,5 @@
 nav {
-  overflow: hidden;
+  /* overflow: hidden; */
   position: fixed;
   top: 0;
   width: 100%;
@@ -10,10 +10,13 @@ nav {
   cursor: pointer;
 }
 .sidebar {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
   width: 7vw;
   position: sticky;
-  top: 5rem;
-  height: min-content;
+  top: 14vh;
+  height: 85vh;
 }
 .create-playlist {
   border: 3px solid black;
@@ -105,15 +108,45 @@ nav {
   max-height: 7rem;
   overflow-y: scroll;
 }
-.add-to-playlist-small {
+.small-video-card-title {
+  font-size: 16px;
+}
+.list-items .notification-list-link .border-none {
+  border: none;
+}
+.btn-vertical .btn-custom:hover {
+  border: solid 2px var(--primary);
+  color: var(--primary);
+  filter: contrast(65%);
+}
+.fit-content {
+  width: fit-content;
+}
+.history-videos-container {
+  width: 60vw;
 }
 @media only screen and (max-width: 1050px) {
   .modal {
     width: 50vw;
   }
+  .small-video-card-title {
+    font-size: 14px;
+  }
+  .history-videos-container {
+    width: 75vw;
+  }
 }
 @media only screen and (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
   .modal {
     width: 80vw;
+  }
+  .small-video-card-title {
+    font-size: 12px;
+  }
+  .history-videos-container {
+    width: 90vw;
   }
 }

@@ -37,10 +37,10 @@ const PlaylistPage = () => {
         {playlistState.playlists.map((item) => (
           <SinglePlaylistComponent name={item.name} action={"view"} />
         ))}
-        <div className="width-100 m-up-6 center-text">
+        <div className="btn-vertical m-up-6 center-x center-text">
           <button
             onClick={switchShowDeletePlaylistModal}
-            className="btn-medium btn-w-icon btn-secondary"
+            className="btn-medium btn-custom fit-content btn-w-icon btn-secondary"
           >
             <i className="bx is-3 bxs-trash"></i>
             Delete Playlist

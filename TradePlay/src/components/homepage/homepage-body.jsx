@@ -5,7 +5,7 @@ import { VideoCard } from "../card/video-card";
 const HomepageBody = () => {
   const navigate = useNavigate();
   const { videoState, videoDispatch } = useVideos();
-  const clickHandler = (name) => {
+  const categorySelectClickHandler = (name) => {
     videoDispatch({ type: "CATEGORY_CHANGE", value: name });
     navigate("/videoListing");
   };
@@ -20,7 +20,7 @@ const HomepageBody = () => {
         </div>
         <div
           name="stock"
-          onClick={(e) => clickHandler("stock")}
+          onClick={(e) => categorySelectClickHandler("stock")}
           className="m-y-1 is-6 light categories-card flex-row br-3 p-x-2 align-center"
         >
           <i className="fas fa-chart-line"></i>
@@ -28,7 +28,7 @@ const HomepageBody = () => {
         </div>
         <div
           name="stock"
-          onClick={(e) => clickHandler("crypto")}
+          onClick={(e) => categorySelectClickHandler("crypto")}
           className="m-y-1 is-6 light categories-card flex-row br-3 p-x-2 align-center"
         >
           <i className="fab fa-bitcoin"></i>
@@ -36,7 +36,7 @@ const HomepageBody = () => {
         </div>
         <div
           name="stock"
-          onClick={(e) => clickHandler("charting")}
+          onClick={(e) => categorySelectClickHandler("charting")}
           className="m-y-1 is-6 light categories-card flex-row br-3 p-x-2 align-center"
         >
           <i className="fas fa-chart-area"></i>
@@ -44,7 +44,7 @@ const HomepageBody = () => {
         </div>
         <div
           name="stock"
-          onClick={(e) => clickHandler("trading_mindset")}
+          onClick={(e) => categorySelectClickHandler("trading_mindset")}
           className="m-y-1 is-6 light categories-card flex-row br-3 p-x-2 align-center"
         >
           <i className="fas fa-brain"></i>

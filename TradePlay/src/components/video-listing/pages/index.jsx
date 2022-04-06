@@ -7,3 +7,4 @@ export { SinglePlaylistComponent } from "./playlists";
 export { Videopage } from "./videopage";
 export { ShowPlaylist } from "./show-playlist";
 export { SingleVideoPage } from "./single-video-page";
+export { SearchResult } from "./search-result";
