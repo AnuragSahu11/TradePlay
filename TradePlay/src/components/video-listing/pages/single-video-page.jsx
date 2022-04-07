@@ -1,11 +1,12 @@
 import { useParams } from "react-router-dom";
 import { useVideos } from "../../../context/videos-context";
 import { CardLikes } from "../../card/card-likes";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AddToPlaylistCardButton } from "../../card/add-to-playlist";
 import { AddToPlaylistSmallModal } from "../../modals/add-to-playlist-small-modal";
 import { AddToWatchLaterSmall } from "../../../utils/add-to-watchlater-small";
 import { NoteCard } from "../../card/note-card";
+import { changeTitle } from "../../../utils";
 
 const SingleVideoPage = () => {
   const [showModal, setShowModal] = useState(false);
@@ -15,7 +16,7 @@ const SingleVideoPage = () => {
   const { id } = useParams();
   const { videoState } = useVideos();
   const videoData = videoState.videos.find(({ _id }) => _id === id);
-  const { videoLink, description } = videoData;
+  const { videoLink, description, title } = videoData;
   return (
     <div className="single-video-page grid-70-30">
       <div className="">

@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { usePlaylist } from "../../../context/playlist-context";
 import { CreateNewPlaylistModal } from "../../modals/create-playlist-modal";
 import { DeletePlaylistModal } from "../../modals/delete-playlist-modal";
 import { SinglePlaylistComponent } from "./playlists";
+import { changeTitle } from "../../../utils";
 
 const PlaylistPage = () => {
   const { playlistState } = usePlaylist();
@@ -14,7 +15,7 @@ const PlaylistPage = () => {
   const createNewPlaylistclickHandler = () => {
     setIsModalOpen((prevState) => !prevState);
   };
-
+  useEffect(() => changeTitle("Playlists"));
   return (
     <div className="playlist-page width-100">
       {isModalOpen && (

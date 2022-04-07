@@ -1,5 +1,6 @@
 import { useVideos } from "../../../context/videos-context";
 import { SmallVideoCard } from "../../card/small-video-card";
+import { changeTitle } from "../../../utils";
 
 const History = () => {
   const { videoState, videoDispatch } = useVideos();
@@ -13,6 +14,8 @@ const History = () => {
   const historyVideos = historyVideosList
     .reverse()
     .map((item, i) => <SmallVideoCard remove={"history"} videoData={item} />);
+
+  useEffect(() => changeTitle("History"));
   return (
     <div className="flex-c-w history-page">
       <div className="history-heading width-100 is-5 bold m-up-5 m-dw-3 text-center">
