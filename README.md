@@ -13,4 +13,6 @@ Checkout the live deployment link [here](https://trade-play.netlify.app/)
 - History
 - Liked Videos
 - Add notes to videos
+- Video Search
+- Search results page
 
