@@ -33,9 +33,10 @@ const SingleVideoPage = () => {
           </div>
         </div>
         <div className="video-page-content width-100">
-          <div className="video-page-buttons width-100 align-center is-5 space-evenly m-up-2 flex-r-w width-100">
+          <div className="title m-l-4 m-y-2 semibold">{title}</div>
+          <div className="has-accent br-1 p-l-4 p-y-1 video-page-buttons width-100 align-center is-5 m-l- m-up-2 flex-r-w ">
             <CardLikes size={"is-5"} videoData={videoData} />
-            <div className="btn-vertical">
+            <div className="btn-vertical m-x-6">
               <AddToWatchLaterSmall videoData={videoData} />
             </div>
             <AddToPlaylistCardButton size={"is-5"} switchModal={switchModal} />

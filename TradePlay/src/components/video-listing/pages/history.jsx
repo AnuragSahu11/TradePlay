@@ -1,6 +1,7 @@
 import { useVideos } from "../../../context/videos-context";
 import { SmallVideoCard } from "../../card/small-video-card";
 import { changeTitle } from "../../../utils";
+import { useEffect } from "react";
 
 const History = () => {
   const { videoState, videoDispatch } = useVideos();
