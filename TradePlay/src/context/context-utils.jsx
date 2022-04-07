@@ -1,3 +1,5 @@
+import { v4 as uuid } from "uuid";
+
 const saveApiDataToContext = (state, value) => {
   return { ...state, videos: [...value] };
 };
@@ -93,6 +95,52 @@ const removePlaylist = (state, playlistName) => {
 const clearHistory = (state) => {
   return { ...state, history: [] };
 };
+const addNotes = (state, noteTitle, noteContent, videoId) => {
+  if (state.notes[videoId]) {
+    return {
+      ...state,
+      notes: {
+        ...state.notes,
+        [videoId]: [
+          ...state.notes[videoId],
+          { noteId: uuid(), title: noteTitle, content: noteContent },
+        ],
+      },
+    };
+  } else {
+    return {
+      ...state,
+      notes: {
+        ...state.notes,
+        [videoId]: [{ noteId: uuid(), title: noteTitle, content: noteContent }],
+      },
+    };
+  }
+};
+
+const editNotes = (state, noteTitle, noteContent, videoId, noteId) => {
+  const filteredNotes = state.notes[videoId].filter((item) => {
+    return !(item.noteId === noteId);
+  });
+
+  const updatedNotes = filteredNotes.concat([
+    { noteId: noteId, title: noteTitle, content: noteContent },
+  ]);
+  return {
+    ...state,
+    notes: { ...state.notes, [videoId]: updatedNotes },
+  };
+};
+
+const deleteNotes = (state, videoId, noteId) => {
+  const filteredNotes = state.notes[videoId].filter((item) => {
+    return !(item.noteId === noteId);
+  });
+  return {
+    ...state,
+    notes: { ...state.notes, [videoId]: filteredNotes },
+  };
+};
 
 export {
   saveApiDataToContext,
@@ -108,4 +156,7 @@ export {
   removeFromPlaylist,
   clearHistory,
   removeFromHistory,
+  addNotes,
+  editNotes,
+  deleteNotes,
 };

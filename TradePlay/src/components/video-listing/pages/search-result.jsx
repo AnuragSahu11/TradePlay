@@ -7,7 +7,7 @@ const SearchResult = () => {
   const { videoState } = useVideos();
   const searchedVideos = videoState.videos
     .filter(({ title }) =>
-      title.toLowerCase().includes(searchTerm.toLocaleLowerCase())
+      title.toLowerCase().includes(searchTerm.toLowerCase())
     )
     .map((item) => <VideoCard videoData={item} />);
   return (

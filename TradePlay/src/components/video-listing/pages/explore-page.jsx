@@ -10,10 +10,9 @@ const Explore = () => {
     }
     return [...videoState.videos];
   };
-  const explorePageVideos = videoList(
-    videoState.videos,
-    videoState.category
-  ).map((item) => <VideoCard key={item.id} videoData={item} />);
+  const explorePageVideos = videoList(videoState.videos, videoState.category)
+    .sort((a, b) => b.views - a.views)
+    .map((item) => <VideoCard key={item.id} videoData={item} />);
   return (
     <div className="explore-page">
       <CategorySelection />

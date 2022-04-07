@@ -34,6 +34,7 @@ const initialVideoState = {
   watchlater: [],
   history: [],
   like: [],
+  notes: [],
 };
 
 export { useVideos, VideoProvider };
