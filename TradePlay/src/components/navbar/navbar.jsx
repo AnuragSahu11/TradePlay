@@ -1,9 +1,10 @@
 import { Search } from "./search";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./navbar.css";
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const [showNav, setShowNav] = useState(" ");
   const hamburgerClickHandler = () => {
     if (showNav === " ") setShowNav("mobile-navbar-view");
@@ -23,17 +24,23 @@ const Navbar = () => {
           </div>
         </div>
         <div className="nav-menu">
-          <div className="nav-start">
-            <a href="" className="nav-item link">
+          <div className="nav-start flex-row">
+            <div onClick={() => navigate("/")} className="nav-item link">
               Home
-            </a>
-            <a href="" className="nav-item link">
+            </div>
+            <div
+              onClick={() => navigate("/videoListing")}
+              className="nav-item link"
+            >
               Learn
-            </a>
+            </div>
           </div>
           <div className="nav-end">
             <Search version="desktop" />
-            <button className="btn-icon nav-icons m-x-1">
+            <button
+              onClick={() => navigate("/videoListing/playlist")}
+              className="btn-icon nav-icons m-x-1"
+            >
               <i className="bx bxs-playlist is-4"></i>
             </button>
             <button className="btn-icon nav-icons m-x-1">
