@@ -44,9 +44,14 @@ const Navbar = () => {
               <i className="bx bxs-playlist is-4"></i>
             </button>
             <button className="btn-icon nav-icons m-x-1">
-              <i className="fas fas fa-moon is-primary" />
+              <i className="bx is-4 bxs-bookmarks"></i>
             </button>
-            <button className="btn-primary nav-btn btn-small">Log in</button>
+            <button
+              onClick={() => navigate("/login")}
+              className="btn-primary nav-btn btn-small"
+            >
+              Log in
+            </button>
           </div>
         </div>
       </nav>

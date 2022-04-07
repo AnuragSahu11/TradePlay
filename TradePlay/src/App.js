@@ -1,4 +1,11 @@
-import { Homepage, Footer, Navbar, VideoListing } from "./components";
+import {
+  Homepage,
+  Footer,
+  Navbar,
+  VideoListing,
+  Signup,
+  Login,
+} from "./components";
 import { Route, Routes } from "react-router-dom";
 import {
   Explore,
@@ -19,7 +26,8 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Homepage />} />
-
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
         <Route path="/videoListing" element={<VideoListing />}>
           <Route path="/videoListing/" element={<Explore />} />
           <Route path="/videoListing/history" element={<History />} />

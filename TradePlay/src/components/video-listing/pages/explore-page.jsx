@@ -1,9 +1,12 @@
 import { useVideos } from "../../../context/videos-context";
 import { CategorySelection } from "../category-selection";
 import { VideoCard } from "../../card/video-card";
+import { changeTitle } from "../../../utils";
+import { useEffect } from "react";
 
 const Explore = () => {
   const { videoState } = useVideos();
+  useEffect(() => changeTitle("Explore videos"));
   const videoList = (list, category) => {
     if (category) {
       return list.filter((item) => item.category === videoState.category);
