@@ -7,6 +7,7 @@ import { changeTitle } from "../../utils";
 const Homepage = () => {
   const navigate = useNavigate();
   useEffect(() => changeTitle("TradePlay"));
+
   return (
     <section className="homepage-section">
       <div className="homepage-hero width-100 flex-r-w align-center center-text">
