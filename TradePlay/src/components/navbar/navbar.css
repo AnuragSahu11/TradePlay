@@ -20,6 +20,10 @@ nav {
   position: relative;
   text-align: center;
 }
+.nav-search input {
+  width: 350px;
+}
+
 .search-results {
   background-color: white;
   position: absolute;
