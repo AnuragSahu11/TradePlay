@@ -1,3 +1,6 @@
+.nav{
+  z-index: 2;
+}
 nav {
   position: fixed;
   top: 0;
@@ -63,11 +66,17 @@ nav {
   border: var(--border) solid var(--primary);
 }
 @media only screen and (max-width: 1024px) {
+  .nav {
+    margin-bottom: 50px;
+  }
   .nav-mobile-search {
-    display: block !important;
+    display: block;
   }
   .video-listing {
     margin-top: 120px;
+  }
+  .nav nav {
+    box-shadow: none;
   }
 }
 @media only screen and (max-width: 640px) {
