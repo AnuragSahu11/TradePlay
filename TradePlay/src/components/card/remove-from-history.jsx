@@ -1,10 +1,12 @@
-import { removeFromHistory } from "../../context/context-utils";
+import { useAuth } from "../../context/auth-context";
 import { useVideos } from "../../context/videos-context";
+import { removeFromHistory } from "../../utils/server-requests";
 
 const RemoveFromHistory = ({ id }) => {
-  const { videoDispatch } = useVideos();
+  const { userDataState, userDataDispatch } = useAuth();
+  const { token } = userDataState;
   const removeFromHistoryClickHandler = () => {
-    videoDispatch({ type: "REMOVE_FROM_HISTORY", value: id });
+    removeFromHistory(id, token, userDataDispatch);
   };
   return (
     <i

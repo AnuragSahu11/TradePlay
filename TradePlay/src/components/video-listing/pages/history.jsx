@@ -2,19 +2,19 @@ import { useVideos } from "../../../context/videos-context";
 import { SmallVideoCard } from "../../card/small-video-card";
 import { changeTitle } from "../../../utils";
 import { useEffect } from "react";
+import { useAuth } from "../../../context";
+import { clearHistory } from "../../../utils/server-requests";
 
 const History = () => {
-  const { videoState, videoDispatch } = useVideos();
-  const { videos, history } = videoState;
+  const { userDataState, userDataDispatch } = useAuth();
+  const { token, history } = userDataState;
   const clearHistoryClickHandler = () => {
-    videoDispatch({ type: "CLEAR_HISTORY" });
+    clearHistory(token, userDataDispatch);
   };
-  const historyVideosList = history.map((id) => {
-    return videos.filter((videoData) => id === videoData._id)[0];
-  });
-  const historyVideos = historyVideosList
-    .reverse()
-    .map((item, i) => <SmallVideoCard remove={"history"} videoData={item} />);
+
+  const historyVideos = history
+    .map((item, i) => <SmallVideoCard remove={"history"} videoData={item} />)
+    .reverse();
 
   useEffect(() => changeTitle("History"));
   return (

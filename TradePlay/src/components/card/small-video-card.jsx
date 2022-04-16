@@ -7,9 +7,8 @@ import { useVideos } from "../../context/videos-context";
 const SmallVideoCard = ({ videoData, playlistName, remove }) => {
   const navigate = useNavigate();
   const { videoDispatch } = useVideos();
-  const { _id, title, creator } = videoData;
+  const { _id, title, creator, id } = videoData;
   const goToVideoPage = () => {
-    addToHistory(_id, videoDispatch);
     navigate(`/videoListing/${_id}`);
   };
 

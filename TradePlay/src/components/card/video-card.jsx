@@ -6,20 +6,23 @@ import { AddToPlaylistModal } from "../modals/add-to-playlist-modal";
 import { AddToPlaylistCardButton } from "./add-to-playlist";
 import { AddToWatchLater } from "./add-to-watchlater";
 import { CardLikes } from "./card-likes";
-import { addToHistory } from "../../utils/add-to-history";
+import { addToHistory } from "../../utils/server-requests";
+import { useAuth } from "../../context";
 
 const VideoCard = ({ videoData }) => {
   const [showModal, setShowModal] = useState(false);
   let navigate = useNavigate();
   const { videoDispatch } = useVideos();
+  const { userDataState, userDataDispatch } = useAuth();
+  const { token, history } = userDataState;
   const { _id, title, creator, category } = videoData;
   const switchShowModal = () => {
     setShowModal((prevState) => !prevState);
   };
-  const cardClickHandler = () => {
-    addToHistory(_id, videoDispatch);
-    navigate(`/videoListing/${_id}`);
+  const cardClickHandler = async () => {
+    await addToHistory(videoData, token, userDataDispatch);
   };
+
   return (
     <div className="video-card-container">
       {showModal && (
