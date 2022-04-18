@@ -1,4 +1,6 @@
+import { useAuth } from "../../context";
 import { usePlaylist } from "../../context/playlist-context";
+import { removeFromPlaylist } from "../../utils/server-requests";
 
 const AddToPlaylistCardButton = ({ size, switchModal }) => {
   return (
@@ -6,16 +8,18 @@ const AddToPlaylistCardButton = ({ size, switchModal }) => {
   );
 };
 
-const RemoveFromPlaylist = ({ id, playlistName }) => {
-  const { playlistDispatch } = usePlaylist();
+const RemoveFromPlaylist = ({ videoId, playlistId }) => {
+  const { userDataState, userDataDispatch } = useAuth();
+  const { token } = userDataState;
+
   const removeClickHandler = () => {
-    playlistDispatch({
-      type: "REMOVE_FROM_PLAYLIST",
-      value: { id, playlistName },
-    });
+    removeFromPlaylist(playlistId, videoId, token);
   };
   return (
-    <i onClick={removeClickHandler} className="bx is-4 is-primary bx-trash-alt"></i>
+    <i
+      onClick={removeClickHandler}
+      className="bx is-4 is-primary bx-trash-alt"
+    ></i>
   );
 };
 

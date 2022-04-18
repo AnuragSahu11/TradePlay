@@ -1,4 +1,10 @@
-import { createContext, useContext, useEffect, useReducer, useState } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useReducer,
+  useState,
+} from "react";
 import { userDataReducer } from "./auth-reducer";
 
 const AuthContext = createContext();
@@ -12,10 +18,8 @@ const AuthProvider = ({ children }) => {
     likes: [],
   };
 
-  useEffect(() => {
-      
-  })
-  
+  useEffect(() => {});
+
   const [userDataState, userDataDispatch] = useReducer(
     userDataReducer,
     initialUserData

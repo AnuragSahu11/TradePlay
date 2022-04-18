@@ -1,16 +1,20 @@
 import { useEffect, useState } from "react";
+import { useAuth } from "../../context/auth-context";
 import { useVideos } from "../../context/videos-context";
+import { likeVideo, removeFromLikes } from "../../utils/server-requests";
+import { inList } from "../../utils";
 
 const CardLikes = ({ videoData, size }) => {
-  const { videoState, videoDispatch } = useVideos();
+  const { userDataState, userDataDispatch } = useAuth();
+  const { token, likes } = userDataState;
   const [isLiked, setIsLiked] = useState();
 
-  useEffect(() => setIsLiked(videoState.like.includes(videoData._id)));
+  useEffect(() => setIsLiked(inList(likes, videoData._id)));
 
-  const likeClickHandler = () => {
-    if (isLiked) {
-      videoDispatch({ type: "UNLIKE_VIDEO", value: videoData._id });
-    } else videoDispatch({ type: "LIKE_VIDEO", value: videoData._id });
+  const likeClickHandler = async () => {
+    isLiked
+      ? removeFromLikes(videoData._id, token, userDataDispatch)
+      : likeVideo(videoData, token, userDataDispatch);
   };
   return (
     <div className="like-button flex-r-w space-evenly align-center">

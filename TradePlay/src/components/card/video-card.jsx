@@ -27,7 +27,7 @@ const VideoCard = ({ videoData }) => {
     <div className="video-card-container">
       {showModal && (
         <AddToPlaylistModal
-          videoId={videoData._id}
+          videoData={videoData}
           switchModal={switchShowModal}
         />
       )}

@@ -36,12 +36,99 @@ const clearHistory = async (token, dispatch) => {
 };
 
 const removeFromHistory = async (videoId, token, dispatch) => {
-  console.log(videoId, "h");
   const { data } = await axios.delete(
     `${API_URL}user/history/${videoId}`,
     authHeader(token)
   );
   dispatch({ type: "UPDATE_HISTORY", value: data.history });
+};
+
+const getLikedVideos = async (videoData, token, dispatch) => {
+  const { data } = await axios.get(`${API_URL}user/likes`, authHeader(token));
+  dispatch({ type: "UPDATE_LIKED_VIDEOS", value: data.likes });
+};
+
+const likeVideo = async (videoData, token, dispatch) => {
+  const { data } = await axios.post(
+    `${API_URL}user/likes`,
+    {
+      video: videoData,
+    },
+    authHeader(token)
+  );
+  dispatch({ type: "UPDATE_LIKED_VIDEOS", value: data.likes });
+};
+
+const removeFromLikes = async (videoId, token, dispatch) => {
+  const { data } = await axios.delete(
+    `${API_URL}user/likes/${videoId}`,
+    authHeader(token)
+  );
+  dispatch({ type: "UPDATE_LIKED_VIDEOS", value: data.likes });
+};
+
+const getAllPlaylists = async (token, dispatch) => {
+  const { data } = await axios.get(`${API_URL}user/playlists`);
+};
+
+const createPlaylist = async (playlistData, token, dispatch) => {
+  const { data } = await axios.post(
+    `${API_URL}user/playlists`,
+    { playlist: playlistData },
+    authHeader(token)
+  );
+  dispatch({ type: "UPDATE_PLAYLISTS", value: data.playlists });
+};
+
+const deletePlaylist = async (id, token, dispatch) => {
+  const { data } = await axios.delete(
+    `${API_URL}user/playlists/${id}`,
+    authHeader(token)
+  );
+
+  dispatch({ type: "UPDATE_PLAYLISTS", value: data.playlists });
+};
+
+const getPlaylist = async (id, token, setPlaylistData) => {
+  console.log("server call");
+  const { data } = await axios.get(
+    `${API_URL}user/playlists/${id}`,
+    authHeader(token)
+  );
+  setPlaylistData(data.playlist);
+};
+
+const addToPlaylist = async (videoData, id, token) => {
+  const { data } = await axios.post(
+    `${API_URL}user/playlists/${id}`,
+    { video: videoData },
+    authHeader(token)
+  );
+};
+
+const removeFromPlaylist = async (playlistId, videoId, token) => {
+  const { data } = await axios.delete(
+    `${API_URL}user/playlists/${playlistId}/${videoId}`,
+    authHeader(token)
+  );
+};
+
+const addToWatchLater = async (videoData, token) => {
+  console.log(videoData);
+  const { data } = await axios.post(
+    `${API_URL}user/watchlater`,
+    { video: videoData },
+    authHeader(token)
+  );
+  console.log(data);
+};
+
+const getWatchLater = async (token) => {
+  const { data } = await axios.get(
+    `${API_URL}user/watchlater`,
+    authHeader(token)
+  );
+  console.log(data);
 };
 
 export {
@@ -50,4 +137,15 @@ export {
   addToHistory,
   clearHistory,
   removeFromHistory,
+  likeVideo,
+  getLikedVideos,
+  removeFromLikes,
+  getAllPlaylists,
+  createPlaylist,
+  deletePlaylist,
+  getPlaylist,
+  addToPlaylist,
+  removeFromPlaylist,
+  addToWatchLater,
+  getWatchLater,
 };

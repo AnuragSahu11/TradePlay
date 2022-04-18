@@ -2,12 +2,12 @@ import { useVideos } from "../../../context/videos-context";
 import { VideoCard } from "../../card/video-card";
 import { changeTitle } from "../../../utils";
 import { useEffect } from "react";
+import { useAuth } from "../../../context";
 
 const LikesPage = () => {
-  const { videoState } = useVideos();
-  const { videos, like } = videoState;
-  const likedVideoList = videos.filter((item) => like.includes(item._id));
-  const likedVideos = likedVideoList.map((item) => (
+  const { userDataState, userDataDispatch } = useAuth();
+  const { token, likes } = userDataState;
+  const likedVideos = likes.map((item) => (
     <VideoCard key={item._id} videoData={item} />
   ));
   useEffect(() => changeTitle("Liked Videos"));
