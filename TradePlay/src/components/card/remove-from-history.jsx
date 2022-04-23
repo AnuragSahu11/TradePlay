@@ -1,5 +1,4 @@
 import { useAuth } from "../../context/auth-context";
-import { useVideos } from "../../context/videos-context";
 import { removeFromHistory } from "../../utils/server-requests";
 
 const RemoveFromHistory = ({ id }) => {

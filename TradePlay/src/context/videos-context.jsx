@@ -19,6 +19,7 @@ const VideoProvider = ({ children }) => {
   useEffect(async () => {
     getVideosFromAPI(videoDispatch);
   }, []);
+
   return (
     <VideoContext.Provider value={{ videoState, videoDispatch }}>
       {children}
@@ -29,10 +30,6 @@ const VideoProvider = ({ children }) => {
 const initialVideoState = {
   videos: [],
   category: "",
-  watchlater: [],
-  history: [],
-  like: [],
-  notes: [],
 };
 
 export { useVideos, VideoProvider };

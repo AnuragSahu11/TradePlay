@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { RemoveFromPlaylist } from "./add-to-playlist";
 import { RemoveFromHistory } from "./remove-from-history";
-import { addToHistory } from "../../utils/add-to-history";
 import { useVideos } from "../../context/videos-context";
 
 const SmallVideoCard = ({ videoData, playlistId, remove }) => {

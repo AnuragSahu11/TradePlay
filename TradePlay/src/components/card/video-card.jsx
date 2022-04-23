@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { addToHistoryUtil } from "../../context/context-utils";
 import { useVideos } from "../../context/videos-context";
 import { AddToPlaylistModal } from "../modals/add-to-playlist-modal";
 import { AddToPlaylistCardButton } from "./add-to-playlist";

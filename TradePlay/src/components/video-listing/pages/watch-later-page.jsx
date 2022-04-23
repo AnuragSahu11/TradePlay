@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { useAuth } from "../../../context";
-import { useVideos } from "../../../context/videos-context";
 import { getWatchLater } from "../../../utils/server-requests";
 import { VideoCard } from "../../card/video-card";
 

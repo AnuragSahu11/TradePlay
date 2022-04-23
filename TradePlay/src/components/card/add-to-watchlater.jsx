@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../../context";
-import { useVideos } from "../../context/videos-context";
 import { inList } from "../../utils/in-list";
 import {
   addToWatchLater,

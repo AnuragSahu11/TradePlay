@@ -1,5 +1,4 @@
 import { useAuth } from "../../context";
-import { usePlaylist } from "../../context/playlist-context";
 import { removeFromPlaylist } from "../../utils/server-requests";
 
 const AddToPlaylistCardButton = ({ size, switchModal }) => {

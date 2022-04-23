@@ -1,5 +1,4 @@
 import { useAuth } from "../../context";
-import { usePlaylist } from "../../context/playlist-context";
 import { deletePlaylist } from "../../utils/server-requests";
 
 const DeletePlaylistModal = ({ switchModal }) => {

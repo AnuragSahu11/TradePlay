@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../../context/auth-context";
-import { useVideos } from "../../context/videos-context";
 import { likeVideo, removeFromLikes } from "../../utils/server-requests";
 import { inList } from "../../utils";
 
