@@ -113,22 +113,30 @@ const removeFromPlaylist = async (playlistId, videoId, token) => {
   );
 };
 
-const addToWatchLater = async (videoData, token) => {
+const addToWatchLater = async (videoData, token, dispatch) => {
   console.log(videoData);
   const { data } = await axios.post(
     `${API_URL}user/watchlater`,
     { video: videoData },
     authHeader(token)
   );
-  console.log(data);
+  dispatch({ type: "UPDATE_WATCHLATER", value: data.watchlater });
 };
 
-const getWatchLater = async (token) => {
+const getWatchLater = async (token, dispatch) => {
   const { data } = await axios.get(
     `${API_URL}user/watchlater`,
     authHeader(token)
   );
-  console.log(data);
+  dispatch({ type: "UPDATE_WATCHLATER", value: data.watchlater });
+};
+
+const removeFromWatchlater = async (videoId, token, dispatch) => {
+  const { data } = await axios.delete(
+    `${API_URL}user/watchlater/${videoId}`,
+    authHeader(token)
+  );
+  dispatch({ type: "UPDATE_WATCHLATER", value: data.watchlater });
 };
 
 export {
@@ -148,4 +156,5 @@ export {
   removeFromPlaylist,
   addToWatchLater,
   getWatchLater,
+  removeFromWatchlater,
 };

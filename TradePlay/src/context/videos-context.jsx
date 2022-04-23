@@ -15,6 +15,7 @@ const VideoProvider = ({ children }) => {
     videoReducer,
     initialVideoState
   );
+
   useEffect(async () => {
     getVideosFromAPI(videoDispatch);
   }, []);

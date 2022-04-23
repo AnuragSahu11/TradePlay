@@ -16,6 +16,7 @@ const AuthProvider = ({ children }) => {
     history: [],
     playlists: [],
     likes: [],
+    watchlater: [],
   };
 
   useEffect(() => {});

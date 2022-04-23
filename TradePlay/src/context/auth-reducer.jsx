@@ -11,6 +11,8 @@ const userDataReducer = (state, action) => {
       };
     case "UPDATE_PLAYLISTS":
       return { ...state, playlists: action.value };
+    case "UPDATE_WATCHLATER":
+      return { ...state, watchlater: action.value };
   }
 };
 export { userDataReducer };
