@@ -40,4 +40,31 @@ const AddToWatchLater = ({ videoData }) => {
   );
 };
 
-export { AddToWatchLater };
+const AddToWatchlaterSmall = ({ videoData }) => {
+  const { userDataState, userDataDispatch } = useAuth();
+  const { token, watchlater } = userDataState;
+  const [inWatchlater, setInWatchlater] = useState(
+    inList(watchlater, videoData._id)
+  );
+
+  useEffect(() => {
+    setInWatchlater(inList(watchlater, videoData._id));
+  });
+
+  const addToWatchlaterClickHandler = () => {
+    inWatchlater
+      ? removeFromWatchlater(videoData._id, token, userDataDispatch)
+      : addToWatchLater(videoData, token, userDataDispatch);
+  };
+
+  let buttonText = "click me";
+
+  return (
+    <i
+      onClick={addToWatchlaterClickHandler}
+      className={`${inWatchlater && "is-primary"} is-5 bx bxs-bookmarks`}
+    ></i>
+  );
+};
+
+export { AddToWatchLater, AddToWatchlaterSmall };

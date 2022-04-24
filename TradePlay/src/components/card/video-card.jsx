@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useVideos } from "../../context/videos-context";
 import { AddToPlaylistModal } from "../modals/add-to-playlist-modal";
 import { AddToPlaylistCardButton } from "./add-to-playlist";
 import { AddToWatchLater } from "./add-to-watchlater";
@@ -11,7 +10,7 @@ import { useAuth } from "../../context";
 const VideoCard = ({ videoData }) => {
   const [showModal, setShowModal] = useState(false);
   let navigate = useNavigate();
-  const { videoDispatch } = useVideos();
+
   const { userDataState, userDataDispatch } = useAuth();
   const { token, history } = userDataState;
   const { _id, title, creator, category } = videoData;
@@ -19,7 +18,8 @@ const VideoCard = ({ videoData }) => {
     setShowModal((prevState) => !prevState);
   };
   const cardClickHandler = async () => {
-    await addToHistory(videoData, token, userDataDispatch);
+    navigate(`/videoListing/${_id}`);
+    addToHistory(videoData, token, userDataDispatch);
   };
 
   return (
