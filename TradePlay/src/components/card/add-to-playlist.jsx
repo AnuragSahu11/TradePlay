@@ -7,13 +7,14 @@ const AddToPlaylistCardButton = ({ size, switchModal }) => {
   );
 };
 
-const RemoveFromPlaylist = ({ videoId, playlistId }) => {
+const RemoveFromPlaylist = ({ videoId, playlistId, setPlaylistData }) => {
   const { userDataState, userDataDispatch } = useAuth();
   const { token } = userDataState;
 
   const removeClickHandler = () => {
-    removeFromPlaylist(playlistId, videoId, token);
+    removeFromPlaylist(playlistId, videoId, token, setPlaylistData);
   };
+
   return (
     <i
       onClick={removeClickHandler}

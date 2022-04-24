@@ -3,7 +3,7 @@ import { RemoveFromPlaylist } from "./add-to-playlist";
 import { RemoveFromHistory } from "./remove-from-history";
 import { useVideos } from "../../context/videos-context";
 
-const SmallVideoCard = ({ videoData, playlistId, remove }) => {
+const SmallVideoCard = ({ videoData, playlistId, remove, setPlaylistData }) => {
   const navigate = useNavigate();
   const { videoDispatch } = useVideos();
   const { _id, title, creator, id } = videoData;
@@ -41,7 +41,11 @@ const SmallVideoCard = ({ videoData, playlistId, remove }) => {
                   <p className="text">Lorem ipsum</p>
                 </div>
                 {remove === "playlist" ? (
-                  <RemoveFromPlaylist playlistId={playlistId} videoId={_id} />
+                  <RemoveFromPlaylist
+                    setPlaylistData={setPlaylistData}
+                    playlistId={playlistId}
+                    videoId={_id}
+                  />
                 ) : (
                   <RemoveFromHistory id={_id} />
                 )}

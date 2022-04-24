@@ -17,6 +17,7 @@ const History = () => {
     .reverse();
 
   useEffect(() => changeTitle("History"));
+  
   return (
     <div className="flex-c-w history-page">
       <div className="history-heading width-100 is-5 bold m-up-5 m-dw-3 text-center">

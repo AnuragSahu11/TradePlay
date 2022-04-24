@@ -18,8 +18,8 @@ const VideoCard = ({ videoData }) => {
     setShowModal((prevState) => !prevState);
   };
   const cardClickHandler = async () => {
-    navigate(`/videoListing/${_id}`);
     addToHistory(videoData, token, userDataDispatch);
+    navigate(`/videoListing/${_id}`);
   };
 
   return (

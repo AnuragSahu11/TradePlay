@@ -41,7 +41,10 @@ const SingleVideoPage = () => {
             </div>
             <AddToPlaylistCardButton size={"is-5"} switchModal={switchModal} />
             {showModal && (
-              <AddToPlaylistSmallModal videoId={id} switchModal={switchModal} />
+              <AddToPlaylistSmallModal
+                videoData={videoData}
+                switchModal={switchModal}
+              />
             )}
           </div>
           <div className="textbox">

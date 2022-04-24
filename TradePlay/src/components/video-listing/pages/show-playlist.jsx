@@ -25,6 +25,7 @@ const ShowPlaylist = () => {
         remove={"playlist"}
         playlistId={playlistId}
         videoData={item}
+        setPlaylistData={setPlaylistData}
       />
     ));
 

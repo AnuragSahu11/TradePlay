@@ -90,7 +90,6 @@ const deletePlaylist = async (id, token, dispatch) => {
 };
 
 const getPlaylist = async (id, token, setPlaylistData) => {
-  console.log("server call");
   const { data } = await axios.get(
     `${API_URL}user/playlists/${id}`,
     authHeader(token)
@@ -106,11 +105,17 @@ const addToPlaylist = async (videoData, id, token) => {
   );
 };
 
-const removeFromPlaylist = async (playlistId, videoId, token) => {
+const removeFromPlaylist = async (
+  playlistId,
+  videoId,
+  token,
+  setPlaylistData
+) => {
   const { data } = await axios.delete(
     `${API_URL}user/playlists/${playlistId}/${videoId}`,
     authHeader(token)
   );
+  setPlaylistData(data.playlist);
 };
 
 const addToWatchLater = async (videoData, token, dispatch) => {
