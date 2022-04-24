@@ -14,6 +14,11 @@ const getVideosFromAPI = async (dispatch) => {
   console.log(data.videos);
 };
 
+const getVideoFromAPI = async (videoId, setVideoData) => {
+  const { data } = await axios.get(`${API_URL}video/${videoId}`);
+  setVideoData(data.video);
+};
+
 const addToHistory = async (video, token, dispatch) => {
   try {
     const { data } = await axios.post(
@@ -147,6 +152,7 @@ const removeFromWatchlater = async (videoId, token, dispatch) => {
 export {
   loginUser,
   getVideosFromAPI,
+  getVideoFromAPI,
   addToHistory,
   clearHistory,
   removeFromHistory,

@@ -7,16 +7,22 @@ import { AddToWatchlaterSmall } from "../../card/add-to-watchlater";
 import { NoteCard } from "../../card/note-card";
 import { changeTitle } from "../../../utils";
 import { useVideos } from "../../../context";
+import { getVideoFromAPI } from "../../../utils/server-requests";
 
 const SingleVideoPage = () => {
+  const { id } = useParams();
   const [showModal, setShowModal] = useState(false);
-  const { videoState } = useVideos();
+  const [videoData, setVideoData] = useState({});
   const switchModal = () => {
     setShowModal((prevState) => !prevState);
   };
-  const { id } = useParams();
-  const videoData = videoState.videos.find(({ _id }) => _id === id);
+
+  useEffect(() => {
+    getVideoFromAPI(id, setVideoData);
+  });
+
   const { videoLink, description, title } = videoData;
+
   return (
     <div className="single-video-page grid-70-30">
       <div className="">
