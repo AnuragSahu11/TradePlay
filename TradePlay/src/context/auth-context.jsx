@@ -19,7 +19,9 @@ const AuthProvider = ({ children }) => {
     watchlater: [],
   };
 
-  useEffect(() => {});
+  useEffect(() => {
+    
+  });
 
   const [userDataState, userDataDispatch] = useReducer(
     userDataReducer,

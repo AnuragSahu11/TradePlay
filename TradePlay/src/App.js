@@ -20,6 +20,7 @@ import {
 } from "./components/video-listing/pages";
 import "./App.css";
 import Mockman from "mockman-js";
+import { RequiresAuth } from "./utils/requires-auth";
 
 function App() {
   return (
@@ -30,19 +31,56 @@ function App() {
         <Route path="/" element={<Homepage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+
         <Route path="/videoListing" element={<VideoListing />}>
           <Route path="/videoListing/" element={<Explore />} />
-          <Route path="/videoListing/history" element={<History />} />
-          <Route path="/videoListing/likesPage" element={<LikesPage />} />
-          <Route path="/videoListing/watchLater" element={<WatchLater />} />
-          <Route path="/videoListing/:id" element={<SingleVideoPage />} />
+          <Route
+            path="/videoListing/history"
+            element={
+              <RequiresAuth>
+                <History />
+              </RequiresAuth>
+            }
+          />
+          <Route
+            path="/videoListing/likesPage"
+            element={
+              <RequiresAuth>
+                <LikesPage />
+              </RequiresAuth>
+            }
+          />
+          <Route
+            path="/videoListing/watchLater"
+            element={
+              <RequiresAuth>
+                <WatchLater />
+              </RequiresAuth>
+            }
+          />
+          <Route
+            path="/videoListing/:id"
+            element={
+              <RequiresAuth>
+                <SingleVideoPage />
+              </RequiresAuth>
+            }
+          />
           <Route
             path="/videoListing/playlist"
-            element={<PlaylistPage />}
+            element={
+              <RequiresAuth>
+                <PlaylistPage />
+              </RequiresAuth>
+            }
           ></Route>
           <Route
             path="/videoListing/playlist/:playlistId"
-            element={<ShowPlaylist />}
+            element={
+              <RequiresAuth>
+                <ShowPlaylist />
+              </RequiresAuth>
+            }
           />
           <Route path="/videoListing/videopage" element={<Videopage />} />
           <Route

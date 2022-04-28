@@ -6,7 +6,6 @@ import { AddToPlaylistSmallModal } from "../../modals/add-to-playlist-small-moda
 import { AddToWatchlaterSmall } from "../../card/add-to-watchlater";
 import { NoteCard } from "../../card/note-card";
 import { changeTitle } from "../../../utils";
-import { useVideos } from "../../../context";
 import { getVideoFromAPI } from "../../../utils/server-requests";
 
 const SingleVideoPage = () => {

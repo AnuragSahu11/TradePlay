@@ -1,12 +1,15 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context";
 import { loginUser } from "../../utils/server-requests";
 import "./login.css";
 
 const Login = () => {
   const { userDataDispatch } = useAuth();
+  let location = useLocation();
   const navigate = useNavigate();
+  let from = location.state?.from?.pathname || "/";
+
   const [loginCredentials, setLoginCredentials] = useState({
     email: "",
     password: "",
@@ -17,17 +20,20 @@ const Login = () => {
       email: "anurag@gmail.com",
       password: "anurag",
     });
-    loginUser(
+    await loginUser(
       {
         email: "anurag@gmail.com",
         password: "anurag",
       },
       userDataDispatch
     );
+
+    navigate(from, { replace: true });
   };
 
   const loginClick = async () => {
-    loginUser(loginCredentials, userDataDispatch);
+    await loginUser(loginCredentials, userDataDispatch);
+    navigate(from, { replace: true });
   };
 
   return (
