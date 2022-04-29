@@ -10,11 +10,11 @@ const CreateNewPlaylistModal = ({ isModalOpen, switchModal }) => {
     description: "",
   });
 
-  const outsideModalClickHandler = () => {
+  const outsideModalClick = () => {
     switchModal((prevState) => !prevState);
   };
 
-  const insideModalClickHandler = (e) => {
+  const insideModalClick = (e) => {
     e.stopPropagation();
   };
 
@@ -22,7 +22,7 @@ const CreateNewPlaylistModal = ({ isModalOpen, switchModal }) => {
     switchModal((prevState) => !prevState);
   };
 
-  const submitClickHandler = () => {
+  const submitClick = () => {
     if (playlistData.title && playlistData.description) {
       createPlaylist(playlistData, token, userDataDispatch);
     }
@@ -30,9 +30,9 @@ const CreateNewPlaylistModal = ({ isModalOpen, switchModal }) => {
   };
 
   return (
-    <div onClick={outsideModalClickHandler} className="modal-wrapper">
+    <div onClick={outsideModalClick} className="modal-wrapper">
       <div
-        onClick={(e) => insideModalClickHandler(e)}
+        onClick={(e) => insideModalClick(e)}
         className="modal center-x m-up-6 shadow"
       >
         <button onClick={closeModal} className="card-cross btn-close is-medium">
@@ -72,7 +72,7 @@ const CreateNewPlaylistModal = ({ isModalOpen, switchModal }) => {
           </div>
         </div>
         <div className="btn-horizontal">
-          <button onClick={submitClickHandler} className="btn-grey btn-medium">
+          <button onClick={submitClick} className="btn-grey btn-medium">
             Submit
           </button>
         </div>

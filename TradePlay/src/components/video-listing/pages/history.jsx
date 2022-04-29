@@ -7,7 +7,7 @@ import { clearHistory } from "../../../utils/server-requests";
 const History = () => {
   const { userDataState, userDataDispatch } = useAuth();
   const { token, history } = userDataState;
-  const clearHistoryClickHandler = () => {
+  const clearHistoryClick = () => {
     clearHistory(token, userDataDispatch);
   };
 
@@ -26,7 +26,7 @@ const History = () => {
 
       <div className="center-x btn-vertical m-up-4 center-text">
         <button
-          onClick={clearHistoryClickHandler}
+          onClick={clearHistoryClick}
           className="btn-medium btn-w-icon btn-custom btn-secondary"
         >
           <i className="bx bxs-trash"></i>

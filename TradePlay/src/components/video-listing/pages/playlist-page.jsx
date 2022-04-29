@@ -9,13 +9,13 @@ const PlaylistPage = () => {
   const { userDataState, userDataDispatch } = useAuth();
   const { playlists } = userDataState;
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [showDeletePlaylistModal, setShowDeletePlaylistModal] = useState(false);
+  const [deleteModal, setDeletetModal] = useState(false);
 
-  const switchShowDeletePlaylistModal = () => {
-    setShowDeletePlaylistModal((prevState) => !prevState);
+  const toggleDeleteModal = () => {
+    setDeletetModal((prevState) => !prevState);
   };
 
-  const createNewPlaylistclickHandler = () => {
+  const createNewPlaylistclick = () => {
     setIsModalOpen((prevState) => !prevState);
   };
 
@@ -29,12 +29,10 @@ const PlaylistPage = () => {
           switchModal={setIsModalOpen}
         />
       )}
-      {showDeletePlaylistModal && (
-        <DeletePlaylistModal switchModal={switchShowDeletePlaylistModal} />
-      )}
+      {deleteModal && <DeletePlaylistModal switchModal={setDeletetModal} />}
       <div className="flex-c-w m-up-6 playlist-body ">
         <div
-          onClick={createNewPlaylistclickHandler}
+          onClick={createNewPlaylistclick}
           className="addToPlaylist pointer p-x-2 br-3 center-x create-playlist flex-row align-center is-4"
         >
           <i className="bx is-primary bx-plus is-5 m-r-1"></i>
@@ -49,7 +47,7 @@ const PlaylistPage = () => {
         ))}
         <div className="btn-vertical m-up-6 center-x center-text">
           <button
-            onClick={switchShowDeletePlaylistModal}
+            onClick={toggleDeleteModal}
             className="btn-medium btn-custom fit-content btn-w-icon btn-secondary"
           >
             <i className="bx is-3 bxs-trash"></i>

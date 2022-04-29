@@ -5,14 +5,14 @@ const AddToPlaylistSmallModal = ({ videoData, switchModal }) => {
   const { userDataState, userDataDispatch } = useAuth();
   const { playlists, token } = userDataState;
 
-  const addToPlaylistClickHandler = (playlistId) => {
+  const addToPlaylistClick = (playlistId) => {
     addToPlaylist(videoData, playlistId, token);
     switchModal();
   };
 
   const playlist = playlists.map((item) => (
     <div
-      onClick={() => addToPlaylistClickHandler(item._id)}
+      onClick={() => addToPlaylistClick(item._id)}
       className="add-to-playlist-small is-3"
     >
       {item.title}

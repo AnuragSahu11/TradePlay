@@ -25,7 +25,7 @@ const NoteListComponent = ({ currentNoteData, currentVideoId }) => {
     setEditNotes((prevState) => !prevState);
   };
   const { title } = currentNoteData;
-  const deleteNoteClickHandler = () => {
+  const deleteNoteClick = () => {
     videoDispatch({
       type: "DELETE_NOTE",
       value: { currentVideoId, noteId: currentNoteData.noteId },
@@ -41,7 +41,7 @@ const NoteListComponent = ({ currentNoteData, currentVideoId }) => {
           <i className="bx is-4 bx-edit-alt m-r-1"></i>{" "}
           <span className="is-3">{title}</span>{" "}
           <i
-            onClick={deleteNoteClickHandler}
+            onClick={deleteNoteClick}
             className="bx is-4 bx-trash-alt m-l-1"
           ></i>
         </div>

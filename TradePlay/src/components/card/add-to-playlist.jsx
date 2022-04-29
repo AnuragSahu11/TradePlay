@@ -11,13 +11,13 @@ const RemoveFromPlaylist = ({ videoId, playlistId, setPlaylistData }) => {
   const { userDataState, userDataDispatch } = useAuth();
   const { token } = userDataState;
 
-  const removeClickHandler = () => {
+  const removeClick = () => {
     removeFromPlaylist(playlistId, videoId, token, setPlaylistData);
   };
 
   return (
     <i
-      onClick={removeClickHandler}
+      onClick={removeClick}
       className="bx is-4 is-primary bx-trash-alt"
     ></i>
   );

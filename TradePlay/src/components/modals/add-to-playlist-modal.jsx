@@ -6,11 +6,11 @@ const AddToPlaylistModal = ({ isModalOpen, switchModal, videoData }) => {
   const { userDataState, userDataDispatch } = useAuth();
   const { playlists } = userDataState;
 
-  const outsideModalClickHandler = () => {
+  const outsideModalClick = () => {
     switchModal((prevState) => !prevState);
   };
 
-  const insideModalClickHandler = (e) => {
+  const insideModalClick = (e) => {
     e.stopPropagation();
   };
 

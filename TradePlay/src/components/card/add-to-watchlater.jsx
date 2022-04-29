@@ -23,7 +23,7 @@ const AddToWatchLater = ({ videoData }) => {
     ? "Remove from Watch Later"
     : "Add to Watch Later";
 
-  const watchlaterClickHandler = () => {
+  const watchlaterClick = () => {
     inList(watchlater, videoData._id)
       ? removeFromWatchlater(videoData._id, token, userDataDispatch)
       : addToWatchLater(videoData, token, userDataDispatch);
@@ -31,7 +31,7 @@ const AddToWatchLater = ({ videoData }) => {
 
   return (
     <button
-      onClick={watchlaterClickHandler}
+      onClick={watchlaterClick}
       className="btn-secondary btn-custom m-dw-1 btn-small"
     >
       <i className="bx bx-bookmark-plus m-r-1"></i>
@@ -51,7 +51,7 @@ const AddToWatchlaterSmall = ({ videoData }) => {
     setInWatchlater(inList(watchlater, videoData._id));
   });
 
-  const addToWatchlaterClickHandler = () => {
+  const addToWatchlaterClick = () => {
     inWatchlater
       ? removeFromWatchlater(videoData._id, token, userDataDispatch)
       : addToWatchLater(videoData, token, userDataDispatch);
@@ -61,7 +61,7 @@ const AddToWatchlaterSmall = ({ videoData }) => {
 
   return (
     <i
-      onClick={addToWatchlaterClickHandler}
+      onClick={addToWatchlaterClick}
       className={`${inWatchlater && "is-primary"} is-5 bx bxs-bookmarks`}
     ></i>
   );
