@@ -11,7 +11,6 @@ const loginUser = async (credentials, dispatch) => {
 const getVideosFromAPI = async (dispatch) => {
   const { data } = await axios.get(`${API_URL}videos`);
   dispatch({ type: "VIDEOS_DATA", value: data.videos });
-  console.log(data.videos);
 };
 
 const getVideoFromAPI = async (videoId, setVideoData) => {
@@ -124,7 +123,6 @@ const removeFromPlaylist = async (
 };
 
 const addToWatchLater = async (videoData, token, dispatch) => {
-  console.log(videoData);
   const { data } = await axios.post(
     `${API_URL}user/watchlater`,
     { video: videoData },

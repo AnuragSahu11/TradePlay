@@ -14,9 +14,11 @@ const VideoCard = ({ videoData }) => {
   const { userDataState, userDataDispatch } = useAuth();
   const { token, history } = userDataState;
   const { _id, title, creator, category } = videoData;
+
   const switchShowModal = () => {
     setShowModal((prevState) => !prevState);
   };
+
   const cardClickHandler = async () => {
     addToHistory(videoData, token, userDataDispatch);
     navigate(`/videoListing/${_id}`);
