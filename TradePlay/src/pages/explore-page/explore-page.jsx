@@ -1,20 +1,21 @@
 import { useVideos } from "../../context/video-context/videos-context";
 import { CategorySelection } from "../video-listing/components/category-selection";
-// import { VideoCard } from "../../card/video-card";
 import { changeTitle } from "../../utils";
 import { useEffect } from "react";
 import { VideoCard } from "../../components/card/video-card";
 
 const ExplorePage = () => {
-  const { videoState } = useVideos();
+  const {
+    videoState: { videos, category },
+  } = useVideos();
   useEffect(() => changeTitle("Explore videos"));
   const videoList = (list, category) => {
     if (category) {
-      return list.filter((item) => item.category === videoState.category);
+      return list.filter((item) => item.category === category);
     }
-    return [...videoState.videos];
+    return [...videos];
   };
-  const explorePageVideos = videoList(videoState.videos, videoState.category)
+  const explorePageVideos = videoList(videos, category)
     .sort((a, b) => b.views - a.views)
     .map((item) => <VideoCard key={item.id} videoData={item} />);
   return (

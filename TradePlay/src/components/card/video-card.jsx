@@ -11,8 +11,11 @@ const VideoCard = ({ videoData }) => {
   const [showModal, setShowModal] = useState(false);
   let navigate = useNavigate();
 
-  const { userDataState, userDataDispatch } = useAuth();
-  const { token, history } = userDataState;
+  const {
+    userDataState: { token },
+    userDataDispatch,
+  } = useAuth();
+
   const { _id, title, creator, category } = videoData;
 
   const switchShowModal = () => {

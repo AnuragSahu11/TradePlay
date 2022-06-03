@@ -6,8 +6,10 @@ import { CreateNewPlaylistModal } from "../../components/modals/create-playlist-
 import { useAuth } from "../../context";
 
 const PlaylistPage = () => {
-  const { userDataState, userDataDispatch } = useAuth();
-  const { playlists } = userDataState;
+  const {
+    userDataState: { playlists },
+  } = useAuth();
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [deleteModal, setDeletetModal] = useState(false);
 

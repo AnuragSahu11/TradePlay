@@ -1,12 +1,16 @@
 import { useVideos } from "../../../context/video-context/videos-context";
+import { REDUCER_ACTION } from "../../../utils/constants";
 
 const CategorySelection = () => {
   const { videoDispatch } = useVideos();
+
   const clickHandler = (category) => {
     if (category === "clear_filter") {
-      videoDispatch({ type: "CLEAR_FILTER" });
-    } else videoDispatch({ type: "CATEGORY_CHANGE", value: category });
+      videoDispatch({ type: REDUCER_ACTION.CLEAR_FILTER });
+    } else
+      videoDispatch({ type: REDUCER_ACTION.CATEGORY_CHANGE, value: category });
   };
+
   return (
     <div className="homepage-categories width-100 flex-r-w space-evenly">
       <div

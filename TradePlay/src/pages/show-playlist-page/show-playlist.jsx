@@ -4,11 +4,13 @@ import { SmallVideoCard } from "../../components/card/small-video-card";
 import { useAuth } from "../../context";
 import { getPlaylist } from "../../server-request/server-requests";
 
-
 const ShowPlaylistPage = () => {
   const { playlistId } = useParams();
-  const { userDataState, userDataDispatch } = useAuth();
-  const { token } = userDataState;
+  const {
+    userDataState: { token },
+    userDataDispatch,
+  } = useAuth();
+
   const [playlistData, setPlaylistData] = useState({});
 
   const getPlaylistVideos = async () => {

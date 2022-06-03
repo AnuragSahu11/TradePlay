@@ -8,18 +8,16 @@ const AddToPlaylistCardButton = ({ size, switchModal }) => {
 };
 
 const RemoveFromPlaylist = ({ videoId, playlistId, setPlaylistData }) => {
-  const { userDataState, userDataDispatch } = useAuth();
-  const { token } = userDataState;
+  const {
+    userDataState: { token },
+  } = useAuth();
 
   const removeClick = () => {
     removeFromPlaylist(playlistId, videoId, token, setPlaylistData);
   };
 
   return (
-    <i
-      onClick={removeClick}
-      className="bx is-4 is-primary bx-trash-alt"
-    ></i>
+    <i onClick={removeClick} className="bx is-4 is-primary bx-trash-alt"></i>
   );
 };
 

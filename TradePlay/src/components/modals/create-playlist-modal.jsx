@@ -3,12 +3,17 @@ import { useAuth } from "../../context";
 import { createPlaylist } from "../../server-request/server-requests";
 
 const CreateNewPlaylistModal = ({ isModalOpen, switchModal }) => {
-  const { userDataState, userDataDispatch } = useAuth();
-  const { token } = userDataState;
+  const {
+    userDataState: { token },
+    userDataDispatch,
+  } = useAuth();
+
   const [playlistData, setPlaylistData] = useState({
     title: "",
     description: "",
   });
+
+  const { title, description } = playlistData;
 
   const outsideModalClick = () => {
     switchModal((prevState) => !prevState);
@@ -23,7 +28,7 @@ const CreateNewPlaylistModal = ({ isModalOpen, switchModal }) => {
   };
 
   const submitClick = () => {
-    if (playlistData.title && playlistData.description) {
+    if (title && description) {
       createPlaylist(playlistData, token, userDataDispatch);
     }
     switchModal((prevState) => !prevState);

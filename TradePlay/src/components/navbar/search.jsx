@@ -10,7 +10,7 @@ const Search = ({ version }) => {
 
   const searchInputHandler = (text) => {
     setSearchText(text);
-    if (!(text === "")) {
+    if (text.length > 0) {
       const filteredProducts = videoState.videos
         .filter(({ title }) =>
           title.toLowerCase().includes(searchText.toLowerCase())

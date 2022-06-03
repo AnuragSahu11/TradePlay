@@ -1,16 +1,16 @@
 import axios from "axios";
-import { API_URL } from "../utils/constants";
+import { API_URL, REDUCER_ACTION } from "../utils/constants";
 import { authHeader } from "../utils/index";
 
 const loginUser = async (credentials, dispatch) => {
   const { data } = await axios.post(`${API_URL}auth/login`, credentials);
-  dispatch({ type: "SET_TOKEN", value: data.encodedToken });
+  dispatch({ type: REDUCER_ACTION.SET_TOKEN, value: data.encodedToken });
   localStorage.setItem("token", data.encodedToken);
 };
 
 const getVideosFromAPI = async (dispatch) => {
   const { data } = await axios.get(`${API_URL}videos`);
-  dispatch({ type: "VIDEOS_DATA", value: data.videos });
+  dispatch({ type: REDUCER_ACTION.VIDEOS_DATA, value: data.videos });
 };
 
 const getVideoFromAPI = async (videoId, setVideoData) => {
@@ -25,7 +25,7 @@ const addToHistory = async (video, token, dispatch) => {
       { video: video },
       authHeader(token)
     );
-    dispatch({ type: "UPDATE_HISTORY", value: data.history });
+    dispatch({ type: REDUCER_ACTION.UPDATE_HISTORY, value: data.history });
   } catch (err) {
     console.log(err);
   }
@@ -36,7 +36,7 @@ const clearHistory = async (token, dispatch) => {
     `${API_URL}user/history/all`,
     authHeader(token)
   );
-  dispatch({ type: "UPDATE_HISTORY", value: data.history });
+  dispatch({ type: REDUCER_ACTION.UPDATE_HISTORY, value: data.history });
 };
 
 const removeFromHistory = async (videoId, token, dispatch) => {
@@ -44,12 +44,12 @@ const removeFromHistory = async (videoId, token, dispatch) => {
     `${API_URL}user/history/${videoId}`,
     authHeader(token)
   );
-  dispatch({ type: "UPDATE_HISTORY", value: data.history });
+  dispatch({ type: REDUCER_ACTION.UPDATE_HISTORY, value: data.history });
 };
 
 const getLikedVideos = async (videoData, token, dispatch) => {
   const { data } = await axios.get(`${API_URL}user/likes`, authHeader(token));
-  dispatch({ type: "UPDATE_LIKED_VIDEOS", value: data.likes });
+  dispatch({ type: REDUCER_ACTION.UPDATE_LIKED_VIDEOS, value: data.likes });
 };
 
 const likeVideo = async (videoData, token, dispatch) => {
@@ -60,7 +60,7 @@ const likeVideo = async (videoData, token, dispatch) => {
     },
     authHeader(token)
   );
-  dispatch({ type: "UPDATE_LIKED_VIDEOS", value: data.likes });
+  dispatch({ type: REDUCER_ACTION.UPDATE_LIKED_VIDEOS, value: data.likes });
 };
 
 const removeFromLikes = async (videoId, token, dispatch) => {
@@ -68,7 +68,7 @@ const removeFromLikes = async (videoId, token, dispatch) => {
     `${API_URL}user/likes/${videoId}`,
     authHeader(token)
   );
-  dispatch({ type: "UPDATE_LIKED_VIDEOS", value: data.likes });
+  dispatch({ type: REDUCER_ACTION.UPDATE_LIKED_VIDEOS, value: data.likes });
 };
 
 const getAllPlaylists = async (token, dispatch) => {
@@ -81,7 +81,7 @@ const createPlaylist = async (playlistData, token, dispatch) => {
     { playlist: playlistData },
     authHeader(token)
   );
-  dispatch({ type: "UPDATE_PLAYLISTS", value: data.playlists });
+  dispatch({ type: REDUCER_ACTION.UPDATE_PLAYLISTS, value: data.playlists });
 };
 
 const deletePlaylist = async (id, token, dispatch) => {
@@ -90,7 +90,7 @@ const deletePlaylist = async (id, token, dispatch) => {
     authHeader(token)
   );
 
-  dispatch({ type: "UPDATE_PLAYLISTS", value: data.playlists });
+  dispatch({ type: REDUCER_ACTION.UPDATE_PLAYLISTS, value: data.playlists });
 };
 
 const getPlaylist = async (id, token, setPlaylistData) => {
@@ -128,7 +128,7 @@ const addToWatchLater = async (videoData, token, dispatch) => {
     { video: videoData },
     authHeader(token)
   );
-  dispatch({ type: "UPDATE_WATCHLATER", value: data.watchlater });
+  dispatch({ type: REDUCER_ACTION.UPDATE_WATCHLATER, value: data.watchlater });
 };
 
 const getWatchLater = async (token, dispatch) => {
@@ -136,7 +136,7 @@ const getWatchLater = async (token, dispatch) => {
     `${API_URL}user/watchlater`,
     authHeader(token)
   );
-  dispatch({ type: "UPDATE_WATCHLATER", value: data.watchlater });
+  dispatch({ type: REDUCER_ACTION.UPDATE_WATCHLATER, value: data.watchlater });
 };
 
 const removeFromWatchlater = async (videoId, token, dispatch) => {
@@ -144,7 +144,7 @@ const removeFromWatchlater = async (videoId, token, dispatch) => {
     `${API_URL}user/watchlater/${videoId}`,
     authHeader(token)
   );
-  dispatch({ type: "UPDATE_WATCHLATER", value: data.watchlater });
+  dispatch({ type: REDUCER_ACTION.UPDATE_WATCHLATER, value: data.watchlater });
 };
 
 export {

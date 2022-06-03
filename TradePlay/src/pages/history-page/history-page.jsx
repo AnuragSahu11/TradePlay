@@ -5,8 +5,11 @@ import { clearHistory } from "../../server-request/server-requests";
 import { SmallVideoCard } from "../../components/card/small-video-card";
 
 const HistoryPage = () => {
-  const { userDataState, userDataDispatch } = useAuth();
-  const { token, history } = userDataState;
+  const {
+    userDataState: { token, history },
+    userDataDispatch,
+  } = useAuth();
+
   const clearHistoryClick = () => {
     clearHistory(token, userDataDispatch);
   };

@@ -2,8 +2,10 @@ import { useAuth } from "../../../context";
 import { removeFromHistory } from "../../../server-request/server-requests";
 
 const RemoveFromHistory = ({ id }) => {
-  const { userDataState, userDataDispatch } = useAuth();
-  const { token } = userDataState;
+  const {
+    userDataState: { token },
+    userDataDispatch,
+  } = useAuth();
   const removeFromHistoryClick = () => {
     removeFromHistory(id, token, userDataDispatch);
   };

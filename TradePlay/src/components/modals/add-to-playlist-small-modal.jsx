@@ -10,12 +10,12 @@ const AddToPlaylistSmallModal = ({ videoData, switchModal }) => {
     switchModal();
   };
 
-  const playlist = playlists.map((item) => (
+  const playlist = playlists.map(({ _id, title }) => (
     <div
-      onClick={() => addToPlaylistClick(item._id)}
+      onClick={() => addToPlaylistClick(_id)}
       className="add-to-playlist-small is-3"
     >
-      {item.title}
+      {title}
     </div>
   ));
 

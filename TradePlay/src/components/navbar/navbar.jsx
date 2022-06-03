@@ -5,12 +5,9 @@ import "./navbar.css";
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const [showNav, setShowNav] = useState(" ");
+  const [showNav, setShowNav] = useState(false);
   const hamburgerClickHandler = () => {
-    if (showNav === " ") setShowNav("mobile-navbar-view");
-    if (showNav === "mobile-navbar-view") {
-      setShowNav(" ");
-    }
+    setShowNav((prevState) => !prevState);
   };
   return (
     <div className="nav">
@@ -56,7 +53,11 @@ const Navbar = () => {
         </div>
       </nav>
       <Search version={"mobile"} />
-      <div className={`mobile-navbar ${showNav} text-center flex-c-w`}>
+      <div
+        className={`mobile-navbar ${
+          showNav && "mobile-navbar-view"
+        } text-center flex-c-w`}
+      >
         <div className="text-center m-up-3 center-x">
           <i className="fas is-primary is-6 fa-play"></i>
           <p className="is-4">

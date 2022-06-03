@@ -1,18 +1,25 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../../../context";
-import { likeVideo, removeFromLikes } from "../../../server-request/server-requests";
+import {
+  likeVideo,
+  removeFromLikes,
+} from "../../../server-request/server-requests";
 import { inList } from "../../../utils";
 
 const CardLikes = ({ videoData, size }) => {
-  const { userDataState, userDataDispatch } = useAuth();
-  const { token, likes } = userDataState;
+  const {
+    userDataState: { token, likes },
+    userDataDispatch,
+  } = useAuth();
   const [isLiked, setIsLiked] = useState();
 
-  useEffect(() => setIsLiked(inList(likes, videoData._id)));
+  const { _id } = videoData;
+
+  useEffect(() => setIsLiked(inList(likes, _id)));
 
   const likeClickHandler = async () => {
     isLiked
-      ? removeFromLikes(videoData._id, token, userDataDispatch)
+      ? removeFromLikes(_id, token, userDataDispatch)
       : likeVideo(videoData, token, userDataDispatch);
   };
   return (

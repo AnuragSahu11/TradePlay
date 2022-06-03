@@ -2,8 +2,10 @@ import { useAuth } from "../../context";
 import { PlaylistList } from "../list/playlist-list";
 
 const AddToPlaylistModal = ({ isModalOpen, switchModal, videoData }) => {
-  const { userDataState, userDataDispatch } = useAuth();
-  const { playlists } = userDataState;
+  const {
+    userDataState: { playlists },
+    userDataDispatch,
+  } = useAuth();
 
   const outsideModalClick = () => {
     switchModal((prevState) => !prevState);

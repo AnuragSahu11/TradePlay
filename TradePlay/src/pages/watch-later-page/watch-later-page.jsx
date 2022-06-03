@@ -4,8 +4,10 @@ import { useAuth } from "../../context";
 import { getWatchLater } from "../../server-request/server-requests";
 
 const WatchLaterPage = () => {
-  const { userDataState, userDataDispatch } = useAuth();
-  const { token, watchlater } = userDataState;
+  const {
+    userDataState: { token, watchlater },
+    userDataDispatch,
+  } = useAuth();
 
   useEffect(() => {
     getWatchLater(token, userDataDispatch);

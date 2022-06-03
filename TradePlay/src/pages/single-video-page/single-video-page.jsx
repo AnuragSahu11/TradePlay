@@ -10,6 +10,7 @@ const SingleVideoPage = () => {
   const { id } = useParams();
   const [showModal, setShowModal] = useState(false);
   const [videoData, setVideoData] = useState({});
+  
   const switchModal = () => {
     setShowModal((prevState) => !prevState);
   };

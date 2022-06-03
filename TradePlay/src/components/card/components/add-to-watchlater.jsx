@@ -3,20 +3,22 @@ import { useAuth } from "../../../context";
 import { inList } from "../../../utils/in-list";
 import {
   addToWatchLater,
-  getWatchLater,
   removeFromWatchlater,
 } from "../../../server-request/server-requests";
 
 const AddToWatchLater = ({ videoData }) => {
-  const { userDataState, userDataDispatch } = useAuth();
-  const { token, watchlater } = userDataState;
-
+  const {
+    userDataState: { token, watchlater },
+    userDataDispatch,
+  } = useAuth();
   const [inWatchlater, setWatchLater] = useState(
     inList(watchlater, videoData._id)
   );
 
+  const { _id } = videoData;
+
   useEffect(() => {
-    setWatchLater(inList(watchlater, videoData._id));
+    setWatchLater(inList(watchlater, _id));
   });
 
   let buttonText = inWatchlater
@@ -24,8 +26,8 @@ const AddToWatchLater = ({ videoData }) => {
     : "Add to Watch Later";
 
   const watchlaterClick = () => {
-    inList(watchlater, videoData._id)
-      ? removeFromWatchlater(videoData._id, token, userDataDispatch)
+    inList(watchlater, _id)
+      ? removeFromWatchlater(_id, token, userDataDispatch)
       : addToWatchLater(videoData, token, userDataDispatch);
   };
 
@@ -41,23 +43,24 @@ const AddToWatchLater = ({ videoData }) => {
 };
 
 const AddToWatchlaterSmall = ({ videoData }) => {
-  const { userDataState, userDataDispatch } = useAuth();
-  const { token, watchlater } = userDataState;
-  const [inWatchlater, setInWatchlater] = useState(
-    inList(watchlater, videoData._id)
-  );
+  const {
+    userDataState: { token, watchlater },
+    userDataDispatch,
+  } = useAuth();
+
+  const { _id } = videoData;
+
+  const [inWatchlater, setInWatchlater] = useState(inList(watchlater, _id));
 
   useEffect(() => {
-    setInWatchlater(inList(watchlater, videoData._id));
+    setInWatchlater(inList(watchlater, _id));
   });
 
   const addToWatchlaterClick = () => {
     inWatchlater
-      ? removeFromWatchlater(videoData._id, token, userDataDispatch)
+      ? removeFromWatchlater(_id, token, userDataDispatch)
       : addToWatchLater(videoData, token, userDataDispatch);
   };
-
-  let buttonText = "click me";
 
   return (
     <i

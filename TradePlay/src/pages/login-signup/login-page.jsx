@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context";
 import { loginUser } from "../../server-request/server-requests";
+import { demoCredentials } from "../../utils/constants";
 import "./login.css";
 
 const LoginPage = () => {
   const { userDataDispatch } = useAuth();
   let location = useLocation();
   const navigate = useNavigate();
+
   let from = location.state?.from?.pathname || "/";
 
   const [loginCredentials, setLoginCredentials] = useState({
@@ -16,17 +18,8 @@ const LoginPage = () => {
   });
 
   const demoLoginClick = async () => {
-    setLoginCredentials({
-      email: "anurag@gmail.com",
-      password: "anurag",
-    });
-    await loginUser(
-      {
-        email: "anurag@gmail.com",
-        password: "anurag",
-      },
-      userDataDispatch
-    );
+    setLoginCredentials(demoCredentials);
+    await loginUser(demoCredentials, userDataDispatch);
 
     navigate(from, { replace: true });
   };

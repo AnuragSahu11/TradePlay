@@ -11,3 +11,7 @@ export const REDUCER_ACTION = {
   CLEAR_FILTER: "CLEAR_FILTER",
 };
 
+export const demoCredentials = {
+  email: "anurag@gmail.com",
+  password: "anurag",
+};

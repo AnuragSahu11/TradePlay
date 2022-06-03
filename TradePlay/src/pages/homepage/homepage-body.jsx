@@ -1,17 +1,20 @@
 import { useNavigate } from "react-router-dom";
 import { useVideos } from "../../context/video-context/videos-context";
 import { VideoCard } from "../../components/card/video-card";
+import { REDUCER_ACTION } from "../../utils/constants";
 
 const HomepageBody = () => {
   const navigate = useNavigate();
-  const { videoState, videoDispatch } = useVideos();
+  const {
+    videoState: { videos },
+    videoDispatch,
+  } = useVideos();
   const categorySelectClick = (name) => {
-    videoDispatch({ type: "CATEGORY_CHANGE", value: name });
+    videoDispatch({ type: REDUCER_ACTION.CATEGORY_CHANGE, value: name });
     navigate("/videoListing");
   };
-  const mostViewVideos = videoState.videos
-    .sort((a, b) => b.views - a.views)
-    .slice(0, 4);
+
+  const mostViewVideos = videos.sort((a, b) => b.views - a.views).slice(0, 4);
   return (
     <>
       <div className="homepage-categories width-100 flex-r-w space-evenly">

@@ -4,8 +4,10 @@ import { addToPlaylist } from "../../server-request/server-requests";
 
 const PlaylistList = ({ playlistData, videoData, action }) => {
   const { title, _id } = playlistData;
-  const { userDataState } = useAuth();
-  const { token } = userDataState;
+  const {
+    userDataState: { token },
+  } = useAuth();
+
   const navigate = useNavigate();
 
   const clickHandler = () => {
