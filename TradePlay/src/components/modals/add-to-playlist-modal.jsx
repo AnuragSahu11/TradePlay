@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useAuth } from "../../context";
-import { SinglePlaylistComponent } from "../video-listing/pages/playlists";
+import { PlaylistList } from "../list/playlist-list";
 
 const AddToPlaylistModal = ({ isModalOpen, switchModal, videoData }) => {
   const { userDataState, userDataDispatch } = useAuth();
@@ -24,7 +24,7 @@ const AddToPlaylistModal = ({ isModalOpen, switchModal, videoData }) => {
         <i className="fas fa-times" />
       </button>
       {playlists.map((item) => (
-        <SinglePlaylistComponent
+        <PlaylistList
           action={"add"}
           videoData={videoData}
           playlistData={item}

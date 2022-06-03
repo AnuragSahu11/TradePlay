@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useVideos } from "../../context/videos-context";
+import { useVideos } from "../../context/video-context/videos-context";
 
 const Search = ({ version }) => {
   const { videoState } = useVideos();

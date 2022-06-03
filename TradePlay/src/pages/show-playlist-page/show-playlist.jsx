@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { useAuth } from "../../../context";
-import { getPlaylist } from "../../../utils/server-requests";
-import { SmallVideoCard } from "../../card/small-video-card";
+import { SmallVideoCard } from "../../components/card/small-video-card";
+import { useAuth } from "../../context";
+import { getPlaylist } from "../../utils/server-requests";
+// import { SmallVideoCard } from "../../card/small-video-card";
 
-const ShowPlaylist = () => {
+
+const ShowPlaylistPage = () => {
   const { playlistId } = useParams();
   const { userDataState, userDataDispatch } = useAuth();
   const { token } = userDataState;
@@ -44,4 +46,4 @@ const ShowPlaylist = () => {
   );
 };
 
-export { ShowPlaylist };
+export { ShowPlaylistPage };

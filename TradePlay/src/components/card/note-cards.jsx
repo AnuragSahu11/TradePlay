@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useVideos } from "../../context/videos-context";
+import { useVideos } from "../../context";
 
 const AddNote = ({ currentVideoId }) => {
   const [showAddNotes, setShowNotes] = useState(false);

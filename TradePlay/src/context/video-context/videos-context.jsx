@@ -5,7 +5,7 @@ import {
   useReducer,
   useState,
 } from "react";
-import { getVideosFromAPI } from "../utils/server-requests";
+import { getVideosFromAPI } from "../../utils/server-requests";
 import { videoReducer } from "./video-reducer";
 
 const VideoContext = createContext();

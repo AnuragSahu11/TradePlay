@@ -1,25 +1,20 @@
+import { Footer, Navbar } from "./components";
 import {
-  Homepage,
-  Footer,
-  Navbar,
-  VideoListing,
-  Signup,
-  Login,
-} from "./components";
-import { Route, Routes } from "react-router-dom";
-import {
-  Explore,
-  WatchLater,
-  History,
-  LikesPage,
+  HomePage,
+  VideoListingPage,
+  SignupPage,
+  LoginPage,
+  HistoryPage,
+  ExplorePage,
   PlaylistPage,
-  ShowPlaylist,
-  Videopage,
+  LikedVideoPage,
+  WatchLaterPage,
   SingleVideoPage,
-  SearchResult,
-} from "./components/video-listing/pages";
+  SearchResultPage,
+  ShowPlaylistPage
+} from "./pages";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import Mockman from "mockman-js";
 import { RequiresAuth } from "./utils/requires-auth";
 
 function App() {
@@ -27,18 +22,17 @@ function App() {
     <div className="App">
       <Navbar />
       <Routes>
-        <Route path="/mock" element={<Mockman />} />
-        <Route path="/" element={<Homepage />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} />
 
-        <Route path="/videoListing" element={<VideoListing />}>
-          <Route path="/videoListing/" element={<Explore />} />
+        <Route path="/videoListing" element={<VideoListingPage />}>
+          <Route path="/videoListing/" element={<ExplorePage />} />
           <Route
             path="/videoListing/history"
             element={
               <RequiresAuth>
-                <History />
+                <HistoryPage />
               </RequiresAuth>
             }
           />
@@ -46,7 +40,7 @@ function App() {
             path="/videoListing/likesPage"
             element={
               <RequiresAuth>
-                <LikesPage />
+                <LikedVideoPage />
               </RequiresAuth>
             }
           />
@@ -54,7 +48,7 @@ function App() {
             path="/videoListing/watchLater"
             element={
               <RequiresAuth>
-                <WatchLater />
+                <WatchLaterPage />
               </RequiresAuth>
             }
           />
@@ -78,14 +72,13 @@ function App() {
             path="/videoListing/playlist/:playlistId"
             element={
               <RequiresAuth>
-                <ShowPlaylist />
+                <ShowPlaylistPage />
               </RequiresAuth>
             }
           />
-          <Route path="/videoListing/videopage" element={<Videopage />} />
           <Route
             path="/videoListing/search/:searchTerm"
-            element={<SearchResult />}
+            element={<SearchResultPage />}
           />
         </Route>
       </Routes>

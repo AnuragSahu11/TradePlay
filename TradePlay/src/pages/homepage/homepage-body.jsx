@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import { useVideos } from "../../context/videos-context";
-import { VideoCard } from "../card/video-card";
+import { useVideos } from "../../context/video-context/videos-context";
+import { VideoCard } from "../../components/card/video-card";
 
 const HomepageBody = () => {
   const navigate = useNavigate();

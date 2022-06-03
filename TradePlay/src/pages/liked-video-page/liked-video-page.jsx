@@ -1,10 +1,10 @@
-
-import { VideoCard } from "../../card/video-card";
-import { changeTitle } from "../../../utils";
+// import { VideoCard } from "../../card/video-card";
+import { changeTitle } from "../../utils";
 import { useEffect } from "react";
-import { useAuth } from "../../../context";
+import { useAuth } from "../../context";
+import { VideoCard } from "../../components/card/video-card";
 
-const LikesPage = () => {
+const LikedVideoPage = () => {
   const { userDataState, userDataDispatch } = useAuth();
   const { token, likes } = userDataState;
   const likedVideos = likes.map((item) => (
@@ -21,4 +21,4 @@ const LikesPage = () => {
   );
 };
 
-export { LikesPage };
+export { LikedVideoPage };

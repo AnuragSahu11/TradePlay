@@ -20,12 +20,10 @@
 }
 .hero-text {
   z-index: 1;
-  /* color: white; */
   margin-right: auto;
 }
 .hero-icon {
   font-size: 45rem;
-  /* text-shadow: 0 0 10px grey; */
   z-index: 1;
   margin-left: auto;
 }

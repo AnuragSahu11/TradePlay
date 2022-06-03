@@ -1,4 +1,4 @@
-import { changeCategory } from "../utils";
+import { changeCategory } from "../../utils";
 
 const videoReducer = (state, action) => {
   switch (action.type) {

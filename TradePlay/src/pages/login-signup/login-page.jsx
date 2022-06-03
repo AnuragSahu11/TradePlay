@@ -4,7 +4,7 @@ import { useAuth } from "../../context";
 import { loginUser } from "../../utils/server-requests";
 import "./login.css";
 
-const Login = () => {
+const LoginPage = () => {
   const { userDataDispatch } = useAuth();
   let location = useLocation();
   const navigate = useNavigate();
@@ -98,4 +98,4 @@ const Login = () => {
   );
 };
 
-export { Login };
+export { LoginPage };

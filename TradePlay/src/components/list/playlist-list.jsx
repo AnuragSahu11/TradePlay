@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../../context";
-import { addToPlaylist } from "../../../utils/server-requests";
+import { useAuth } from "../../context";
+import { addToPlaylist } from "../../utils/server-requests";
 
-const SinglePlaylistComponent = ({ playlistData, videoData, action }) => {
+const PlaylistList = ({ playlistData, videoData, action }) => {
   const { title, _id } = playlistData;
   const { userDataState } = useAuth();
   const { token } = userDataState;
@@ -30,4 +30,4 @@ const SinglePlaylistComponent = ({ playlistData, videoData, action }) => {
   );
 };
 
-export { SinglePlaylistComponent };
+export { PlaylistList };

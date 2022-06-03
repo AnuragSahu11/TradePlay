@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useVideos } from "../../context/videos-context";
+import { useVideos } from "../../context";
 import { AddNote, EditNote } from "./note-cards";
 
 const NoteCard = ({ currentVideoId }) => {

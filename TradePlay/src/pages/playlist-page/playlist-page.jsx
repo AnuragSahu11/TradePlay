@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { CreateNewPlaylistModal } from "../../modals/create-playlist-modal";
-import { DeletePlaylistModal } from "../../modals/delete-playlist-modal";
-import { SinglePlaylistComponent } from "./playlists";
-import { changeTitle } from "../../../utils";
-import { useAuth } from "../../../context";
+import { DeletePlaylistModal } from "../../components/modals/delete-playlist-modal";
+import { changeTitle } from "../../utils";
+import { PlaylistList } from "../../components";
+import { CreateNewPlaylistModal } from "../../components/modals/create-playlist-modal";
+import { useAuth } from "../../context";
 
 const PlaylistPage = () => {
   const { userDataState, userDataDispatch } = useAuth();
@@ -39,11 +39,7 @@ const PlaylistPage = () => {
           <p className="m-y-1 semibold">Create new Playlist</p>
         </div>
         {playlists.map((item) => (
-          <SinglePlaylistComponent
-            action={"view"}
-            playlistData={item}
-            videoData={item}
-          />
+          <PlaylistList action={"view"} playlistData={item} videoData={item} />
         ))}
         <div className="btn-vertical m-up-6 center-x center-text">
           <button

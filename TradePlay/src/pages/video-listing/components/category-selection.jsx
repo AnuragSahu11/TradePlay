@@ -1,4 +1,4 @@
-import { useVideos } from "../../context/videos-context";
+import { useVideos } from "../../../context/video-context/videos-context";
 
 const CategorySelection = () => {
   const { videoDispatch } = useVideos();

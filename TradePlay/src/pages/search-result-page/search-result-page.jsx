@@ -1,10 +1,11 @@
 import { useParams } from "react-router-dom";
-import { useVideos } from "../../../context/videos-context";
-import { VideoCard } from "../../card/video-card";
-import { changeTitle } from "../../../utils";
+import { useVideos } from "../../context/video-context/videos-context";
+// import { VideoCard } from "../../card/video-card";
+import { changeTitle } from "../../utils";
 import { useEffect } from "react";
+import { VideoCard } from "../../components/card/video-card";
 
-const SearchResult = () => {
+const SearchResultPage = () => {
   const { searchTerm } = useParams();
   const { videoState } = useVideos();
   const searchedVideos = videoState.videos
@@ -21,4 +22,4 @@ const SearchResult = () => {
   );
 };
 
-export { SearchResult };
+export { SearchResultPage };

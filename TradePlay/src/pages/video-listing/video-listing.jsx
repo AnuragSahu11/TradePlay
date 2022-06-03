@@ -1,8 +1,8 @@
-import { Sidebar } from "./sidebar";
+import { Sidebar } from "./components/sidebar";
 import { Outlet } from "react-router-dom";
 import "./main.css";
 
-const VideoListing = () => {
+const VideoListingPage = () => {
   return (
     <div className="flex-row width-100 video-listing">
       <Sidebar />
@@ -13,4 +13,4 @@ const VideoListing = () => {
   );
 };
 
-export { VideoListing };
+export { VideoListingPage };

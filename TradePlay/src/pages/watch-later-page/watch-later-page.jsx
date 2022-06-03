@@ -1,9 +1,10 @@
 import { useEffect } from "react";
-import { useAuth } from "../../../context";
-import { getWatchLater } from "../../../utils/server-requests";
-import { VideoCard } from "../../card/video-card";
+import { VideoCard } from "../../components/card/video-card";
+import { useAuth } from "../../context";
+import { getWatchLater } from "../../utils/server-requests";
+// import { VideoCard } from "../../card/video-card";
 
-const WatchLater = () => {
+const WatchLaterPage = () => {
   const { userDataState, userDataDispatch } = useAuth();
   const { token, watchlater } = userDataState;
 
@@ -24,4 +25,4 @@ const WatchLater = () => {
     </div>
   );
 };
-export { WatchLater };
+export { WatchLaterPage };

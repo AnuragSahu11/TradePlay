@@ -1,10 +1,11 @@
-import { useVideos } from "../../../context/videos-context";
-import { CategorySelection } from "../category-selection";
-import { VideoCard } from "../../card/video-card";
-import { changeTitle } from "../../../utils";
+import { useVideos } from "../../context/video-context/videos-context";
+import { CategorySelection } from "../video-listing/components/category-selection";
+// import { VideoCard } from "../../card/video-card";
+import { changeTitle } from "../../utils";
 import { useEffect } from "react";
+import { VideoCard } from "../../components/card/video-card";
 
-const Explore = () => {
+const ExplorePage = () => {
   const { videoState } = useVideos();
   useEffect(() => changeTitle("Explore videos"));
   const videoList = (list, category) => {
@@ -26,4 +27,4 @@ const Explore = () => {
   );
 };
 
-export { Explore };
+export { ExplorePage };

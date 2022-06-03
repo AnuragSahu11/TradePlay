@@ -1,6 +1,6 @@
 import "./login.css";
 
-const Signup = () => {
+const SignupPage = () => {
   return (
     <section className="signup-section m-up-5 p-x-1">
       <div className="signup br-3 elevated center-x m-y-6 shadow p-y-2 p-x-4">
@@ -62,4 +62,4 @@ const Signup = () => {
   );
 };
 
-export { Signup };
+export { SignupPage };

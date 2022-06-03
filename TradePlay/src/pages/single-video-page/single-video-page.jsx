@@ -1,12 +1,12 @@
 import { useParams } from "react-router-dom";
-import { CardLikes } from "../../card/card-likes";
+// import { CardLikes } from "../../card/card-likes";
 import { useEffect, useState } from "react";
-import { AddToPlaylistCardButton } from "../../card/add-to-playlist";
-import { AddToPlaylistSmallModal } from "../../modals/add-to-playlist-small-modal";
-import { AddToWatchlaterSmall } from "../../card/add-to-watchlater";
-import { NoteCard } from "../../card/note-card";
-import { changeTitle } from "../../../utils";
-import { getVideoFromAPI } from "../../../utils/server-requests";
+// import { AddToPlaylistCardButton } from "../../card/add-to-playlist";
+// import { AddToPlaylistSmallModal } from "../../modals/add-to-playlist-small-modal";
+// import { AddToWatchlaterSmall } from "../../card/add-to-watchlater";
+import { getVideoFromAPI } from "../../utils/server-requests";
+import { AddToPlaylistCardButton } from "../../components/card/add-to-playlist";
+import { CardLikes } from "../../components/card/card-likes";
 
 const SingleVideoPage = () => {
   const { id } = useParams();

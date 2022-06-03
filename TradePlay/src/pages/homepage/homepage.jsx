@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { changeTitle } from "../../utils";
 import chartVideo from "./images/chart.mp4";
 
-const Homepage = () => {
+const HomePage = () => {
   const navigate = useNavigate();
   useEffect(() => changeTitle("TradePlay"));
 
@@ -43,4 +43,4 @@ const Homepage = () => {
   );
 };
 
-export { Homepage };
+export { HomePage };
