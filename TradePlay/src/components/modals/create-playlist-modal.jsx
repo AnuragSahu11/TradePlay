@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useAuth } from "../../context";
-import { createPlaylist } from "../../utils/server-requests";
+import { createPlaylist } from "../../server-request/server-requests";
 
 const CreateNewPlaylistModal = ({ isModalOpen, switchModal }) => {
   const { userDataState, userDataDispatch } = useAuth();

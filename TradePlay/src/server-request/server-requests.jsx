@@ -1,6 +1,6 @@
 import axios from "axios";
-import { API_URL } from ".";
-import { authHeader } from "./auth-header";
+import { API_URL } from "../utils/constants";
+import { authHeader } from "../utils/index";
 
 const loginUser = async (credentials, dispatch) => {
   const { data } = await axios.post(`${API_URL}auth/login`, credentials);

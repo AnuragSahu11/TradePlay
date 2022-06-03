@@ -1,5 +1,5 @@
 import { useAuth } from "../../context";
-import { addToPlaylist } from "../../utils/server-requests";
+import { addToPlaylist } from "../../server-request/server-requests";
 
 const AddToPlaylistSmallModal = ({ videoData, switchModal }) => {
   const { userDataState, userDataDispatch } = useAuth();

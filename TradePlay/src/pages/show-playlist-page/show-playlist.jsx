@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { SmallVideoCard } from "../../components/card/small-video-card";
 import { useAuth } from "../../context";
-import { getPlaylist } from "../../utils/server-requests";
-// import { SmallVideoCard } from "../../card/small-video-card";
+import { getPlaylist } from "../../server-request/server-requests";
 
 
 const ShowPlaylistPage = () => {

@@ -1,12 +1,10 @@
 import { useParams } from "react-router-dom";
-// import { CardLikes } from "../../card/card-likes";
 import { useEffect, useState } from "react";
-// import { AddToPlaylistCardButton } from "../../card/add-to-playlist";
-// import { AddToPlaylistSmallModal } from "../../modals/add-to-playlist-small-modal";
-// import { AddToWatchlaterSmall } from "../../card/add-to-watchlater";
-import { getVideoFromAPI } from "../../utils/server-requests";
-import { AddToPlaylistCardButton } from "../../components/card/add-to-playlist";
-import { CardLikes } from "../../components/card/card-likes";
+import { getVideoFromAPI } from "../../server-request/server-requests";
+import { AddToPlaylistCardButton } from "../../components/card/components/add-to-playlist";
+import { CardLikes } from "../../components/card/components/card-likes";
+import { AddToPlaylistSmallModal } from "../../components/modals/add-to-playlist-small-modal";
+import { AddToWatchlaterSmall } from "../../components/card/components/add-to-watchlater";
 
 const SingleVideoPage = () => {
   const { id } = useParams();
@@ -57,9 +55,6 @@ const SingleVideoPage = () => {
           </div>
         </div>
       </div>
-      {/* <div className="single-video-page-note">
-        {<NoteCard currentVideoId={id} />}
-      </div> */}
     </div>
   );
 };

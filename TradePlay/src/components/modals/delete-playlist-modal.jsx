@@ -1,5 +1,5 @@
 import { useAuth } from "../../context";
-import { deletePlaylist } from "../../utils/server-requests";
+import { deletePlaylist } from "../../server-request/server-requests";
 
 const DeletePlaylistModal = ({ switchModal }) => {
   const { userDataState, userDataDispatch } = useAuth();

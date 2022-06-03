@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { useAuth } from "../../context";
-import { inList } from "../../utils/in-list";
+import { useAuth } from "../../../context";
+import { inList } from "../../../utils/in-list";
 import {
   addToWatchLater,
   getWatchLater,
   removeFromWatchlater,
-} from "../../utils/server-requests";
+} from "../../../server-request/server-requests";
 
 const AddToWatchLater = ({ videoData }) => {
   const { userDataState, userDataDispatch } = useAuth();

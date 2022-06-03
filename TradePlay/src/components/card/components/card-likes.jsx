@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { useAuth } from "../../context";
-import { likeVideo, removeFromLikes } from "../../utils/server-requests";
-import { inList } from "../../utils";
+import { useAuth } from "../../../context";
+import { likeVideo, removeFromLikes } from "../../../server-request/server-requests";
+import { inList } from "../../../utils";
 
 const CardLikes = ({ videoData, size }) => {
   const { userDataState, userDataDispatch } = useAuth();

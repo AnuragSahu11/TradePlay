@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context";
-import { addToPlaylist } from "../../utils/server-requests";
+import { addToPlaylist } from "../../server-request/server-requests";
 
 const PlaylistList = ({ playlistData, videoData, action }) => {
   const { title, _id } = playlistData;

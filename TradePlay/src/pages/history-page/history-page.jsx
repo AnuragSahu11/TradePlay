@@ -1,8 +1,7 @@
-// import { SmallVideoCard } from "../../card/small-video-card";
 import { changeTitle } from "../../utils";
 import { useEffect } from "react";
 import { useAuth } from "../../context";
-import { clearHistory } from "../../utils/server-requests";
+import { clearHistory } from "../../server-request/server-requests";
 import { SmallVideoCard } from "../../components/card/small-video-card";
 
 const HistoryPage = () => {

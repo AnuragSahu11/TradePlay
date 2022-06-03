@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useAuth } from "../../context";
 import { PlaylistList } from "../list/playlist-list";
 

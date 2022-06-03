@@ -1,17 +1,19 @@
+import { REDUCER_ACTION } from "../../utils/constants";
+
 const userDataReducer = (state, action) => {
   switch (action.type) {
-    case "SET_TOKEN":
+    case REDUCER_ACTION.SET_TOKEN:
       return { ...state, token: action.value };
-    case "UPDATE_HISTORY":
+    case REDUCER_ACTION.UPDATE_HISTORY:
       return { ...state, history: action.value };
-    case "UPDATE_LIKED_VIDEOS":
+    case REDUCER_ACTION.UPDATE_LIKED_VIDEOS:
       return {
         ...state,
         likes: action.value,
       };
-    case "UPDATE_PLAYLISTS":
+    case REDUCER_ACTION.UPDATE_PLAYLISTS:
       return { ...state, playlists: action.value };
-    case "UPDATE_WATCHLATER":
+    case REDUCER_ACTION.UPDATE_WATCHLATER:
       return { ...state, watchlater: action.value };
   }
 };

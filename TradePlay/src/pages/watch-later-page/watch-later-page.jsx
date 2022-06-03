@@ -1,8 +1,7 @@
 import { useEffect } from "react";
 import { VideoCard } from "../../components/card/video-card";
 import { useAuth } from "../../context";
-import { getWatchLater } from "../../utils/server-requests";
-// import { VideoCard } from "../../card/video-card";
+import { getWatchLater } from "../../server-request/server-requests";
 
 const WatchLaterPage = () => {
   const { userDataState, userDataDispatch } = useAuth();

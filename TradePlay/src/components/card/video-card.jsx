@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AddToPlaylistModal } from "../modals/add-to-playlist-modal";
-import { AddToPlaylistCardButton } from "./add-to-playlist";
-import { AddToWatchLater } from "./add-to-watchlater";
-import { CardLikes } from "./card-likes";
-import { addToHistory } from "../../utils/server-requests";
+import { AddToPlaylistCardButton } from "./components/add-to-playlist";
+import { AddToWatchLater } from "./components/add-to-watchlater";
+import { CardLikes } from "./components/card-likes";
+import { addToHistory } from "../../server-request/server-requests";
 import { useAuth } from "../../context";
 
 const VideoCard = ({ videoData }) => {

@@ -1,5 +1,5 @@
-import { useAuth } from "../../context";
-import { removeFromHistory } from "../../utils/server-requests";
+import { useAuth } from "../../../context";
+import { removeFromHistory } from "../../../server-request/server-requests";
 
 const RemoveFromHistory = ({ id }) => {
   const { userDataState, userDataDispatch } = useAuth();

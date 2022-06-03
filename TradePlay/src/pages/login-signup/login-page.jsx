@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context";
-import { loginUser } from "../../utils/server-requests";
+import { loginUser } from "../../server-request/server-requests";
 import "./login.css";
 
 const LoginPage = () => {
