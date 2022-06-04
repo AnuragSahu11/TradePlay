@@ -19,12 +19,14 @@ import {
   SearchResult,
 } from "./components/video-listing/pages";
 import "./App.css";
+import Mockman from "mockman-js";
 
 function App() {
   return (
     <div className="App">
       <Navbar />
       <Routes>
+        <Route path="/mock" element={<Mockman />} />
         <Route path="/" element={<Homepage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />

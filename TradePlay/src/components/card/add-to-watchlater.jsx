@@ -1,15 +1,22 @@
 import { useEffect, useState } from "react";
-import { useVideos } from "../../context/videos-context";
+import { useAuth } from "../../context";
 import { inList } from "../../utils/in-list";
+import {
+  addToWatchLater,
+  getWatchLater,
+  removeFromWatchlater,
+} from "../../utils/server-requests";
 
 const AddToWatchLater = ({ videoData }) => {
-  const { videoState, videoDispatch } = useVideos();
+  const { userDataState, userDataDispatch } = useAuth();
+  const { token, watchlater } = userDataState;
+
   const [inWatchlater, setWatchLater] = useState(
-    inList(videoState.watchlater, videoData._id)
+    inList(watchlater, videoData._id)
   );
 
   useEffect(() => {
-    setWatchLater(inList(videoState.watchlater, videoData._id));
+    setWatchLater(inList(watchlater, videoData._id));
   });
 
   let buttonText = inWatchlater
@@ -17,15 +24,11 @@ const AddToWatchLater = ({ videoData }) => {
     : "Add to Watch Later";
 
   const watchlaterClickHandler = () => {
-    if (inWatchlater) {
-      videoDispatch({
-        type: "REMOVE_FROM_WATCHLATER",
-        value: videoData._id,
-      });
-    } else {
-      videoDispatch({ type: "ADD_TO_WATCHLATER", value: videoData._id });
-    }
+    inList(watchlater, videoData._id)
+      ? removeFromWatchlater(videoData._id, token, userDataDispatch)
+      : addToWatchLater(videoData, token, userDataDispatch);
   };
+
   return (
     <button
       onClick={watchlaterClickHandler}

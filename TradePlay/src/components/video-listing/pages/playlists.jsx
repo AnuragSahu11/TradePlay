@@ -1,27 +1,31 @@
 import { useNavigate } from "react-router-dom";
-import { usePlaylist } from "../../../context/playlist-context";
+import { useAuth } from "../../../context";
+import { addToPlaylist } from "../../../utils/server-requests";
 
-const SinglePlaylistComponent = ({ name, videoId, action }) => {
-  const { playlistDispatch } = usePlaylist();
+const SinglePlaylistComponent = ({ playlistData, videoData, action }) => {
+  const { title, _id } = playlistData;
+  const { userDataState } = useAuth();
+  const { token } = userDataState;
   const navigate = useNavigate();
+
   const clickHandler = () => {
     switch (action) {
       case "view":
-        navigate(`/videoListing/playlist/${name}`);
+        navigate(`/videoListing/playlist/${_id}`);
+        break;
       case "add":
-        playlistDispatch({
-          type: "ADD_TO_PLAYLIST",
-          value: { name: name, id: videoId },
-        });
+        addToPlaylist(videoData, _id, token);
+        break;
     }
   };
+
   return (
     <div
       onClick={clickHandler}
       className="addToPlaylist playlist-list m-up-4 center-x  text-center p-x-2 br-3 create-playlist flex-row align-center is-4"
     >
       <i className="bx bx-play-circle is-primary is-5 m-r-1"></i>
-      <p className="m-y-1 regular text-center">{name}</p>
+      <p className="m-y-1 regular text-center">{title}</p>
     </div>
   );
 };

@@ -5,24 +5,23 @@ import {
   useReducer,
   useState,
 } from "react";
-import { getApiData } from "../utils/get-api-data";
+import { getVideosFromAPI } from "../utils/server-requests";
 import { videoReducer } from "./video-reducer";
 
 const VideoContext = createContext();
 const useVideos = () => useContext(VideoContext);
 const VideoProvider = ({ children }) => {
-  const [isLoading, setIsLoading] = useState(false);
   const [videoState, videoDispatch] = useReducer(
     videoReducer,
     initialVideoState
   );
+
   useEffect(async () => {
-    setIsLoading(true);
-    getApiData(videoDispatch);
-    setIsLoading(false);
+    getVideosFromAPI(videoDispatch);
   }, []);
+
   return (
-    <VideoContext.Provider value={{ videoState, videoDispatch, isLoading }}>
+    <VideoContext.Provider value={{ videoState, videoDispatch }}>
       {children}
     </VideoContext.Provider>
   );
@@ -31,10 +30,6 @@ const VideoProvider = ({ children }) => {
 const initialVideoState = {
   videos: [],
   category: "",
-  watchlater: [],
-  history: [],
-  like: [],
-  notes: [],
 };
 
 export { useVideos, VideoProvider };

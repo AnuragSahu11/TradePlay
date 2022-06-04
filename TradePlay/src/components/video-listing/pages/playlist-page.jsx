@@ -1,21 +1,26 @@
 import { useEffect, useState } from "react";
-import { usePlaylist } from "../../../context/playlist-context";
 import { CreateNewPlaylistModal } from "../../modals/create-playlist-modal";
 import { DeletePlaylistModal } from "../../modals/delete-playlist-modal";
 import { SinglePlaylistComponent } from "./playlists";
 import { changeTitle } from "../../../utils";
+import { useAuth } from "../../../context";
 
 const PlaylistPage = () => {
-  const { playlistState } = usePlaylist();
+  const { userDataState, userDataDispatch } = useAuth();
+  const { playlists } = userDataState;
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showDeletePlaylistModal, setShowDeletePlaylistModal] = useState(false);
+
   const switchShowDeletePlaylistModal = () => {
     setShowDeletePlaylistModal((prevState) => !prevState);
   };
+
   const createNewPlaylistclickHandler = () => {
     setIsModalOpen((prevState) => !prevState);
   };
+
   useEffect(() => changeTitle("Playlists"));
+
   return (
     <div className="playlist-page width-100">
       {isModalOpen && (
@@ -35,8 +40,12 @@ const PlaylistPage = () => {
           <i className="bx is-primary bx-plus is-5 m-r-1"></i>
           <p className="m-y-1 semibold">Create new Playlist</p>
         </div>
-        {playlistState.playlists.map((item) => (
-          <SinglePlaylistComponent name={item.name} action={"view"} />
+        {playlists.map((item) => (
+          <SinglePlaylistComponent
+            action={"view"}
+            playlistData={item}
+            videoData={item}
+          />
         ))}
         <div className="btn-vertical m-up-6 center-x center-text">
           <button

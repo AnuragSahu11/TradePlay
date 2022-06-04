@@ -1,19 +1,26 @@
-import { usePlaylist } from "../../context/playlist-context";
+import { useAuth } from "../../context";
+import { deletePlaylist } from "../../utils/server-requests";
 
 const DeletePlaylistModal = ({ switchModal }) => {
-  const { playlistState, playlistDispatch } = usePlaylist();
-  const deletePlaylistClickHandler = (name) => {
-    playlistDispatch({ type: "REMOVE_PLAYLIST", value: name });
+  const { userDataState, userDataDispatch } = useAuth();
+  const { token, playlists } = userDataState;
+
+  const deletePlaylistClickHandler = (id) => {
+    deletePlaylist(id, token, userDataDispatch);
   };
+
   const outsideModalClickHandler = () => {
     switchModal();
   };
+
   const insideModalClickHandler = (e) => {
     e.stopPropagation();
   };
+
   const closeModal = () => {
     switchModal();
   };
+
   return (
     <div onClick={outsideModalClickHandler} className="modal-wrapper">
       <div
@@ -28,13 +35,13 @@ const DeletePlaylistModal = ({ switchModal }) => {
           <div className="title text-center">Delete Playlist</div>
         </div>
         <div className="playlist-list flex-c-w width-100">
-          {playlistState.playlists.map((item) => (
+          {playlists.map((item) => (
             <div
-              onClick={() => deletePlaylistClickHandler(item.name)}
+              onClick={() => deletePlaylistClickHandler(item._id)}
               className="addToPlaylist playlist-list m-up-4 center-x  text-center p-x-2 br-3 create-playlist flex-row align-center is-4"
             >
               <i className="bx bx-play-circle is-primary is-5 m-r-1"></i>
-              <p className="m-y-1 regular text-center">{item.name}</p>
+              <p className="m-y-1 regular text-center">{item.title}</p>
             </div>
           ))}
         </div>

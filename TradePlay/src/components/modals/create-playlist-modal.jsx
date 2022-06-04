@@ -1,28 +1,34 @@
 import { useState } from "react";
-import { usePlaylist } from "../../context/playlist-context";
+import { useAuth } from "../../context";
+import { createPlaylist } from "../../utils/server-requests";
 
 const CreateNewPlaylistModal = ({ isModalOpen, switchModal }) => {
-  const { playlistDispatch } = usePlaylist();
-  const [playlistName, setPlaylistName] = useState("");
-  const [playlistDesc, setPlaylistDesc] = useState("");
+  const { userDataState, userDataDispatch } = useAuth();
+  const { token } = userDataState;
+  const [playlistData, setPlaylistData] = useState({
+    title: "",
+    description: "",
+  });
+
   const outsideModalClickHandler = () => {
     switchModal((prevState) => !prevState);
   };
+
   const insideModalClickHandler = (e) => {
     e.stopPropagation();
   };
+
   const closeModal = () => {
     switchModal((prevState) => !prevState);
   };
+
   const submitClickHandler = () => {
-    if (playlistName && playlistDesc) {
-      playlistDispatch({
-        type: "CREATE_PLAYLIST",
-        value: { name: playlistName, desc: playlistDesc },
-      });
+    if (playlistData.title && playlistData.description) {
+      createPlaylist(playlistData, token, userDataDispatch);
     }
     switchModal((prevState) => !prevState);
   };
+
   return (
     <div onClick={outsideModalClickHandler} className="modal-wrapper">
       <div
@@ -39,7 +45,9 @@ const CreateNewPlaylistModal = ({ isModalOpen, switchModal }) => {
             <div className="form-div">
               <p className="form-label">Playlist name</p>
               <input
-                onChange={(e) => setPlaylistName(e.target.value)}
+                onChange={(e) =>
+                  setPlaylistData({ ...playlistData, title: e.target.value })
+                }
                 type="text"
                 className="form-input input-focused"
                 placeholder="normal"
@@ -49,7 +57,12 @@ const CreateNewPlaylistModal = ({ isModalOpen, switchModal }) => {
             <div className="form-div">
               <p className="form-label">Playlist description</p>
               <input
-                onChange={(e) => setPlaylistDesc(e.target.value)}
+                onChange={(e) =>
+                  setPlaylistData({
+                    ...playlistData,
+                    description: e.target.value,
+                  })
+                }
                 type="text"
                 className="form-input input-focused"
                 placeholder="normal"
