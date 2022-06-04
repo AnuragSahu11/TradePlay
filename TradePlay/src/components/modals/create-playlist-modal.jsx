@@ -49,18 +49,20 @@ const CreateNewPlaylistModal = ({ isModalOpen, switchModal }) => {
           <div className="form width-100">
             <div className="form-div">
               <p className="form-label">Playlist name</p>
+              <i className="bx bxs-playlist"></i>
               <input
                 onChange={(e) =>
                   setPlaylistData({ ...playlistData, title: e.target.value })
                 }
                 type="text"
                 className="form-input input-focused"
-                placeholder="normal"
+                placeholder="Playlist name"
                 required=""
               />
             </div>
             <div className="form-div">
               <p className="form-label">Playlist description</p>
+              <i className="bx bx-info-circle"></i>
               <input
                 onChange={(e) =>
                   setPlaylistData({
@@ -70,15 +72,19 @@ const CreateNewPlaylistModal = ({ isModalOpen, switchModal }) => {
                 }
                 type="text"
                 className="form-input input-focused"
-                placeholder="normal"
+                placeholder="Playlist description"
                 required=""
               />
             </div>
           </div>
         </div>
         <div className="btn-horizontal">
-          <button onClick={submitClick} className="btn-grey btn-medium">
-            Submit
+          <button
+            onClick={submitClick}
+            className="btn-secondary btn-small btn-w-icon"
+          >
+            <i className="bx bx-list-plus"></i>
+            Create
           </button>
         </div>
       </div>

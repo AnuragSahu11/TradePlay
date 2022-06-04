@@ -37,6 +37,7 @@ const LoginPage = () => {
         </div>
         <div className="form-div m-up-1">
           <p className="form-label">Email</p>
+          <i className="fas fa-envelope"></i>
           <input
             onChange={(e) =>
               setLoginCredentials({
@@ -47,10 +48,11 @@ const LoginPage = () => {
             value={loginCredentials.email}
             type="email"
             className="form-input input-focused"
-            placeholder="enter your email id"
+            placeholder="Enter your Email"
             required=""
           />
           <p className="form-label m-up-2">Password</p>
+          <i className="fas fa-key"></i>
           <input
             onChange={(e) =>
               setLoginCredentials({
@@ -61,7 +63,7 @@ const LoginPage = () => {
             value={loginCredentials.password}
             type="password"
             className="form-input input-focused"
-            placeholder="enter your password"
+            placeholder="Enter your Password"
             required=""
           />
         </div>

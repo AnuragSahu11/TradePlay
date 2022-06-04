@@ -64,3 +64,6 @@ body {
 .is-primary {
   color: var(--primary);
 }
+.form-input {
+  width: 100%;
+}

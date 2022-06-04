@@ -9,31 +9,35 @@ const SignupPage = () => {
         </div>
         <div className="form-div m-up-1">
           <p className="form-label">Name</p>
+          <i className="fas fa-user"></i>
           <input
             type="text"
             className="form-input input-focused"
-            placeholder="enter your name"
+            placeholder="Enter your first name"
             required=""
           />
           <p className="form-label m-up-2">Last name</p>
+          <i className="fas fa-user"></i>
           <input
             type="text"
             className="form-input input-focused"
-            placeholder="enter your last name"
+            placeholder="Enter your last name"
             required=""
           />
           <p className="form-label m-up-2">Email</p>
+          <i className="fas fa-envelope"></i>
           <input
             type="email"
             className="form-input input-focused"
-            placeholder="enter your email"
+            placeholder="Enter your Email"
             required=""
           />
           <p className="form-label m-up-2">Password</p>
+          <i className="view-password fas fa-eye" />
           <input
             type="password"
             className="form-input input-focused"
-            placeholder="enter your password"
+            placeholder="Enter Password"
             required=""
           />
           <p className="form-label m-up-2">Confirm Password</p>
@@ -41,7 +45,7 @@ const SignupPage = () => {
           <input
             type="password"
             className="form-input input-focused"
-            placeholder="confirm password"
+            placeholder="Confirm password"
             required=""
           />
         </div>
