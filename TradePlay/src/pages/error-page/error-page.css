@@ -1,0 +1,8 @@
+.error-image {
+  width: 30vw;
+}
+@media only screen and (max-width: 788px) {
+  .error-image {
+    width: 70vw;
+  }
+}

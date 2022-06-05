@@ -11,7 +11,8 @@ import {
   WatchLaterPage,
   SingleVideoPage,
   SearchResultPage,
-  ShowPlaylistPage
+  ShowPlaylistPage,
+  ErrorPage,
 } from "./pages";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
@@ -25,7 +26,6 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
-
         <Route path="/videoListing" element={<VideoListingPage />}>
           <Route path="/videoListing/" element={<ExplorePage />} />
           <Route
@@ -81,6 +81,7 @@ function App() {
             element={<SearchResultPage />}
           />
         </Route>
+        <Route path="/*" element={<ErrorPage />} />
       </Routes>
       <Footer />
     </div>
