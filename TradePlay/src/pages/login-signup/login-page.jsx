@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context";
 import { loginUser } from "../../server-request/server-requests";
 import { demoCredentials } from "../../utils/constants";
+import toast from "react-hot-toast";
 import "./login.css";
 
 const LoginPage = () => {
@@ -24,9 +25,18 @@ const LoginPage = () => {
     navigate(from, { replace: true });
   };
 
+  const validateForm = () => {
+    const regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    return regex.test(email) && password;
+  };
+
   const loginClick = async () => {
-    await loginUser(loginCredentials, userDataDispatch);
-    navigate(from, { replace: true });
+    if (validateForm()) {
+      await loginUser(loginCredentials, userDataDispatch);
+      navigate(from, { replace: true });
+    } else {
+      toast.error("Input Correct Credentials");
+    }
   };
 
   return (

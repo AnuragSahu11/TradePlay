@@ -3,6 +3,22 @@ import { API_URL, REDUCER_ACTION } from "../utils/constants";
 import { authHeader } from "../utils/index";
 import toast from "react-hot-toast";
 
+const signUpUser = async (credentials) => {
+  const { email, password, firstName, lastName } = credentials;
+  try {
+    const { data } = await axios.post(`/api/auth/signup`, {
+      email,
+      password,
+      firstName,
+      lastName,
+    });
+    navigate("/login");
+    toast.success("Account created, Login to New Account");
+  } catch (error) {
+    toast.error("Sign up failed");
+  }
+};
+
 const loginUser = async (credentials, dispatch) => {
   try {
     const { data } = await axios.post(`${API_URL}auth/login`, credentials);
@@ -204,6 +220,7 @@ const removeFromWatchlater = async (videoId, token, dispatch) => {
 };
 
 export {
+  signUpUser,
   loginUser,
   getVideosFromAPI,
   getVideoFromAPI,
