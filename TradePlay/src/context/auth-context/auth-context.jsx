@@ -12,16 +12,14 @@ const useAuth = () => useContext(AuthContext);
 
 const AuthProvider = ({ children }) => {
   const initialUserData = {
-    token: "",
+    token: localStorage.getItem("token") || null,
     history: [],
     playlists: [],
     likes: [],
     watchlater: [],
   };
 
-  useEffect(() => {
-    
-  });
+  useEffect(() => {});
 
   const [userDataState, userDataDispatch] = useReducer(
     userDataReducer,
