@@ -12,6 +12,7 @@ import {
   SingleVideoPage,
   SearchResultPage,
   ShowPlaylistPage,
+  ErrorPage,
 } from "./pages";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
@@ -89,6 +90,7 @@ function App() {
             element={<SearchResultPage />}
           />
         </Route>
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
       <Footer />
     </div>

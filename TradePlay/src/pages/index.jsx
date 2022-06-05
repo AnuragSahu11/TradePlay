@@ -1,5 +1,6 @@
 export { HomePage } from "./homepage/homepage";
 export { LoginPage } from "./login-signup/login-page";
+export { ErrorPage } from "./error-page/error-page";
 export { SignupPage } from "./login-signup/signup-page";
 export { HistoryPage } from "./history-page/history-page";
 export { ExplorePage } from "./explore-page/explore-page";
