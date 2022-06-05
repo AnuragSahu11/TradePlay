@@ -1,11 +1,17 @@
 import axios from "axios";
 import { API_URL, REDUCER_ACTION } from "../utils/constants";
 import { authHeader } from "../utils/index";
+import toast from "react-hot-toast";
 
 const loginUser = async (credentials, dispatch) => {
-  const { data } = await axios.post(`${API_URL}auth/login`, credentials);
-  dispatch({ type: REDUCER_ACTION.SET_TOKEN, value: data.encodedToken });
-  localStorage.setItem("token", data.encodedToken);
+  try {
+    const { data } = await axios.post(`${API_URL}auth/login`, credentials);
+    dispatch({ type: REDUCER_ACTION.SET_TOKEN, value: data.encodedToken });
+    localStorage.setItem("token", data.encodedToken);
+    toast.success("Login Successfull");
+  } catch (err) {
+    toast.error("Login Failed");
+  }
 };
 
 const getVideosFromAPI = async (dispatch) => {
@@ -26,25 +32,33 @@ const addToHistory = async (video, token, dispatch) => {
       authHeader(token)
     );
     dispatch({ type: REDUCER_ACTION.UPDATE_HISTORY, value: data.history });
-  } catch (err) {
-    console.log(err);
-  }
+  } catch (err) {}
 };
 
 const clearHistory = async (token, dispatch) => {
-  const { data } = await axios.delete(
-    `${API_URL}user/history/all`,
-    authHeader(token)
-  );
-  dispatch({ type: REDUCER_ACTION.UPDATE_HISTORY, value: data.history });
+  try {
+    const { data } = await axios.delete(
+      `${API_URL}user/history/all`,
+      authHeader(token)
+    );
+    dispatch({ type: REDUCER_ACTION.UPDATE_HISTORY, value: data.history });
+    toast.success("Cleared History");
+  } catch (err) {
+    toast.error("Cleared History");
+  }
 };
 
 const removeFromHistory = async (videoId, token, dispatch) => {
-  const { data } = await axios.delete(
-    `${API_URL}user/history/${videoId}`,
-    authHeader(token)
-  );
-  dispatch({ type: REDUCER_ACTION.UPDATE_HISTORY, value: data.history });
+  try {
+    const { data } = await axios.delete(
+      `${API_URL}user/history/${videoId}`,
+      authHeader(token)
+    );
+    dispatch({ type: REDUCER_ACTION.UPDATE_HISTORY, value: data.history });
+    toast.success("Removed from history");
+  } catch (err) {
+    toast.error("Removed from history failed");
+  }
 };
 
 const getLikedVideos = async (videoData, token, dispatch) => {
@@ -53,22 +67,29 @@ const getLikedVideos = async (videoData, token, dispatch) => {
 };
 
 const likeVideo = async (videoData, token, dispatch) => {
-  const { data } = await axios.post(
-    `${API_URL}user/likes`,
-    {
-      video: videoData,
-    },
-    authHeader(token)
-  );
-  dispatch({ type: REDUCER_ACTION.UPDATE_LIKED_VIDEOS, value: data.likes });
+  try {
+    const { data } = await axios.post(
+      `${API_URL}user/likes`,
+      {
+        video: videoData,
+      },
+      authHeader(token)
+    );
+    dispatch({ type: REDUCER_ACTION.UPDATE_LIKED_VIDEOS, value: data.likes });
+    toast.success("Liked Video");
+  } catch (err) {
+    toast.error("Like Video Failed");
+  }
 };
 
 const removeFromLikes = async (videoId, token, dispatch) => {
-  const { data } = await axios.delete(
-    `${API_URL}user/likes/${videoId}`,
-    authHeader(token)
-  );
-  dispatch({ type: REDUCER_ACTION.UPDATE_LIKED_VIDEOS, value: data.likes });
+  try {
+    const { data } = await axios.delete(
+      `${API_URL}user/likes/${videoId}`,
+      authHeader(token)
+    );
+    dispatch({ type: REDUCER_ACTION.UPDATE_LIKED_VIDEOS, value: data.likes });
+  } catch (err) {}
 };
 
 const getAllPlaylists = async (token, dispatch) => {
@@ -76,21 +97,30 @@ const getAllPlaylists = async (token, dispatch) => {
 };
 
 const createPlaylist = async (playlistData, token, dispatch) => {
-  const { data } = await axios.post(
-    `${API_URL}user/playlists`,
-    { playlist: playlistData },
-    authHeader(token)
-  );
-  dispatch({ type: REDUCER_ACTION.UPDATE_PLAYLISTS, value: data.playlists });
+  try {
+    const { data } = await axios.post(
+      `${API_URL}user/playlists`,
+      { playlist: playlistData },
+      authHeader(token)
+    );
+    dispatch({ type: REDUCER_ACTION.UPDATE_PLAYLISTS, value: data.playlists });
+    toast.success("Playlist Created");
+  } catch (err) {
+    toast.error("Playlist Creation failed");
+  }
 };
 
 const deletePlaylist = async (id, token, dispatch) => {
-  const { data } = await axios.delete(
-    `${API_URL}user/playlists/${id}`,
-    authHeader(token)
-  );
-
-  dispatch({ type: REDUCER_ACTION.UPDATE_PLAYLISTS, value: data.playlists });
+  try {
+    const { data } = await axios.delete(
+      `${API_URL}user/playlists/${id}`,
+      authHeader(token)
+    );
+    dispatch({ type: REDUCER_ACTION.UPDATE_PLAYLISTS, value: data.playlists });
+    toast.success("Playlist Deleted");
+  } catch (err) {
+    toast.success("Delete Failed");
+  }
 };
 
 const getPlaylist = async (id, token, setPlaylistData) => {
@@ -102,11 +132,16 @@ const getPlaylist = async (id, token, setPlaylistData) => {
 };
 
 const addToPlaylist = async (videoData, id, token) => {
-  const { data } = await axios.post(
-    `${API_URL}user/playlists/${id}`,
-    { video: videoData },
-    authHeader(token)
-  );
+  try {
+    const { data } = await axios.post(
+      `${API_URL}user/playlists/${id}`,
+      { video: videoData },
+      authHeader(token)
+    );
+    toast.success("Video Added to Playlist");
+  } catch (err) {
+    toast.error("Add to Playlist failed");
+  }
 };
 
 const removeFromPlaylist = async (
@@ -115,20 +150,33 @@ const removeFromPlaylist = async (
   token,
   setPlaylistData
 ) => {
-  const { data } = await axios.delete(
-    `${API_URL}user/playlists/${playlistId}/${videoId}`,
-    authHeader(token)
-  );
-  setPlaylistData(data.playlist);
+  try {
+    const { data } = await axios.delete(
+      `${API_URL}user/playlists/${playlistId}/${videoId}`,
+      authHeader(token)
+    );
+    setPlaylistData(data.playlist);
+    toast.success("Removed from Playlist");
+  } catch (err) {
+    toast.error("Remove from Playlist failed");
+  }
 };
 
 const addToWatchLater = async (videoData, token, dispatch) => {
-  const { data } = await axios.post(
-    `${API_URL}user/watchlater`,
-    { video: videoData },
-    authHeader(token)
-  );
-  dispatch({ type: REDUCER_ACTION.UPDATE_WATCHLATER, value: data.watchlater });
+  try {
+    const { data } = await axios.post(
+      `${API_URL}user/watchlater`,
+      { video: videoData },
+      authHeader(token)
+    );
+    dispatch({
+      type: REDUCER_ACTION.UPDATE_WATCHLATER,
+      value: data.watchlater,
+    });
+    toast.success("Added to Watchlater");
+  } catch (err) {
+    toast.error("Add to Watchlater failed");
+  }
 };
 
 const getWatchLater = async (token, dispatch) => {
@@ -140,11 +188,19 @@ const getWatchLater = async (token, dispatch) => {
 };
 
 const removeFromWatchlater = async (videoId, token, dispatch) => {
-  const { data } = await axios.delete(
-    `${API_URL}user/watchlater/${videoId}`,
-    authHeader(token)
-  );
-  dispatch({ type: REDUCER_ACTION.UPDATE_WATCHLATER, value: data.watchlater });
+  try {
+    const { data } = await axios.delete(
+      `${API_URL}user/watchlater/${videoId}`,
+      authHeader(token)
+    );
+    dispatch({
+      type: REDUCER_ACTION.UPDATE_WATCHLATER,
+      value: data.watchlater,
+    });
+    toast.success("Removed from Watchlater");
+  } catch (err) {
+    toast.error("Remove from Watchlater failed");
+  }
 };
 
 export {

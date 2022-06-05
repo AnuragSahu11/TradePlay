@@ -1,16 +1,5 @@
-.pointer {
-  cursor: pointer;
-}
 
-.sidebar {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  width: 7vw;
-  position: sticky;
-  top: 14vh;
-  height: 85vh;
-}
+
 .create-playlist {
   border: 3px solid black;
 }

@@ -5,6 +5,10 @@ body {
   color: var(--font-dark);
 }
 
+.pointer {
+  cursor: pointer;
+}
+
 /* Color Palette */
 
 :root {
