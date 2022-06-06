@@ -2,15 +2,11 @@ import { Search } from "./search";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./navbar.css";
-import { useAuth } from "../../context/auth-context/auth-context";
 import { NavbarButtons } from "./components/navbar-buttons";
 import { LogoutModal } from "../modals/logout-modal";
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const {
-    userDataState: { token },
-  } = useAuth();
   const [showNav, setShowNav] = useState(false);
   const [showLogout, setShowLogout] = useState(false);
   const toggleLogout = () => {
@@ -58,7 +54,7 @@ const Navbar = () => {
               >
                 <i className="bx is-4 bxs-bookmarks"></i>
               </button>
-              <NavbarButtons token={token} toggleLogout={toggleLogout} />
+              <NavbarButtons toggleLogout={toggleLogout} />
             </div>
           </div>
         </nav>

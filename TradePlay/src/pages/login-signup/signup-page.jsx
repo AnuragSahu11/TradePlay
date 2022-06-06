@@ -2,6 +2,7 @@ import { useState } from "react";
 import { signUpUser } from "../../server-request/server-requests";
 import "./login.css";
 import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 const SignupPage = () => {
   const [viewPassword, setViewPassword] = useState({
@@ -137,9 +138,9 @@ const SignupPage = () => {
           >
             Create new Account
           </button>
-          <a href="" className="is-2 link">
+          <Link to="/login" className="is-2 link">
             Already have an account
-          </a>
+          </Link>
         </div>
       </div>
     </section>

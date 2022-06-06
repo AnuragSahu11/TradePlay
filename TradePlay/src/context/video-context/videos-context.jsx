@@ -1,10 +1,4 @@
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useReducer,
-  useState,
-} from "react";
+import { createContext, useContext, useEffect, useReducer } from "react";
 import { getVideosFromAPI } from "../../server-request/server-requests";
 import { videoReducer } from "./video-reducer";
 
@@ -15,7 +9,6 @@ const VideoProvider = ({ children }) => {
     videoReducer,
     initialVideoState
   );
-
   useEffect(async () => {
     getVideosFromAPI(videoDispatch);
   }, []);

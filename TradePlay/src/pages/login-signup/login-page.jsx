@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context";
 import { loginUser } from "../../server-request/server-requests";
 import { demoCredentials } from "../../utils/constants";
@@ -81,9 +81,6 @@ const LoginPage = () => {
           <input type="checkbox" className="" />
           Remember me
         </label>
-        <a href="" className="link-secondary m-l-6">
-          Forgot password
-        </a>
         <div className="btn-vertical m-up-3 center-text">
           <button onClick={loginClick} className="btn-primary m-dw-1 btn-small">
             Login
@@ -94,9 +91,9 @@ const LoginPage = () => {
           >
             Login using Demo credentials
           </button>
-          <a onClick={() => navigate("/signup")} className=" link">
+          <Link to={"/signup"} className="is-2 link">
             Create Account
-          </a>
+          </Link>
         </div>
       </div>
     </section>

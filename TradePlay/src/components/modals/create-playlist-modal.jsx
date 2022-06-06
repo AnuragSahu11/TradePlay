@@ -1,4 +1,5 @@
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { useAuth } from "../../context";
 import { createPlaylist } from "../../server-request/server-requests";
 
@@ -30,6 +31,8 @@ const CreateNewPlaylistModal = ({ isModalOpen, switchModal }) => {
   const submitClick = () => {
     if (title && description) {
       createPlaylist(playlistData, token, userDataDispatch);
+    } else {
+      toast.error("Enter correct details");
     }
     switchModal((prevState) => !prevState);
   };
