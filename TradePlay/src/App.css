@@ -67,3 +67,13 @@ body {
 .form-input {
   width: 100%;
 }
+:root {
+  --background-white: white;
+}
+.dark-theme {
+  --background-white: #171717;
+  --input-grey: #2c3032;
+}
+input {
+  background-color: var(--input-grey);
+}
