@@ -1,53 +1,84 @@
+import { Footer, Navbar } from "./components";
 import {
-  Homepage,
-  Footer,
-  Navbar,
-  VideoListing,
-  Signup,
-  Login,
-} from "./components";
-import { Route, Routes } from "react-router-dom";
-import {
-  Explore,
-  WatchLater,
-  History,
-  LikesPage,
+  HomePage,
+  VideoListingPage,
+  SignupPage,
+  LoginPage,
+  HistoryPage,
+  ExplorePage,
   PlaylistPage,
-  ShowPlaylist,
-  Videopage,
+  LikedVideoPage,
+  WatchLaterPage,
   SingleVideoPage,
-  SearchResult,
-} from "./components/video-listing/pages";
+  SearchResultPage,
+  ShowPlaylistPage
+} from "./pages";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import Mockman from "mockman-js";
+import { RequiresAuth } from "./utils/requires-auth";
 
 function App() {
   return (
     <div className="App">
       <Navbar />
       <Routes>
-        <Route path="/mock" element={<Mockman />} />
-        <Route path="/" element={<Homepage />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/videoListing" element={<VideoListing />}>
-          <Route path="/videoListing/" element={<Explore />} />
-          <Route path="/videoListing/history" element={<History />} />
-          <Route path="/videoListing/likesPage" element={<LikesPage />} />
-          <Route path="/videoListing/watchLater" element={<WatchLater />} />
-          <Route path="/videoListing/:id" element={<SingleVideoPage />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} />
+
+        <Route path="/videoListing" element={<VideoListingPage />}>
+          <Route path="/videoListing/" element={<ExplorePage />} />
+          <Route
+            path="/videoListing/history"
+            element={
+              <RequiresAuth>
+                <HistoryPage />
+              </RequiresAuth>
+            }
+          />
+          <Route
+            path="/videoListing/likesPage"
+            element={
+              <RequiresAuth>
+                <LikedVideoPage />
+              </RequiresAuth>
+            }
+          />
+          <Route
+            path="/videoListing/watchLater"
+            element={
+              <RequiresAuth>
+                <WatchLaterPage />
+              </RequiresAuth>
+            }
+          />
+          <Route
+            path="/videoListing/:id"
+            element={
+              <RequiresAuth>
+                <SingleVideoPage />
+              </RequiresAuth>
+            }
+          />
           <Route
             path="/videoListing/playlist"
-            element={<PlaylistPage />}
+            element={
+              <RequiresAuth>
+                <PlaylistPage />
+              </RequiresAuth>
+            }
           ></Route>
           <Route
             path="/videoListing/playlist/:playlistId"
-            element={<ShowPlaylist />}
+            element={
+              <RequiresAuth>
+                <ShowPlaylistPage />
+              </RequiresAuth>
+            }
           />
-          <Route path="/videoListing/videopage" element={<Videopage />} />
           <Route
             path="/videoListing/search/:searchTerm"
-            element={<SearchResult />}
+            element={<SearchResultPage />}
           />
         </Route>
       </Routes>
