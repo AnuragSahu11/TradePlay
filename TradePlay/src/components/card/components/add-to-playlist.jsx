@@ -3,7 +3,10 @@ import { removeFromPlaylist } from "../../../server-request/server-requests";
 
 const AddToPlaylistCardButton = ({ size, switchModal }) => {
   return (
-    <i onClick={switchModal} className={`is-4 bx bxs-playlist ${size}`}></i>
+    <i
+      onClick={switchModal}
+      className={`is-4 pointer bx bxs-playlist ${size}`}
+    ></i>
   );
 };
 
@@ -17,7 +20,10 @@ const RemoveFromPlaylist = ({ videoId, playlistId, setPlaylistData }) => {
   };
 
   return (
-    <i onClick={removeClick} className="bx is-4 is-primary bx-trash-alt"></i>
+    <i
+      onClick={removeClick}
+      className="bx is-4 pointer is-primary bx-trash-alt"
+    ></i>
   );
 };
 

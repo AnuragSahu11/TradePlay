@@ -13,15 +13,13 @@ const AddToPlaylistSmallModal = ({ videoData, switchModal, setLoading }) => {
   const playlist = playlists.map(({ _id, title }) => (
     <div
       onClick={() => addToPlaylistClick(_id)}
-      className="add-to-playlist-small is-3"
+      className="add-to-playlist-small pointer p-x-2 is-3"
     >
       {title}
     </div>
   ));
 
-  return (
-    <div className="single-video-playlist-list p-y-1 p-x-3">{playlist}</div>
-  );
+  return <div className="single-video-playlist-list p-y-1 ">{playlist}</div>;
 };
 
 export { AddToPlaylistSmallModal };

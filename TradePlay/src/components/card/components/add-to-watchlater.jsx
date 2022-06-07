@@ -34,7 +34,7 @@ const AddToWatchLater = ({ videoData, setLoading }) => {
   return (
     <button
       onClick={watchlaterClick}
-      className="btn-secondary btn-custom m-dw-1 btn-small"
+      className="btn-secondary pointer btn-custom m-dw-1 btn-small"
     >
       <i className="bx bx-bookmark-plus m-r-1"></i>
       {buttonText}
@@ -65,7 +65,9 @@ const AddToWatchlaterSmall = ({ videoData, setLoading }) => {
   return (
     <i
       onClick={addToWatchlaterClick}
-      className={`${inWatchlater && "is-primary"} is-5 bx bxs-bookmarks`}
+      className={`${
+        inWatchlater && "is-primary"
+      } pointer is-5 bx bxs-bookmarks`}
     ></i>
   );
 };

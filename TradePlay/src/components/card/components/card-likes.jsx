@@ -23,7 +23,7 @@ const CardLikes = ({ videoData, size, setLoading }) => {
       : likeVideo(videoData, token, userDataDispatch, setLoading);
   };
   return (
-    <div className="like-button flex-r-w space-evenly align-center">
+    <div className="like-button pointer flex-r-w space-evenly align-center">
       {isLiked ? (
         <i
           onClick={likeClickHandler}
