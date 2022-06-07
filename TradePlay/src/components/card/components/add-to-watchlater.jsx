@@ -6,7 +6,7 @@ import {
   removeFromWatchlater,
 } from "../../../server-request/server-requests";
 
-const AddToWatchLater = ({ videoData }) => {
+const AddToWatchLater = ({ videoData, setLoading }) => {
   const {
     userDataState: { token, watchlater },
     userDataDispatch,
@@ -27,8 +27,8 @@ const AddToWatchLater = ({ videoData }) => {
 
   const watchlaterClick = () => {
     inList(watchlater, _id)
-      ? removeFromWatchlater(_id, token, userDataDispatch)
-      : addToWatchLater(videoData, token, userDataDispatch);
+      ? removeFromWatchlater(_id, token, userDataDispatch, setLoading)
+      : addToWatchLater(videoData, token, userDataDispatch, setLoading);
   };
 
   return (
@@ -42,7 +42,7 @@ const AddToWatchLater = ({ videoData }) => {
   );
 };
 
-const AddToWatchlaterSmall = ({ videoData }) => {
+const AddToWatchlaterSmall = ({ videoData, setLoading }) => {
   const {
     userDataState: { token, watchlater },
     userDataDispatch,
@@ -58,8 +58,8 @@ const AddToWatchlaterSmall = ({ videoData }) => {
 
   const addToWatchlaterClick = () => {
     inWatchlater
-      ? removeFromWatchlater(_id, token, userDataDispatch)
-      : addToWatchLater(videoData, token, userDataDispatch);
+      ? removeFromWatchlater(_id, token, userDataDispatch, setLoading)
+      : addToWatchLater(videoData, token, userDataDispatch, setLoading);
   };
 
   return (

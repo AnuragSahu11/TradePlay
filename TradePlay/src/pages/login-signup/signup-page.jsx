@@ -2,14 +2,16 @@ import { useState } from "react";
 import { signUpUser } from "../../server-request/server-requests";
 import "./login.css";
 import toast from "react-hot-toast";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useVideos } from "../../context";
 
 const SignupPage = () => {
+  const navigate = useNavigate();
+  const { setPageLoading } = useVideos();
   const [viewPassword, setViewPassword] = useState({
     password: false,
     confirmPassword: false,
   });
-
   const [formField, setFormField] = useState({
     firstName: "",
     lastName: "",
@@ -33,10 +35,12 @@ const SignupPage = () => {
     );
   };
 
-  const createAccClick = () => {
-    console.log(formField);
+  const createAccClick = async () => {
     if (validateForm()) {
-      signUpUser(formField);
+      try {
+        await signUpUser(formField, setPageLoading);
+        navigate("/login");
+      } catch (err) {}
     } else {
       toast.error("Enter correct details");
     }
@@ -50,7 +54,7 @@ const SignupPage = () => {
         </div>
         <div className="form-div m-up-1">
           <p className="form-label">First Name</p>
-          <i className="fas fa-user"></i>
+          <i className="is-lighter fas fa-user"></i>
           <input
             type="text"
             onChange={(e) =>
@@ -61,7 +65,7 @@ const SignupPage = () => {
             required=""
           />
           <p className="form-label m-up-2">Last name</p>
-          <i className="fas fa-user"></i>
+          <i className="is-lighter fas fa-user"></i>
           <input
             type="text"
             onChange={(e) =>
@@ -72,7 +76,7 @@ const SignupPage = () => {
             required=""
           />
           <p className="form-label m-up-2">Email</p>
-          <i className="fas fa-envelope"></i>
+          <i className="is-lighter fas fa-envelope"></i>
           <input
             type="email"
             onChange={(e) =>
@@ -90,7 +94,7 @@ const SignupPage = () => {
                 password: !viewPassword.password,
               })
             }
-            className="view-password fas fa-eye"
+            className="view-password is-lighter fas fa-eye"
           />
           <input
             type={viewPassword.password ? "text" : "password"}
@@ -109,7 +113,7 @@ const SignupPage = () => {
                 confirmPassword: !viewPassword.confirmPassword,
               })
             }
-            className="view-password fas fa-eye"
+            className="view-password is-lighter fas fa-eye"
           />
           <input
             type={viewPassword.confirmPassword ? "text" : "password"}

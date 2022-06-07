@@ -1,4 +1,8 @@
-import { initialUserData, REDUCER_ACTION } from "../../utils/constants";
+import {
+  initialUserData,
+  loggedOutUserData,
+  REDUCER_ACTION,
+} from "../../utils/constants";
 
 const userDataReducer = (state, action) => {
   switch (action.type) {
@@ -16,7 +20,7 @@ const userDataReducer = (state, action) => {
     case REDUCER_ACTION.UPDATE_WATCHLATER:
       return { ...state, watchlater: action.value };
     case REDUCER_ACTION.LOGOUT:
-      return initialUserData;
+      return loggedOutUserData;
   }
 };
 export { userDataReducer };

@@ -8,23 +8,27 @@
 }
 .ldio-lr5pi4mkvnd div {
   position: absolute;
-  width: 32px;
-  height: 32px;
+  width: 20px;
+  height: 20px;
   border: 4px solid #e15b64;
   border-top-color: transparent;
   border-radius: 50%;
 }
 .ldio-lr5pi4mkvnd div {
   animation: ldio-lr5pi4mkvnd 1s linear infinite;
-  top: 100px;
-  left: 100px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 .loadingio-spinner-rolling-x2ephjwj9x {
-  width: 200px;
-  height: 200px;
+  z-index: 10;
+  top: 0px;
+  position: absolute;
+  width: 100%;
+  height: 100%;
   display: inline-block;
   overflow: hidden;
-  background: #ffffff;
+  background: rgb(255, 255, 255, 0.8);
 }
 .ldio-lr5pi4mkvnd {
   width: 100%;

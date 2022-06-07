@@ -6,11 +6,12 @@ import { AddToWatchLater } from "./components/add-to-watchlater";
 import { CardLikes } from "./components/card-likes";
 import { addToHistory } from "../../server-request/server-requests";
 import { useAuth } from "../../context";
+import { Loader } from "../loader/loader";
 
 const VideoCard = ({ videoData }) => {
-  const [showModal, setShowModal] = useState(false);
   let navigate = useNavigate();
-
+  const [showModal, setShowModal] = useState(false);
+  const [isLoading, setLoading] = useState(false);
   const {
     userDataState: { token },
     userDataDispatch,
@@ -29,10 +30,12 @@ const VideoCard = ({ videoData }) => {
 
   return (
     <div className="video-card-container">
+      <Loader isLoading={isLoading} size="medium" />
       {showModal && (
         <AddToPlaylistModal
           videoData={videoData}
-          switchModal={switchShowModal}
+          toggleModal={switchShowModal}
+          setLoading={setLoading}
         />
       )}
       <div className="homepage-videos-cards video-card m-y-2 m-x-2">
@@ -56,12 +59,12 @@ const VideoCard = ({ videoData }) => {
               </div>
             </div>
             <div className="textbox flex-r-w space-evenly m-dw-1 align-center">
-              <CardLikes videoData={videoData} />
+              <CardLikes setLoading={setLoading} videoData={videoData} />
               <AddToPlaylistCardButton switchModal={switchShowModal} />
             </div>
 
             <div className="btn-vertical">
-              <AddToWatchLater videoData={videoData} />
+              <AddToWatchLater setLoading={setLoading} videoData={videoData} />
             </div>
           </div>
         </div>

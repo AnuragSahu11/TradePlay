@@ -6,7 +6,7 @@ import {
 } from "../../../server-request/server-requests";
 import { inList } from "../../../utils";
 
-const CardLikes = ({ videoData, size }) => {
+const CardLikes = ({ videoData, size, setLoading }) => {
   const {
     userDataState: { token, likes },
     userDataDispatch,
@@ -19,8 +19,8 @@ const CardLikes = ({ videoData, size }) => {
 
   const likeClickHandler = async () => {
     isLiked
-      ? removeFromLikes(_id, token, userDataDispatch)
-      : likeVideo(videoData, token, userDataDispatch);
+      ? removeFromLikes(_id, token, userDataDispatch, setLoading)
+      : likeVideo(videoData, token, userDataDispatch, setLoading);
   };
   return (
     <div className="like-button flex-r-w space-evenly align-center">

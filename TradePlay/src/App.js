@@ -18,10 +18,12 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import { RequiresAuth } from "./utils/requires-auth";
 import { Toaster } from "react-hot-toast";
+import { Loader } from "./components/loader/loader";
 
 function App() {
   return (
     <div className="App">
+      <Loader size={"large"} />
       <Toaster
         toastOptions={{
           style: {

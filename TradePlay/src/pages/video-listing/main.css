@@ -19,11 +19,11 @@
 }
 
 .modal-wrapper {
-  position: absolute;
+  position: fixed;
   background-color: transparent;
   z-index: 1;
   height: 100vh;
-  width: 100%;
+  width: 85vw;
 }
 .modal {
   background-color: var(--white);
@@ -167,6 +167,9 @@
   }
   .sidebar {
     display: none;
+  }
+  .modal-wrapper {
+    width: 100vw;
   }
   .modal {
     width: 80vw;

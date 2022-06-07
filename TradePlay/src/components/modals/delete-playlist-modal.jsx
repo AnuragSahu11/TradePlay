@@ -1,14 +1,15 @@
-import { useAuth } from "../../context";
+import { useAuth, useVideos } from "../../context";
 import { deletePlaylist } from "../../server-request/server-requests";
 
 const DeletePlaylistModal = ({ switchModal }) => {
+  const { setPageLoading } = useVideos();
   const {
     userDataState: { token, playlists },
     userDataDispatch,
   } = useAuth();
 
   const deletePlaylistClick = (id) => {
-    deletePlaylist(id, token, userDataDispatch);
+    deletePlaylist(id, token, userDataDispatch, setPageLoading);
   };
 
   const outsideModalClick = () => {
