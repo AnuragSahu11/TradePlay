@@ -1,15 +1,13 @@
 import { useNavigate } from "react-router-dom";
-import { RemoveFromPlaylist } from "./add-to-playlist";
-import { RemoveFromHistory } from "./remove-from-history";
-import { addToHistory } from "../../utils/add-to-history";
-import { useVideos } from "../../context/videos-context";
+import { RemoveFromPlaylist } from "./components/add-to-playlist";
+import { RemoveFromHistory } from "./components/remove-from-history";
+import { useVideos } from "../../context";
 
-const SmallVideoCard = ({ videoData, playlistName, remove }) => {
+const SmallVideoCard = ({ videoData, playlistId, remove, setPlaylistData }) => {
   const navigate = useNavigate();
-  const { videoDispatch } = useVideos();
-  const { _id, title, creator } = videoData;
+  const { _id, title, creator, id } = videoData;
+
   const goToVideoPage = () => {
-    addToHistory(_id, videoDispatch);
     navigate(`/videoListing/${_id}`);
   };
 
@@ -43,7 +41,11 @@ const SmallVideoCard = ({ videoData, playlistName, remove }) => {
                   <p className="text">Lorem ipsum</p>
                 </div>
                 {remove === "playlist" ? (
-                  <RemoveFromPlaylist playlistName={playlistName} id={_id} />
+                  <RemoveFromPlaylist
+                    setPlaylistData={setPlaylistData}
+                    playlistId={playlistId}
+                    videoId={_id}
+                  />
                 ) : (
                   <RemoveFromHistory id={_id} />
                 )}

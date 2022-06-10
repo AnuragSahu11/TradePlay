@@ -1,30 +1,37 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { addToHistoryUtil } from "../../context/context-utils";
-import { useVideos } from "../../context/videos-context";
 import { AddToPlaylistModal } from "../modals/add-to-playlist-modal";
-import { AddToPlaylistCardButton } from "./add-to-playlist";
-import { AddToWatchLater } from "./add-to-watchlater";
-import { CardLikes } from "./card-likes";
-import { addToHistory } from "../../utils/add-to-history";
+import { AddToPlaylistCardButton } from "./components/add-to-playlist";
+import { AddToWatchLater } from "./components/add-to-watchlater";
+import { CardLikes } from "./components/card-likes";
+import { addToHistory } from "../../server-request/server-requests";
+import { useAuth } from "../../context";
 
 const VideoCard = ({ videoData }) => {
   const [showModal, setShowModal] = useState(false);
   let navigate = useNavigate();
-  const { videoDispatch } = useVideos();
+
+  const {
+    userDataState: { token },
+    userDataDispatch,
+  } = useAuth();
+
   const { _id, title, creator, category } = videoData;
+
   const switchShowModal = () => {
     setShowModal((prevState) => !prevState);
   };
-  const cardClickHandler = () => {
-    addToHistory(_id, videoDispatch);
+
+  const cardClickHandler = async () => {
+    addToHistory(videoData, token, userDataDispatch);
     navigate(`/videoListing/${_id}`);
   };
+
   return (
     <div className="video-card-container">
       {showModal && (
         <AddToPlaylistModal
-          videoId={videoData._id}
+          videoData={videoData}
           switchModal={switchShowModal}
         />
       )}

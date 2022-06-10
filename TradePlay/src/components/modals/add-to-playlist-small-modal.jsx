@@ -1,24 +1,26 @@
-import { usePlaylist } from "../../context/playlist-context";
+import { useAuth } from "../../context";
+import { addToPlaylist } from "../../server-request/server-requests";
 
-const AddToPlaylistSmallModal = ({ videoId, switchModal }) => {
-  const { playlistState, playlistDispatch } = usePlaylist();
-  const addToPlaylistClickHandler = ({ name }) => {
-    playlistDispatch({
-      type: "ADD_TO_PLAYLIST",
-      value: { name: name, id: videoId },
-    });
+const AddToPlaylistSmallModal = ({ videoData, switchModal }) => {
+  const { userDataState, userDataDispatch } = useAuth();
+  const { playlists, token } = userDataState;
+
+  const addToPlaylistClick = (playlistId) => {
+    addToPlaylist(videoData, playlistId, token);
     switchModal();
   };
-  const playlists = playlistState.playlists.map((item) => (
+
+  const playlist = playlists.map(({ _id, title }) => (
     <div
-      onClick={() => addToPlaylistClickHandler(item)}
+      onClick={() => addToPlaylistClick(_id)}
       className="add-to-playlist-small is-3"
     >
-      {item.name}
+      {title}
     </div>
   ));
+
   return (
-    <div className="single-video-playlist-list p-y-1 p-x-3">{playlists}</div>
+    <div className="single-video-playlist-list p-y-1 p-x-3">{playlist}</div>
   );
 };
 

@@ -1,16 +1,20 @@
-import { useState } from "react";
-import { usePlaylist } from "../../context/playlist-context";
-import { SinglePlaylistComponent } from "../video-listing/pages/playlists";
+import { useAuth } from "../../context";
+import { PlaylistList } from "../list/playlist-list";
 
-const AddToPlaylistModal = ({ isModalOpen, switchModal, videoId }) => {
-  const { playlistState, playlistDispatch } = usePlaylist();
+const AddToPlaylistModal = ({ isModalOpen, switchModal, videoData }) => {
+  const {
+    userDataState: { playlists },
+    userDataDispatch,
+  } = useAuth();
 
-  const outsideModalClickHandler = () => {
+  const outsideModalClick = () => {
     switchModal((prevState) => !prevState);
   };
-  const insideModalClickHandler = (e) => {
+
+  const insideModalClick = (e) => {
     e.stopPropagation();
   };
+
   const closeModal = () => {
     switchModal((prevState) => !prevState);
   };
@@ -20,11 +24,11 @@ const AddToPlaylistModal = ({ isModalOpen, switchModal, videoId }) => {
       <button onClick={closeModal} className="card-cross btn-close is-medium">
         <i className="fas fa-times" />
       </button>
-      {playlistState.playlists.map((item) => (
-        <SinglePlaylistComponent
+      {playlists.map((item) => (
+        <PlaylistList
           action={"add"}
-          videoId={videoId}
-          name={item.name}
+          videoData={videoData}
+          playlistData={item}
         />
       ))}
     </div>

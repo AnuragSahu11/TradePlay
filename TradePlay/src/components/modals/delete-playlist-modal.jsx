@@ -1,23 +1,32 @@
-import { usePlaylist } from "../../context/playlist-context";
+import { useAuth } from "../../context";
+import { deletePlaylist } from "../../server-request/server-requests";
 
 const DeletePlaylistModal = ({ switchModal }) => {
-  const { playlistState, playlistDispatch } = usePlaylist();
-  const deletePlaylistClickHandler = (name) => {
-    playlistDispatch({ type: "REMOVE_PLAYLIST", value: name });
+  const {
+    userDataState: { token, playlists },
+    userDataDispatch,
+  } = useAuth();
+
+  const deletePlaylistClick = (id) => {
+    deletePlaylist(id, token, userDataDispatch);
   };
-  const outsideModalClickHandler = () => {
+
+  const outsideModalClick = () => {
     switchModal();
   };
-  const insideModalClickHandler = (e) => {
+
+  const insideModalClick = (e) => {
     e.stopPropagation();
   };
+
   const closeModal = () => {
     switchModal();
   };
+
   return (
-    <div onClick={outsideModalClickHandler} className="modal-wrapper">
+    <div onClick={outsideModalClick} className="modal-wrapper">
       <div
-        onClick={(e) => insideModalClickHandler(e)}
+        onClick={(e) => insideModalClick(e)}
         className="modal center-x m-up-6 shadow"
       >
         <button onClick={closeModal} className="card-cross btn-close is-medium">
@@ -28,13 +37,13 @@ const DeletePlaylistModal = ({ switchModal }) => {
           <div className="title text-center">Delete Playlist</div>
         </div>
         <div className="playlist-list flex-c-w width-100">
-          {playlistState.playlists.map((item) => (
+          {playlists.map(({ _id, title }) => (
             <div
-              onClick={() => deletePlaylistClickHandler(item.name)}
+              onClick={() => deletePlaylistClick(_id)}
               className="addToPlaylist playlist-list m-up-4 center-x  text-center p-x-2 br-3 create-playlist flex-row align-center is-4"
             >
               <i className="bx bx-play-circle is-primary is-5 m-r-1"></i>
-              <p className="m-y-1 regular text-center">{item.name}</p>
+              <p className="m-y-1 regular text-center">{title}</p>
             </div>
           ))}
         </div>

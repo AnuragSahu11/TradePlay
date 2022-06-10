@@ -1,32 +1,43 @@
 import { useState } from "react";
-import { usePlaylist } from "../../context/playlist-context";
+import { useAuth } from "../../context";
+import { createPlaylist } from "../../server-request/server-requests";
 
 const CreateNewPlaylistModal = ({ isModalOpen, switchModal }) => {
-  const { playlistDispatch } = usePlaylist();
-  const [playlistName, setPlaylistName] = useState("");
-  const [playlistDesc, setPlaylistDesc] = useState("");
-  const outsideModalClickHandler = () => {
+  const {
+    userDataState: { token },
+    userDataDispatch,
+  } = useAuth();
+
+  const [playlistData, setPlaylistData] = useState({
+    title: "",
+    description: "",
+  });
+
+  const { title, description } = playlistData;
+
+  const outsideModalClick = () => {
     switchModal((prevState) => !prevState);
   };
-  const insideModalClickHandler = (e) => {
+
+  const insideModalClick = (e) => {
     e.stopPropagation();
   };
+
   const closeModal = () => {
     switchModal((prevState) => !prevState);
   };
-  const submitClickHandler = () => {
-    if (playlistName && playlistDesc) {
-      playlistDispatch({
-        type: "CREATE_PLAYLIST",
-        value: { name: playlistName, desc: playlistDesc },
-      });
+
+  const submitClick = () => {
+    if (title && description) {
+      createPlaylist(playlistData, token, userDataDispatch);
     }
     switchModal((prevState) => !prevState);
   };
+
   return (
-    <div onClick={outsideModalClickHandler} className="modal-wrapper">
+    <div onClick={outsideModalClick} className="modal-wrapper">
       <div
-        onClick={(e) => insideModalClickHandler(e)}
+        onClick={(e) => insideModalClick(e)}
         className="modal center-x m-up-6 shadow"
       >
         <button onClick={closeModal} className="card-cross btn-close is-medium">
@@ -38,29 +49,42 @@ const CreateNewPlaylistModal = ({ isModalOpen, switchModal }) => {
           <div className="form width-100">
             <div className="form-div">
               <p className="form-label">Playlist name</p>
+              <i className="bx bxs-playlist"></i>
               <input
-                onChange={(e) => setPlaylistName(e.target.value)}
+                onChange={(e) =>
+                  setPlaylistData({ ...playlistData, title: e.target.value })
+                }
                 type="text"
                 className="form-input input-focused"
-                placeholder="normal"
+                placeholder="Playlist name"
                 required=""
               />
             </div>
             <div className="form-div">
               <p className="form-label">Playlist description</p>
+              <i className="bx bx-info-circle"></i>
               <input
-                onChange={(e) => setPlaylistDesc(e.target.value)}
+                onChange={(e) =>
+                  setPlaylistData({
+                    ...playlistData,
+                    description: e.target.value,
+                  })
+                }
                 type="text"
                 className="form-input input-focused"
-                placeholder="normal"
+                placeholder="Playlist description"
                 required=""
               />
             </div>
           </div>
         </div>
         <div className="btn-horizontal">
-          <button onClick={submitClickHandler} className="btn-grey btn-medium">
-            Submit
+          <button
+            onClick={submitClick}
+            className="btn-secondary btn-small btn-w-icon"
+          >
+            <i className="bx bx-list-plus"></i>
+            Create
           </button>
         </div>
       </div>
