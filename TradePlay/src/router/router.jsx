@@ -12,7 +12,7 @@ import {
   SearchResultPage,
   ShowPlaylistPage,
   ErrorPage,
-} from "./pages";
+} from "../pages";
 import { Route, Routes } from "react-router-dom";
 import { RequiresAuth } from "./requires-auth";
 
@@ -25,7 +25,7 @@ const Router = () => {
 
       <Route path="/videoListing" element={<VideoListingPage />}>
         <Route path="/videoListing/" element={<ExplorePage />} />
-        
+
         <Route element={<RequiresAuth />}>
           <Route path="/videoListing/history" element={<HistoryPage />} />
           <Route path="/videoListing/likesPage" element={<LikedVideoPage />} />

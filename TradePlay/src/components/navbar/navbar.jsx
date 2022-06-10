@@ -4,11 +4,17 @@ import { Link, useNavigate } from "react-router-dom";
 import "./navbar.css";
 import { NavbarButtons } from "./components/navbar-buttons";
 import { LogoutModal } from "../modals/logout-modal";
+import { useAuth } from "../../context";
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const {
+    userDataState: { token },
+  } = useAuth();
+
   const [showNav, setShowNav] = useState(false);
   const [showLogout, setShowLogout] = useState(false);
+
   const toggleLogout = () => {
     setShowLogout((prevState) => !prevState);
   };
@@ -88,6 +94,20 @@ const Navbar = () => {
           <Link className="is-3 m-up-2 is-dark" to="/videoListing/history">
             History
           </Link>
+          {token ? (
+            <div onClick={toggleLogout} className="pointer is-3 m-up-2 is-dark">
+              Log out
+            </div>
+          ) : (
+            <>
+              <Link className="is-3 m-up-2 is-dark" to="/login">
+                Log In
+              </Link>
+              <Link className="is-3 m-up-2 is-dark" to="/signup">
+                Sign Up
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </>
