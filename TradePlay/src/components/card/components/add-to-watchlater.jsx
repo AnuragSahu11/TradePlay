@@ -6,8 +6,11 @@ import {
   removeFromWatchlater,
 } from "../../../server-request/server-requests";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const AddToWatchLater = ({ videoData, setLoading }) => {
+  const navigate = useNavigate();
+
   const {
     userDataState: { token, watchlater },
     userDataDispatch,
@@ -27,9 +30,14 @@ const AddToWatchLater = ({ videoData, setLoading }) => {
     : "Add to Watch Later";
 
   const watchlaterClick = () => {
-    inList(watchlater, _id)
-      ? removeFromWatchlater(_id, token, userDataDispatch, setLoading)
-      : addToWatchLater(videoData, token, userDataDispatch, setLoading);
+    if (token) {
+      inList(watchlater, _id)
+        ? removeFromWatchlater(_id, token, userDataDispatch, setLoading)
+        : addToWatchLater(videoData, token, userDataDispatch, setLoading);
+    } else {
+      toast.error("Login needed");
+      navigate("/login");
+    }
   };
 
   return (
@@ -44,7 +52,6 @@ const AddToWatchLater = ({ videoData, setLoading }) => {
 };
 
 const AddToWatchlaterSmall = ({ videoData, setLoading }) => {
-  const navigate = useNavigate();
   const {
     userDataState: { token, watchlater },
     userDataDispatch,
@@ -59,14 +66,9 @@ const AddToWatchlaterSmall = ({ videoData, setLoading }) => {
   });
 
   const addToWatchlaterClick = () => {
-    if (token) {
-      inWatchlater
-        ? removeFromWatchlater(_id, token, userDataDispatch, setLoading)
-        : addToWatchLater(videoData, token, userDataDispatch, setLoading);
-    } else {
-      toast.error("Login needed");
-      navigate("/login");
-    }
+    inWatchlater
+      ? removeFromWatchlater(_id, token, userDataDispatch, setLoading)
+      : addToWatchLater(videoData, token, userDataDispatch, setLoading);
   };
 
   return (
