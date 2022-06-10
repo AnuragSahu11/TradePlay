@@ -5,22 +5,13 @@ import {
   useReducer,
   useState,
 } from "react";
+import { initialUserData } from "../../utils/constants";
 import { userDataReducer } from "./auth-reducer";
 
 const AuthContext = createContext();
 const useAuth = () => useContext(AuthContext);
 
 const AuthProvider = ({ children }) => {
-  const initialUserData = {
-    token: localStorage.getItem("token") || null,
-    history: [],
-    playlists: [],
-    likes: [],
-    watchlater: [],
-  };
-
-  useEffect(() => {});
-
   const [userDataState, userDataDispatch] = useReducer(
     userDataReducer,
     initialUserData

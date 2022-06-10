@@ -1,5 +1,13 @@
 export const API_URL = "/api/";
 
+export const initialUserData = {
+  token: localStorage.getItem("token") || null,
+  history: [],
+  playlists: [],
+  likes: [],
+  watchlater: [],
+};
+
 export const REDUCER_ACTION = {
   SET_TOKEN: "SET_TOKEN",
   UPDATE_HISTORY: "UPDATE_HISTORY",
@@ -9,6 +17,7 @@ export const REDUCER_ACTION = {
   VIDEOS_DATA: "VIDEOS_DATA",
   CATEGORY_CHANGE: "CATEGORY_CHANGE",
   CLEAR_FILTER: "CLEAR_FILTER",
+  LOGOUT: "LOGOUT_USER",
 };
 
 export const demoCredentials = {
