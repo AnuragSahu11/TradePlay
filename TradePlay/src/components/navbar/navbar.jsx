@@ -30,12 +30,15 @@ const Navbar = () => {
           </div>
           <div className="nav-menu">
             <div className="nav-start flex-row">
-              <div onClick={() => navigate("/")} className="nav-item link">
+              <div
+                onClick={() => navigate("/")}
+                className="pointer nav-item link"
+              >
                 Home
               </div>
               <div
                 onClick={() => navigate("/videoListing")}
-                className="nav-item link"
+                className="pointer nav-item link"
               >
                 Learn
               </div>
