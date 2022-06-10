@@ -5,6 +5,7 @@ import { loginUser } from "../../server-request/server-requests";
 import { demoCredentials } from "../../utils/constants";
 import toast from "react-hot-toast";
 import "./login.css";
+import { changeTitle } from "../../utils";
 
 const LoginPage = () => {
   const { setPageLoading } = useVideos();
@@ -39,6 +40,8 @@ const LoginPage = () => {
       toast.error("Input Correct Credentials");
     }
   };
+
+  changeTitle("Login to TradePlay");
 
   return (
     <section className="login-section m-up-6 p-up-6 p-x-1">

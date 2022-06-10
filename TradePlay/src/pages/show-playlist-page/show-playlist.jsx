@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { SmallVideoCard } from "../../components/card/small-video-card";
 import { useAuth, useVideos } from "../../context";
 import { getPlaylist } from "../../server-request/server-requests";
+import { changeTitle } from "../../utils";
 
 const ShowPlaylistPage = () => {
   const { setPageLoading } = useVideos();
@@ -12,9 +13,13 @@ const ShowPlaylistPage = () => {
     userDataState: { token },
     userDataDispatch,
   } = useAuth();
+
   if (!playlistId) navigate("/login");
+
   const [playlistData, setPlaylistData] = useState({});
+
   const { videos, title, description } = playlistData || false;
+
   const getPlaylistVideos = async () => {
     await getPlaylist(
       playlistId,
@@ -28,6 +33,8 @@ const ShowPlaylistPage = () => {
   useEffect(() => {
     getPlaylistVideos();
   }, []);
+
+  changeTitle(title || "Playlists");
 
   const videoList =
     videos &&

@@ -7,7 +7,7 @@ import chartVideo from "./images/chart.mp4";
 
 const HomePage = () => {
   const navigate = useNavigate();
-  useEffect(() => changeTitle("TradePlay"));
+  changeTitle("TradePlay");
 
   return (
     <section className="homepage-section">

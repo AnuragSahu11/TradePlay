@@ -4,6 +4,7 @@ import "./login.css";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import { useVideos } from "../../context";
+import { changeTitle } from "../../utils";
 
 const SignupPage = () => {
   const navigate = useNavigate();
@@ -45,6 +46,8 @@ const SignupPage = () => {
       toast.error("Enter correct details");
     }
   };
+
+  changeTitle("Create an account");
 
   return (
     <section className="signup-section m-up-5 p-x-1">

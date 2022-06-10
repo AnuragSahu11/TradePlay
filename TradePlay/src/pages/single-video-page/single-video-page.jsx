@@ -6,6 +6,7 @@ import { CardLikes } from "../../components/card/components/card-likes";
 import { AddToPlaylistSmallModal } from "../../components/modals/add-to-playlist-small-modal";
 import { AddToWatchlaterSmall } from "../../components/card/components/add-to-watchlater";
 import { Loader } from "../../components/loader/loader";
+import { changeTitle } from "../../utils";
 
 const SingleVideoPage = () => {
   const { id } = useParams();
@@ -23,6 +24,7 @@ const SingleVideoPage = () => {
 
   const { videoLink, description, title } = videoData;
 
+  changeTitle(title || "TradePlay");
   return (
     <div className="single-video-page grid-70-30">
       <div className="">

@@ -12,7 +12,7 @@ const LikedVideoPage = () => {
     <VideoCard key={item._id} videoData={item} />
   ));
 
-  useEffect(() => changeTitle("Liked Videos"));
+  changeTitle("Liked Videos");
 
   return (
     <div className="flex-r-w space-evenly likes-page">

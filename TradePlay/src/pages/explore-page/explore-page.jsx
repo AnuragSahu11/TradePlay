@@ -8,16 +8,21 @@ const ExplorePage = () => {
   const {
     videoState: { videos, category },
   } = useVideos();
+
   useEffect(() => changeTitle("Explore videos"));
+
   const videoList = (list, category) => {
     if (category) {
       return list.filter((item) => item.category === category);
     }
     return [...videos];
   };
+
   const explorePageVideos = videoList(videos, category)
     .sort((a, b) => b.views - a.views)
     .map((item) => <VideoCard key={item.id} videoData={item} />);
+
+  changeTitle("Explore TradePlay");
   return (
     <div className="explore-page">
       <CategorySelection />
