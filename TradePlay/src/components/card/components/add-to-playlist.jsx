@@ -1,10 +1,24 @@
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../context";
 import { removeFromPlaylist } from "../../../server-request/server-requests";
 
 const AddToPlaylistCardButton = ({ size, switchModal }) => {
+  const navigate = useNavigate();
+  const {
+    userDataState: { token },
+  } = useAuth();
+  const clickHandler = () => {
+    if (token) {
+      switchModal();
+    } else {
+      toast.error("Login needed");
+      navigate("/login");
+    }
+  };
   return (
     <i
-      onClick={switchModal}
+      onClick={clickHandler}
       className={`is-4 pointer bx bxs-playlist ${size}`}
     ></i>
   );

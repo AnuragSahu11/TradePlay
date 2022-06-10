@@ -44,7 +44,7 @@ const Navbar = () => {
               <Search version="desktop" />
               <button
                 onClick={() => navigate("/videoListing/playlist")}
-                className="btn-icon nav-icons m-l-1"
+                className="btn-icon nav-icons m-l-2"
               >
                 <i className="bx bxs-playlist is-4"></i>
               </button>

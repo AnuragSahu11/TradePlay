@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../context";
 import {
   likeVideo,
@@ -7,6 +9,7 @@ import {
 import { inList } from "../../../utils";
 
 const CardLikes = ({ videoData, size, setLoading }) => {
+  const navigate = useNavigate();
   const {
     userDataState: { token, likes },
     userDataDispatch,
@@ -18,9 +21,14 @@ const CardLikes = ({ videoData, size, setLoading }) => {
   useEffect(() => setIsLiked(inList(likes, _id)));
 
   const likeClickHandler = async () => {
-    isLiked
-      ? removeFromLikes(_id, token, userDataDispatch, setLoading)
-      : likeVideo(videoData, token, userDataDispatch, setLoading);
+    if (token) {
+      isLiked
+        ? removeFromLikes(_id, token, userDataDispatch, setLoading)
+        : likeVideo(videoData, token, userDataDispatch, setLoading);
+    } else {
+      toast.error("Login needed");
+      navigate("/login");
+    }
   };
   return (
     <div className="like-button pointer flex-r-w space-evenly align-center">

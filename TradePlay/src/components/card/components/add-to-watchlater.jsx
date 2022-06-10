@@ -5,6 +5,7 @@ import {
   addToWatchLater,
   removeFromWatchlater,
 } from "../../../server-request/server-requests";
+import { useNavigate } from "react-router-dom";
 
 const AddToWatchLater = ({ videoData, setLoading }) => {
   const {
@@ -43,6 +44,7 @@ const AddToWatchLater = ({ videoData, setLoading }) => {
 };
 
 const AddToWatchlaterSmall = ({ videoData, setLoading }) => {
+  const navigate = useNavigate();
   const {
     userDataState: { token, watchlater },
     userDataDispatch,
@@ -57,9 +59,14 @@ const AddToWatchlaterSmall = ({ videoData, setLoading }) => {
   });
 
   const addToWatchlaterClick = () => {
-    inWatchlater
-      ? removeFromWatchlater(_id, token, userDataDispatch, setLoading)
-      : addToWatchLater(videoData, token, userDataDispatch, setLoading);
+    if (token) {
+      inWatchlater
+        ? removeFromWatchlater(_id, token, userDataDispatch, setLoading)
+        : addToWatchLater(videoData, token, userDataDispatch, setLoading);
+    } else {
+      toast.error("Login needed");
+      navigate("/login");
+    }
   };
 
   return (
