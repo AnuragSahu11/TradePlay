@@ -35,3 +35,9 @@ export const demoCredentials = {
   email: "anurag@gmail.com",
   password: "anurag",
 };
+
+export const toastStyle = {
+  style: {
+    fontSize: "1.6rem",
+  },
+};

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { API_URL, REDUCER_ACTION } from "../utils/constants";
-import { authHeader } from "../utils/index";
 import toast from "react-hot-toast";
+import { authHeader } from "./auth-header";
 
 const signUpUser = async (credentials, setLoading) => {
   const { email, password, firstName, lastName } = credentials;
