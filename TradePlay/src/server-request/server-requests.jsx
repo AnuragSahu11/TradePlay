@@ -16,6 +16,7 @@ const signUpUser = async (credentials, setLoading) => {
     toast.success("Account created, Login to New Account");
   } catch (error) {
     toast.error("Sign up failed");
+    setLoading(false);
     throw error;
   }
   setLoading(false);
@@ -117,7 +118,11 @@ const removeFromLikes = async (videoId, token, dispatch, setLoading) => {
 };
 
 const getAllPlaylists = async (token, dispatch) => {
-  const { data } = await axios.get(`${API_URL}user/playlists`);
+  const { data } = await axios.get(
+    `${API_URL}user/playlists`,
+    authHeader(token)
+  );
+  dispatch({ type: REDUCER_ACTION.UPDATE_PLAYLISTS, value: data.playlists });
 };
 
 const createPlaylist = async (
@@ -174,7 +179,6 @@ const getPlaylist = async (
       toast.error("Playlist not found");
       navigate("/videoListing/playlist");
     }
-    console.log(data);
   } catch (err) {}
   setLoading(false);
 };

@@ -20,10 +20,11 @@ const LoginPage = () => {
     password: "",
   });
 
+  const { email, password } = loginCredentials;
+
   const demoLoginClick = async () => {
     setLoginCredentials(demoCredentials);
     await loginUser(demoCredentials, userDataDispatch, setPageLoading);
-
     navigate(from, { replace: true });
   };
 

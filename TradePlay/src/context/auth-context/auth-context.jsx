@@ -1,9 +1,7 @@
 import {
   createContext,
   useContext,
-  useEffect,
   useReducer,
-  useState,
 } from "react";
 import { initialUserData } from "../../utils/constants";
 import { userDataReducer } from "./auth-reducer";
