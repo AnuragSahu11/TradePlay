@@ -12,7 +12,8 @@ const SearchResultPage = () => {
       title.toLowerCase().includes(searchTerm.toLowerCase())
     )
     .map((item) => <VideoCard videoData={item} />);
-  useEffect(() => changeTitle(`Search results for "${searchTerm}"`));
+
+  changeTitle(`Search results for "${searchTerm}"`);
   return (
     <>
       <div className="title text-center m-dw-2">{`Search results for "${searchTerm}" - ${searchedVideos.length} results`}</div>

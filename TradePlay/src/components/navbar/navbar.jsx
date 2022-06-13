@@ -2,17 +2,19 @@ import { Search } from "./search";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./navbar.css";
-import { useAuth } from "../../context/auth-context/auth-context";
 import { NavbarButtons } from "./components/navbar-buttons";
 import { LogoutModal } from "../modals/logout-modal";
+import { useAuth } from "../../context";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const {
     userDataState: { token },
   } = useAuth();
+
   const [showNav, setShowNav] = useState(false);
   const [showLogout, setShowLogout] = useState(false);
+
   const toggleLogout = () => {
     setShowLogout((prevState) => !prevState);
   };
@@ -34,12 +36,15 @@ const Navbar = () => {
           </div>
           <div className="nav-menu">
             <div className="nav-start flex-row">
-              <div onClick={() => navigate("/")} className="nav-item link">
+              <div
+                onClick={() => navigate("/")}
+                className="pointer nav-item link"
+              >
                 Home
               </div>
               <div
                 onClick={() => navigate("/videoListing")}
-                className="nav-item link"
+                className="pointer nav-item link"
               >
                 Learn
               </div>
@@ -48,7 +53,7 @@ const Navbar = () => {
               <Search version="desktop" />
               <button
                 onClick={() => navigate("/videoListing/playlist")}
-                className="btn-icon nav-icons m-l-1"
+                className="btn-icon nav-icons m-l-2"
               >
                 <i className="bx bxs-playlist is-4"></i>
               </button>
@@ -58,7 +63,7 @@ const Navbar = () => {
               >
                 <i className="bx is-4 bxs-bookmarks"></i>
               </button>
-              <NavbarButtons token={token} toggleLogout={toggleLogout} />
+              <NavbarButtons toggleLogout={toggleLogout} />
             </div>
           </div>
         </nav>
@@ -89,6 +94,20 @@ const Navbar = () => {
           <Link className="is-3 m-up-2 is-dark" to="/videoListing/history">
             History
           </Link>
+          {token ? (
+            <div onClick={toggleLogout} className="pointer is-3 m-up-2 is-dark">
+              Log out
+            </div>
+          ) : (
+            <>
+              <Link className="is-3 m-up-2 is-dark" to="/login">
+                Log In
+              </Link>
+              <Link className="is-3 m-up-2 is-dark" to="/signup">
+                Sign Up
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </>

@@ -18,7 +18,7 @@ const HistoryPage = () => {
     .map((item, i) => <SmallVideoCard remove={"history"} videoData={item} />)
     .reverse();
 
-  useEffect(() => changeTitle("History"));
+  changeTitle("History");
 
   return (
     <div className="flex-c-w history-page">

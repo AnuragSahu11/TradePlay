@@ -1,22 +1,19 @@
 import { useAuth } from "../../context";
 import { PlaylistList } from "../list/playlist-list";
 
-const AddToPlaylistModal = ({ isModalOpen, switchModal, videoData }) => {
+const AddToPlaylistModal = ({
+  isModalOpen,
+  toggleModal,
+  videoData,
+  setLoading,
+}) => {
   const {
     userDataState: { playlists },
     userDataDispatch,
   } = useAuth();
 
-  const outsideModalClick = () => {
-    switchModal((prevState) => !prevState);
-  };
-
-  const insideModalClick = (e) => {
-    e.stopPropagation();
-  };
-
   const closeModal = () => {
-    switchModal((prevState) => !prevState);
+    toggleModal();
   };
 
   return (
@@ -29,6 +26,8 @@ const AddToPlaylistModal = ({ isModalOpen, switchModal, videoData }) => {
           action={"add"}
           videoData={videoData}
           playlistData={item}
+          toggleModal={toggleModal}
+          setLoading={setLoading}
         />
       ))}
     </div>

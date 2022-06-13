@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { useAuth } from "../../context";
+import toast from "react-hot-toast";
+import { useAuth, useVideos } from "../../context";
 import { createPlaylist } from "../../server-request/server-requests";
 
 const CreateNewPlaylistModal = ({ isModalOpen, switchModal }) => {
@@ -7,7 +8,7 @@ const CreateNewPlaylistModal = ({ isModalOpen, switchModal }) => {
     userDataState: { token },
     userDataDispatch,
   } = useAuth();
-
+  const { setPageLoading } = useVideos();
   const [playlistData, setPlaylistData] = useState({
     title: "",
     description: "",
@@ -29,7 +30,9 @@ const CreateNewPlaylistModal = ({ isModalOpen, switchModal }) => {
 
   const submitClick = () => {
     if (title && description) {
-      createPlaylist(playlistData, token, userDataDispatch);
+      createPlaylist(playlistData, token, userDataDispatch, setPageLoading);
+    } else {
+      toast.error("Enter correct details");
     }
     switchModal((prevState) => !prevState);
   };
@@ -83,8 +86,7 @@ const CreateNewPlaylistModal = ({ isModalOpen, switchModal }) => {
             onClick={submitClick}
             className="btn-secondary btn-small btn-w-icon"
           >
-            <i className="bx bx-list-plus"></i>
-            Create
+            <i className="fas fa-plus"></i> Create
           </button>
         </div>
       </div>

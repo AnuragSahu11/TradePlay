@@ -1,12 +1,14 @@
 import { useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import { useAuth } from "../../context";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useAuth, useVideos } from "../../context";
 import { loginUser } from "../../server-request/server-requests";
 import { demoCredentials } from "../../utils/constants";
 import toast from "react-hot-toast";
 import "./login.css";
+import { changeTitle } from "../../utils";
 
 const LoginPage = () => {
+  const { setPageLoading } = useVideos();
   const { userDataDispatch } = useAuth();
   let location = useLocation();
   const navigate = useNavigate();
@@ -18,10 +20,11 @@ const LoginPage = () => {
     password: "",
   });
 
+  const { email, password } = loginCredentials;
+
   const demoLoginClick = async () => {
     setLoginCredentials(demoCredentials);
-    await loginUser(demoCredentials, userDataDispatch);
-
+    await loginUser(demoCredentials, userDataDispatch, setPageLoading);
     navigate(from, { replace: true });
   };
 
@@ -32,22 +35,24 @@ const LoginPage = () => {
 
   const loginClick = async () => {
     if (validateForm()) {
-      await loginUser(loginCredentials, userDataDispatch);
+      await loginUser(loginCredentials, userDataDispatch, setPageLoading);
       navigate(from, { replace: true });
     } else {
       toast.error("Input Correct Credentials");
     }
   };
 
+  changeTitle("Login to TradePlay");
+
   return (
-    <section className="login-section m-up-5 p-x-1">
+    <section className="login-section m-up-6 p-up-6 p-x-1">
       <div className="login br-3 center-x m-up-6 elevated shadow p-y-2 p-x-4">
         <div className="textbox">
           <div className="title">Login</div>
         </div>
         <div className="form-div m-up-1">
           <p className="form-label">Email</p>
-          <i className="fas fa-envelope"></i>
+          <i className="is-lighter fas fa-envelope"></i>
           <input
             onChange={(e) =>
               setLoginCredentials({
@@ -62,7 +67,7 @@ const LoginPage = () => {
             required=""
           />
           <p className="form-label m-up-2">Password</p>
-          <i className="fas fa-key"></i>
+          <i className="is-lighter fas fa-key"></i>
           <input
             onChange={(e) =>
               setLoginCredentials({
@@ -81,9 +86,6 @@ const LoginPage = () => {
           <input type="checkbox" className="" />
           Remember me
         </label>
-        <a href="" className="link-secondary m-l-6">
-          Forgot password
-        </a>
         <div className="btn-vertical m-up-3 center-text">
           <button onClick={loginClick} className="btn-primary m-dw-1 btn-small">
             Login
@@ -94,9 +96,9 @@ const LoginPage = () => {
           >
             Login using Demo credentials
           </button>
-          <a onClick={() => navigate("/signup")} className=" link">
+          <Link to={"/signup"} className="is-2 link">
             Create Account
-          </a>
+          </Link>
         </div>
       </div>
     </section>

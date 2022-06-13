@@ -1,10 +1,11 @@
 import axios from "axios";
 import { API_URL, REDUCER_ACTION } from "../utils/constants";
-import { authHeader } from "../utils/index";
 import toast from "react-hot-toast";
+import { authHeader } from "./auth-header";
 
-const signUpUser = async (credentials) => {
+const signUpUser = async (credentials, setLoading) => {
   const { email, password, firstName, lastName } = credentials;
+  setLoading(true);
   try {
     const { data } = await axios.post(`/api/auth/signup`, {
       email,
@@ -12,14 +13,17 @@ const signUpUser = async (credentials) => {
       firstName,
       lastName,
     });
-    navigate("/login");
     toast.success("Account created, Login to New Account");
   } catch (error) {
     toast.error("Sign up failed");
+    setLoading(false);
+    throw error;
   }
+  setLoading(false);
 };
 
-const loginUser = async (credentials, dispatch) => {
+const loginUser = async (credentials, dispatch, setLoading) => {
+  setLoading(true);
   try {
     const { data } = await axios.post(`${API_URL}auth/login`, credentials);
     dispatch({ type: REDUCER_ACTION.SET_TOKEN, value: data.encodedToken });
@@ -28,6 +32,7 @@ const loginUser = async (credentials, dispatch) => {
   } catch (err) {
     toast.error("Login Failed");
   }
+  setLoading(false);
 };
 
 const getVideosFromAPI = async (dispatch) => {
@@ -82,7 +87,8 @@ const getLikedVideos = async (videoData, token, dispatch) => {
   dispatch({ type: REDUCER_ACTION.UPDATE_LIKED_VIDEOS, value: data.likes });
 };
 
-const likeVideo = async (videoData, token, dispatch) => {
+const likeVideo = async (videoData, token, dispatch, setLoading) => {
+  setLoading(true);
   try {
     const { data } = await axios.post(
       `${API_URL}user/likes`,
@@ -96,9 +102,11 @@ const likeVideo = async (videoData, token, dispatch) => {
   } catch (err) {
     toast.error("Like Video Failed");
   }
+  setLoading(false);
 };
 
-const removeFromLikes = async (videoId, token, dispatch) => {
+const removeFromLikes = async (videoId, token, dispatch, setLoading) => {
+  setLoading(true);
   try {
     const { data } = await axios.delete(
       `${API_URL}user/likes/${videoId}`,
@@ -106,13 +114,24 @@ const removeFromLikes = async (videoId, token, dispatch) => {
     );
     dispatch({ type: REDUCER_ACTION.UPDATE_LIKED_VIDEOS, value: data.likes });
   } catch (err) {}
+  setLoading(false);
 };
 
 const getAllPlaylists = async (token, dispatch) => {
-  const { data } = await axios.get(`${API_URL}user/playlists`);
+  const { data } = await axios.get(
+    `${API_URL}user/playlists`,
+    authHeader(token)
+  );
+  dispatch({ type: REDUCER_ACTION.UPDATE_PLAYLISTS, value: data.playlists });
 };
 
-const createPlaylist = async (playlistData, token, dispatch) => {
+const createPlaylist = async (
+  playlistData,
+  token,
+  dispatch,
+  setPageLoading
+) => {
+  setPageLoading(true);
   try {
     const { data } = await axios.post(
       `${API_URL}user/playlists`,
@@ -124,9 +143,11 @@ const createPlaylist = async (playlistData, token, dispatch) => {
   } catch (err) {
     toast.error("Playlist Creation failed");
   }
+  setPageLoading(false);
 };
 
-const deletePlaylist = async (id, token, dispatch) => {
+const deletePlaylist = async (id, token, dispatch, setPageLoading) => {
+  setPageLoading(true);
   try {
     const { data } = await axios.delete(
       `${API_URL}user/playlists/${id}`,
@@ -137,17 +158,33 @@ const deletePlaylist = async (id, token, dispatch) => {
   } catch (err) {
     toast.success("Delete Failed");
   }
+  setPageLoading(false);
 };
 
-const getPlaylist = async (id, token, setPlaylistData) => {
-  const { data } = await axios.get(
-    `${API_URL}user/playlists/${id}`,
-    authHeader(token)
-  );
-  setPlaylistData(data.playlist);
+const getPlaylist = async (
+  id,
+  token,
+  setPlaylistData,
+  setLoading,
+  navigate
+) => {
+  setLoading(true);
+  try {
+    const { data } = await axios.get(
+      `${API_URL}user/playlists/${id}`,
+      authHeader(token)
+    );
+    setPlaylistData(data.playlist);
+    if (!data.playlist) {
+      toast.error("Playlist not found");
+      navigate("/videoListing/playlist");
+    }
+  } catch (err) {}
+  setLoading(false);
 };
 
-const addToPlaylist = async (videoData, id, token) => {
+const addToPlaylist = async (videoData, id, token, setLoading) => {
+  setLoading(true);
   try {
     const { data } = await axios.post(
       `${API_URL}user/playlists/${id}`,
@@ -158,6 +195,7 @@ const addToPlaylist = async (videoData, id, token) => {
   } catch (err) {
     toast.error("Add to Playlist failed");
   }
+  setLoading(false);
 };
 
 const removeFromPlaylist = async (
@@ -178,7 +216,8 @@ const removeFromPlaylist = async (
   }
 };
 
-const addToWatchLater = async (videoData, token, dispatch) => {
+const addToWatchLater = async (videoData, token, dispatch, setLoading) => {
+  setLoading(true);
   try {
     const { data } = await axios.post(
       `${API_URL}user/watchlater`,
@@ -193,6 +232,7 @@ const addToWatchLater = async (videoData, token, dispatch) => {
   } catch (err) {
     toast.error("Add to Watchlater failed");
   }
+  setLoading(false);
 };
 
 const getWatchLater = async (token, dispatch) => {
@@ -203,7 +243,8 @@ const getWatchLater = async (token, dispatch) => {
   dispatch({ type: REDUCER_ACTION.UPDATE_WATCHLATER, value: data.watchlater });
 };
 
-const removeFromWatchlater = async (videoId, token, dispatch) => {
+const removeFromWatchlater = async (videoId, token, dispatch, setLoading) => {
+  setLoading(true);
   try {
     const { data } = await axios.delete(
       `${API_URL}user/watchlater/${videoId}`,
@@ -217,6 +258,7 @@ const removeFromWatchlater = async (videoId, token, dispatch) => {
   } catch (err) {
     toast.error("Remove from Watchlater failed");
   }
+  setLoading(false);
 };
 
 export {

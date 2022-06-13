@@ -1,14 +1,15 @@
-import { useAuth } from "../../context";
+import { useAuth, useVideos } from "../../context";
 import { deletePlaylist } from "../../server-request/server-requests";
 
 const DeletePlaylistModal = ({ switchModal }) => {
+  const { setPageLoading } = useVideos();
   const {
     userDataState: { token, playlists },
     userDataDispatch,
   } = useAuth();
 
   const deletePlaylistClick = (id) => {
-    deletePlaylist(id, token, userDataDispatch);
+    deletePlaylist(id, token, userDataDispatch, setPageLoading);
   };
 
   const outsideModalClick = () => {
@@ -40,7 +41,7 @@ const DeletePlaylistModal = ({ switchModal }) => {
           {playlists.map(({ _id, title }) => (
             <div
               onClick={() => deletePlaylistClick(_id)}
-              className="addToPlaylist playlist-list m-up-4 center-x  text-center p-x-2 br-3 create-playlist flex-row align-center is-4"
+              className="addToPlaylist playlist-list m-up-4 center-x pointer text-center p-x-2 br-3 create-playlist flex-row align-center is-4"
             >
               <i className="bx bx-play-circle is-primary is-5 m-r-1"></i>
               <p className="m-y-1 regular text-center">{title}</p>

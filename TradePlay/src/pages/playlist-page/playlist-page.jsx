@@ -21,7 +21,7 @@ const PlaylistPage = () => {
     setIsModalOpen((prevState) => !prevState);
   };
 
-  useEffect(() => changeTitle("Playlists"));
+  changeTitle("Playlists");
 
   return (
     <div className="playlist-page width-100">

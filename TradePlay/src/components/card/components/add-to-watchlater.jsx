@@ -5,8 +5,12 @@ import {
   addToWatchLater,
   removeFromWatchlater,
 } from "../../../server-request/server-requests";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
-const AddToWatchLater = ({ videoData }) => {
+const AddToWatchLater = ({ videoData, setLoading }) => {
+  const navigate = useNavigate();
+
   const {
     userDataState: { token, watchlater },
     userDataDispatch,
@@ -26,15 +30,20 @@ const AddToWatchLater = ({ videoData }) => {
     : "Add to Watch Later";
 
   const watchlaterClick = () => {
-    inList(watchlater, _id)
-      ? removeFromWatchlater(_id, token, userDataDispatch)
-      : addToWatchLater(videoData, token, userDataDispatch);
+    if (token) {
+      inList(watchlater, _id)
+        ? removeFromWatchlater(_id, token, userDataDispatch, setLoading)
+        : addToWatchLater(videoData, token, userDataDispatch, setLoading);
+    } else {
+      toast.error("Login needed");
+      navigate("/login");
+    }
   };
 
   return (
     <button
       onClick={watchlaterClick}
-      className="btn-secondary btn-custom m-dw-1 btn-small"
+      className="btn-secondary pointer btn-custom m-dw-1 btn-small"
     >
       <i className="bx bx-bookmark-plus m-r-1"></i>
       {buttonText}
@@ -42,7 +51,7 @@ const AddToWatchLater = ({ videoData }) => {
   );
 };
 
-const AddToWatchlaterSmall = ({ videoData }) => {
+const AddToWatchlaterSmall = ({ videoData, setLoading }) => {
   const {
     userDataState: { token, watchlater },
     userDataDispatch,
@@ -58,14 +67,16 @@ const AddToWatchlaterSmall = ({ videoData }) => {
 
   const addToWatchlaterClick = () => {
     inWatchlater
-      ? removeFromWatchlater(_id, token, userDataDispatch)
-      : addToWatchLater(videoData, token, userDataDispatch);
+      ? removeFromWatchlater(_id, token, userDataDispatch, setLoading)
+      : addToWatchLater(videoData, token, userDataDispatch, setLoading);
   };
 
   return (
     <i
       onClick={addToWatchlaterClick}
-      className={`${inWatchlater && "is-primary"} is-5 bx bxs-bookmarks`}
+      className={`${
+        inWatchlater && "is-primary"
+      } pointer is-5 bx bxs-bookmarks`}
     ></i>
   );
 };

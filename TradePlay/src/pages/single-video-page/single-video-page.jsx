@@ -5,12 +5,15 @@ import { AddToPlaylistCardButton } from "../../components/card/components/add-to
 import { CardLikes } from "../../components/card/components/card-likes";
 import { AddToPlaylistSmallModal } from "../../components/modals/add-to-playlist-small-modal";
 import { AddToWatchlaterSmall } from "../../components/card/components/add-to-watchlater";
+import { Loader } from "../../components/loader/loader";
+import { changeTitle } from "../../utils";
 
 const SingleVideoPage = () => {
   const { id } = useParams();
   const [showModal, setShowModal] = useState(false);
   const [videoData, setVideoData] = useState({});
-  
+  const [isLoading, setLoading] = useState(false);
+
   const switchModal = () => {
     setShowModal((prevState) => !prevState);
   };
@@ -21,6 +24,7 @@ const SingleVideoPage = () => {
 
   const { videoLink, description, title } = videoData;
 
+  changeTitle(title || "TradePlay");
   return (
     <div className="single-video-page grid-70-30">
       <div className="">
@@ -39,15 +43,28 @@ const SingleVideoPage = () => {
         <div className="video-page-content width-100">
           <div className="title m-l-4 m-y-2 semibold">{title}</div>
           <div className="has-accent br-1 p-l-4 p-y-1 video-page-buttons width-100 align-center is-5 m-l- m-up-2 flex-r-w ">
-            <CardLikes size={"is-5"} videoData={videoData} />
+            <Loader isLoading={isLoading} />
+            <CardLikes
+              size={"is-5"}
+              videoData={videoData}
+              setLoading={setLoading}
+            />
             <div className="btn-vertical m-x-6">
-              <AddToWatchlaterSmall videoData={videoData} />
+              <AddToWatchlaterSmall
+                videoData={videoData}
+                setLoading={setLoading}
+              />
             </div>
-            <AddToPlaylistCardButton size={"is-5"} switchModal={switchModal} />
+            <AddToPlaylistCardButton
+              size={"is-5"}
+              switchModal={switchModal}
+              setLoading={setLoading}
+            />
             {showModal && (
               <AddToPlaylistSmallModal
                 videoData={videoData}
                 switchModal={switchModal}
+                setLoading={setLoading}
               />
             )}
           </div>

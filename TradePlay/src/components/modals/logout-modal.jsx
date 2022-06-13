@@ -1,3 +1,4 @@
+import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context";
 import { REDUCER_ACTION } from "../../utils/constants";
@@ -11,6 +12,7 @@ const LogoutModal = ({ showLogout, toggleLogout }) => {
     userDataDispatch({ type: REDUCER_ACTION.LOGOUT });
     toggleLogout();
     navigate("/");
+    toast.success("You have been Logged Out");
   };
   const closeLogoutModalClickHandler = () => {
     toggleLogout();

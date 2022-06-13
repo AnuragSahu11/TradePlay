@@ -1,5 +1,5 @@
-import { changeCategory } from "../../utils";
 import { REDUCER_ACTION } from "../../utils/constants";
+import { changeCategory } from "./video-reducer-actions";
 
 const videoReducer = (state, action) => {
   switch (action.type) {

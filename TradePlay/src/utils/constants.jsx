@@ -8,6 +8,14 @@ export const initialUserData = {
   watchlater: [],
 };
 
+export const loggedOutUserData = {
+  token: null,
+  history: [],
+  playlists: [],
+  likes: [],
+  watchlater: [],
+};
+
 export const REDUCER_ACTION = {
   SET_TOKEN: "SET_TOKEN",
   UPDATE_HISTORY: "UPDATE_HISTORY",
@@ -20,7 +28,16 @@ export const REDUCER_ACTION = {
   LOGOUT: "LOGOUT_USER",
 };
 
+export const loaderSizeLarge = { width: "60px", height: "60px" };
+export const loaderSizeMedium = { width: "32px", height: "32px" };
+
 export const demoCredentials = {
   email: "anurag@gmail.com",
   password: "anurag",
+};
+
+export const toastStyle = {
+  style: {
+    fontSize: "1.6rem",
+  },
 };

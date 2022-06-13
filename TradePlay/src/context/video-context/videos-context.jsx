@@ -15,13 +15,15 @@ const VideoProvider = ({ children }) => {
     videoReducer,
     initialVideoState
   );
-
+  const [pageLoading, setPageLoading] = useState(false);
   useEffect(async () => {
     getVideosFromAPI(videoDispatch);
   }, []);
 
   return (
-    <VideoContext.Provider value={{ videoState, videoDispatch }}>
+    <VideoContext.Provider
+      value={{ pageLoading, setPageLoading, videoState, videoDispatch }}
+    >
       {children}
     </VideoContext.Provider>
   );

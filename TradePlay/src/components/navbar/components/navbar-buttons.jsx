@@ -1,8 +1,11 @@
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../../context";
 
-const NavbarButtons = ({ token, toggleLogout }) => {
+const NavbarButtons = ({ toggleLogout }) => {
   const navigate = useNavigate();
-
+  const {
+    userDataState: { token },
+  } = useAuth();
   return token ? (
     <button onClick={toggleLogout} className="btn-primary nav-btn btn-small">
       Log Out
