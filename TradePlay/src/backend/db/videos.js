@@ -34,7 +34,7 @@ export const videos = [
     videoLink:
       "https://www.youtube.com/embed/YX-RZKjGV-M?list=PLmOv2_vzOoGcTirwpJoyhGrYRnv1CRyIa",
     description:
-      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
+      "In this exclusive edition of Sniper's Master Class, we teach you how to become a professional Crypto trader using Moving Average lines! This class focuses on what moving averages are, how to use them effortlessly to become the best Bitcoin and Altcoin trader that you can be, and maximize your Crypto portfolio returns DAILY!",
     creator: "Crypto Banter",
     views: Math.random() * (5000 - 1000) + 1000,
     category: "crypto",
@@ -47,7 +47,7 @@ export const videos = [
     videoLink:
       "https://youtube.com/embed/K6DhhP3szJs?list=PLmOv2_vzOoGcTirwpJoyhGrYRnv1CRyIa",
     description:
-      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
+      "In this exclusive edition of Sniper's Master Class, we teach you how to become a professional Crypto trader using the Volume Indicator! This class focuses on the often forgotten Volume Indicator, how to use it effortlessly to become the best Bitcoin and Altcoin trader that you can be, and maximize your Crypto portfolio returns DAILY!",
     views: Math.random() * (5000 - 1000) + 1000,
     category: "crypto",
   },
@@ -59,7 +59,7 @@ export const videos = [
     videoLink:
       "https://youtube.com/embed/zSGCtoO4VJU?list=PLmOv2_vzOoGcTirwpJoyhGrYRnv1CRyIa",
     description:
-      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
+      "How to use Fibonacci Retracement Tools to trade crypto - In this exclusive edition of Sniper's Master Class, we teach you how to become a professional Crypto trader using the Fibonacci Tool! This class focuses on what the Fibonacci tool is, how to use it effortlessly to become the best Bitcoin and Altcoin trader that you can be, and maximize your Crypto portfolio returns DAILY!",
     views: Math.random() * (5000 - 1000) + 1000,
     category: "crypto",
   },
@@ -76,63 +76,63 @@ export const videos = [
   },
   {
     _id: "QYjB43EqraQ",
-    title: "Neural Networks from Scratch - P.1 Intro and Neuron Code",
-    creator: "Sentdex",
+    title: "What Are The Different Stock Order Types",
+    creator: "Rayner Teo",
     videoLink:
       "https://www.youtube.com/embed/QYjB43EqraQ?list=PLT6_Bt_TKitIUCEsI-3SGCrVHCy0g_5jd",
     description:
-      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
+      "In this lesson, you'll discover what are the different stock order types and their pros and cons.",
     views: Math.random() * (5000 - 1000) + 1000,
     category: "stock",
   },
   {
     _id: "U9nsjYNV5yo",
-    title: "Neural Networks from Scratch - P.1 Intro and Neuron Code",
-    creator: "Sentdex",
+    title: "How To Analyze Stocks (Technical Analysis)",
+    creator: "Rayner Teo",
     videoLink:
       "https://www.youtube.com/embed/U9nsjYNV5yo?list=PLT6_Bt_TKitIUCEsI-3SGCrVHCy0g_5jd",
     description:
-      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
+      "In this lesson, you'll learn how to analyze stocks using Technical Analysis.",
     views: Math.random() * (5000 - 1000) + 1000,
     category: "stock",
   },
   {
     _id: "X2ptmvfKp6Q",
-    title: "Neural Networks from Scratch - P.1 Intro and Neuron Code",
-    creator: "Sentdex",
+    title: "How To Trade Stocks (Step By Step Guide)",
+    creator: "Rayner Teo",
     videoLink:
       "https://www.youtube.com/embed/X2ptmvfKp6Q?list=PLT6_Bt_TKitIUCEsI-3SGCrVHCy0g_5jd",
     description:
-      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
+      "In this lesson, you'll learn how to trade stocks step by step (even if you have zero trading experience).",
     views: Math.random() * (5000 - 1000) + 1000,
     category: "stock",
   },
   {
     _id: "GuZkcooBBro",
-    title: "Neural Networks from Scratch - P.1 Intro and Neuron Code",
-    creator: "Sentdex",
+    title: "What Are The Different Types of Trading Style",
+    creator: "Rayner Teo",
     videoLink:
       "https://www.youtube.com/embed/GuZkcooBBro?list=PLT6_Bt_TKitIUCEsI-3SGCrVHCy0g_5jd",
     description:
-      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
+      "In this lesson, you'll learn what are the different trading styles you can use to profit in the stock markets.",
     views: Math.random() * (5000 - 1000) + 1000,
     category: "stock",
   },
   {
     _id: "L1MTCOi2zZE",
-    title: "Neural Networks from Scratch - P.1 Intro and Neuron Code",
-    creator: "Sentdex",
+    title: "Stock Trading Tips That Work",
+    creator: "Rayner Teo",
     videoLink:
       "https://www.youtube.com/embed/L1MTCOi2zZE?list=PLT6_Bt_TKitIUCEsI-3SGCrVHCy0g_5jd",
     description:
-      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
+      "In this lesson, you'll discover 4 powerful stock trading tips to help you kick start your trading career with a strong foundation.",
     views: Math.random() * (5000 - 1000) + 1000,
     category: "stock",
   },
   {
     _id: "zRW8nL1Sjtc",
     title: "Traders Mindset? || Psychology Series",
-    creator: "Sentdex",
+    creator: "Booming Bulls",
     videoLink: "https://www.youtube.com/embed/zRW8nL1Sjtc",
     description:
       "Booming Bulls is an initiative for the young generation who is interested in making more,willing to step forward and be free from financial situations. We provide knowledge that is based on self-learning, experience and theoretical implications on the market.",
@@ -143,7 +143,7 @@ export const videos = [
     _id: "vtmvk5m7wfI",
     title:
       "How to Master Your Trading Psychology (Strategies That Actually Work)",
-    creator: "Sentdex",
+    creator: "Rayner Teo",
     videoLink: "https://www.youtube.com/embed/vtmvk5m7wfI",
     description:
       "Discover how you can manage your trading psychology with practical strategies that work (without meditation or hypnosis).",
@@ -154,7 +154,7 @@ export const videos = [
     _id: "iGcJlDu-WbE",
     title:
       "Psychological Trading Mistakes (6 Ways Your Mind Is Tricking You Into Being a Losing Trader)",
-    creator: "Sentdex",
+    creator: "The Secret Mindset",
     videoLink: "https://www.youtube.com/embed/iGcJlDu-WbE",
     description:
       "The most successful stock and forex traders are the ones who have developed an edge. Before you dive into market analysis and dream at profitable stock trading techniques and strategies, you must work on your trading mindset.",
@@ -164,7 +164,7 @@ export const videos = [
   {
     _id: "E65ruK-_Mrc",
     title: "Hope/Fear/Greed - Managing Emotions in Trading",
-    creator: "Sentdex",
+    creator: "TradeChannel",
     videoLink: "https://www.youtube.com/embed/E65ruK-_Mrc",
     description:
       "Hope/Fear/Greed - Managing Emotions in Trading  David Paul, Financial Trader and Managing Director of Vector Vest UK comments.Give demo accounts a month or two but then switch to a real money account - virtual accounts lack the emotions - so use a real money account but start very small.",
@@ -175,7 +175,7 @@ export const videos = [
     _id: "dyV1NYbk_nA",
     title:
       "Top 3 Trading Psychology Lessons I Leaned In 10 Years (no emotions = no mistakes)",
-    creator: "Sentdex",
+    creator: "The Trading Channel",
     videoLink: "https://www.youtube.com/embed/dyV1NYbk_nA",
     description:
       "In this video Steven will be teaching you about the most important part of your trading. What is it? Trading psychology. That's right. It is not a strategy, or which indicator you use. It is not the latest structure level or entry reason. Trading psychology is will make or break you in this industry. So, let's take a look at how you can master your emotions and take control of your trading psychology.",
@@ -185,7 +185,7 @@ export const videos = [
   {
     _id: "v21T94-jXeY",
     title: "The ULTIMATE Beginner's Guide to CANDLESTICK PATTERNS",
-    creator: "Sentdex",
+    creator: "Fractal Flow",
     videoLink: "https://www.youtube.com/embed/v21T94-jXeY",
     description:
       "This is a free candlestick patterns course. In this course you will understand the many candlestick patterns, their advantages and disadvantages as a trading technique.",
@@ -195,7 +195,7 @@ export const videos = [
   {
     _id: "C3KRwfj9F8Q",
     title: "The Ultimate Candlestick Patterns Trading Course (For Beginners)",
-    creator: "Sentdex",
+    creator: "Rayner Teo",
     videoLink: "https://www.youtube.com/embed/C3KRwfj9F8Q",
     description:
       "Discover how candlestick patterns can help you identify high probability trading setups — so you can profit in bull and bear markets.",
@@ -205,7 +205,7 @@ export const videos = [
   {
     _id: "UU4ZQF-X9jE",
     title: "Ultimate Candlestick Patterns Trading Course (PRO INSTANTLY)",
-    creator: "Sentdex",
+    creator: "Wysetrade",
     videoLink: "https://www.youtube.com/embed/UU4ZQF-X9jE",
     description:
       "In this video we show you the Wysetrade advanced candlestick patterns trading strategy. Candlestick patterns are used by many traders but are often used incorrectly. We combine all concepts from our past videos SO MAKE SURE YOU WATCH ALL OUR VIDEOS TO GET CAUGHT UP!",
@@ -215,7 +215,7 @@ export const videos = [
   {
     _id: "cSWC2WwbhHE",
     title: "Moving Average Trading Secrets (This is What You Must Know...)",
-    creator: "Sentdex",
+    creator: "Rayner Teo",
     videoLink: "https://www.youtube.com/embed/cSWC2WwbhHE",
     description:
       "Discover how the moving average trading indicator helps you better time your entries, predict market turning points, and increase your winning rate.",
@@ -225,7 +225,7 @@ export const videos = [
   {
     _id: "rNI166nMAFw",
     title: "Technical Analysis For Beginners (The Ultimate Guide)",
-    creator: "Sentdex",
+    creator: "Rayner Teo",
     videoLink: "https://www.youtube.com/embed/rNI166nMAFw",
     description:
       "Discover the truth about Technical Analysis — when to use it, when NOT to use it, and how it really works.",

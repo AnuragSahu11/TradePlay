@@ -12,7 +12,7 @@ const RemoveFromHistory = ({ id }) => {
   return (
     <i
       onClick={removeFromHistoryClick}
-      className="bx is-4 is-primary bx-trash-alt"
+      className="bx is-4 is-primary bx-trash-alt pointer"
     ></i>
   );
 };
