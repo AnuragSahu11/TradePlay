@@ -37,7 +37,7 @@ const SmallVideoCard = ({ videoData, playlistId, remove, setPlaylistData }) => {
                   <div className="is-2 semibold subtitle">{creator}</div>
                 </div>
                 <div className="textbox">
-                  <p className="text">Lorem ipsum</p>
+                  <p className="text"></p>
                 </div>
                 {remove === "playlist" ? (
                   <RemoveFromPlaylist
